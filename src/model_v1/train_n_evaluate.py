@@ -41,24 +41,49 @@ def eval_metrics(y_true, y_pred):
     return mae, rmse, sp
 
 
-def save_pred_vs_actual(y_true, y_pred, out_path, title):
-    plt.figure()
-    plt.scatter(y_true, y_pred, alpha=0.6)
-    lo = float(min(np.min(y_true), np.min(y_pred)))
-    hi = float(max(np.max(y_true), np.max(y_pred)))
-    plt.plot([lo, hi], [lo, hi])
-    plt.xlabel("Actual 2-year AV")
-    plt.ylabel("Predicted 2-year AV")
-    plt.title(title)
-    plt.tight_layout()
-    plt.savefig(out_path, dpi=200)
-    plt.close()
+def _nice_axes(ax):
+    ax.grid(True, which="major", linestyle="--", linewidth=0.6, alpha=0.35)
+    ax.set_axisbelow(True)
+    for spine in ["top", "right"]:
+        ax.spines[spine].set_visible(False)
 
+def save_pred_vs_actual_pretty(y_true, y_pred, out_path, draft_year, model_name):
+    y_true = np.asarray(y_true)
+    y_pred = np.asarray(y_pred)
+    mae, rmse, sp = eval_metrics(y_true, y_pred)
 
-def save_spline_value_curve(model, X_train, out_path, title):
-    # Create pick grid, set other features to typical values so the curve is interpretable.
+    fig, ax = plt.subplots(figsize=(7.2, 5.4), dpi=220)
+    ax.scatter(y_true, y_pred, s=22, alpha=0.65, edgecolor="none")
+
+    lo = float(min(y_true.min(), y_pred.min()))
+    hi = float(max(y_true.max(), y_pred.max()))
+    ax.plot([lo, hi], [lo, hi], linewidth=1.2, alpha=0.85)
+
+    title = f"{model_name}: {draft_year} Draft Class"
+    ax.set_title(title, fontsize=13, pad=10)
+    ax.set_xlabel(f"Actual 2-Year AV = AV({draft_year}) + AV({draft_year+1})", fontsize=11)
+    ax.set_ylabel("Predicted 2-Year AV", fontsize=11)
+
+    txt = f"MAE={mae:.2f}  RMSE={rmse:.2f}  Spearman={sp:.2f}"
+    ax.text(
+        0.02, 0.98, txt,
+        transform=ax.transAxes,
+        va="top", ha="left",
+        fontsize=10,
+        bbox=dict(boxstyle="round,pad=0.35", facecolor="white", alpha=0.90, edgecolor="0.85")
+    )
+
+    ax.grid(True, linestyle="--", linewidth=0.6, alpha=0.35)
+    ax.set_axisbelow(True)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+
+    fig.tight_layout()
+    fig.savefig(out_path)
+    plt.close(fig)
+
+def save_spline_value_curve_pretty(model, X_train, out_path, train_end_year):
     grid = pd.DataFrame({"pick": np.arange(1, 261)})
-
     for col in X_train.columns:
         if col == "pick":
             continue
@@ -69,14 +94,22 @@ def save_spline_value_curve(model, X_train, out_path, title):
 
     preds = model.predict(grid)
 
-    plt.figure()
-    plt.plot(grid["pick"], preds)
-    plt.xlabel("Pick number")
-    plt.ylabel("Predicted 2-year AV")
-    plt.title(title)
-    plt.tight_layout()
-    plt.savefig(out_path, dpi=200)
-    plt.close()
+    fig, ax = plt.subplots(figsize=(7.2, 5.0), dpi=220)
+    ax.plot(grid["pick"], preds, linewidth=2.0)
+
+    ax.set_title("Estimated Pick Value Curve (Predicted 2-year AV)", fontsize=13, pad=10)
+    ax.set_xlabel("Pick number", fontsize=11)
+    ax.set_ylabel("Predicted 2-Year AV", fontsize=11)
+
+
+    ax.grid(True, linestyle="--", linewidth=0.6, alpha=0.35)
+    ax.set_axisbelow(True)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+
+    fig.tight_layout()
+    fig.savefig(out_path)
+    plt.close(fig)
 
 
 def load_draft(draft_csv: str) -> pd.DataFrame:
@@ -275,20 +308,22 @@ def main():
 
         # Save plots for the latest year only (best for slides)
         if test_year == latest_year:
-            save_pred_vs_actual(
+            save_pred_vs_actual_pretty(
                 y_test, pred_s,
                 os.path.join(OUT_DIR, f"plot_pred_vs_actual_spline_{test_year}.png"),
-                f"Spline: Actual vs Predicted (Draft {test_year})"
+                draft_year=test_year,
+                model_name="Spline Ridge"
             )
-            save_pred_vs_actual(
+            save_pred_vs_actual_pretty(
                 y_test, pred_x,
                 os.path.join(OUT_DIR, f"plot_pred_vs_actual_xgb_{test_year}.png"),
-                f"XGBoost: Actual vs Predicted (Draft {test_year})"
+                draft_year=test_year,
+                model_name="XGBoost"
             )
-            save_spline_value_curve(
+            save_spline_value_curve_pretty(
                 spline_model, X_train,
                 os.path.join(OUT_DIR, "plot_value_curve_spline.png"),
-                "Spline Value Curve vs Pick (Typical Context)"
+                train_end_year=test_year - 1
             )
 
     res_df = pd.DataFrame(results)
