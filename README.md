@@ -1,21 +1,31 @@
 # DraftSight
-UCI Data Science Capstone 2026
+
+Pre-draft player value prediction model for the NFL. Combines college performance, combine measurables, recruiting rankings, and draft capital to predict career NFL success.
+
+## Data Pipeline
+
+Collects and aggregates data from:
+- **NFL Data** (nfl_data_py): Draft picks, combine results, rosters (2000-2025)
+- **College Data** (CFBD API): Player stats, recruiting rankings (2000-2025)
+
+Produces `data/joined/master_player_table.csv` with:
+- 9,300+ drafted players
+- 47 features (college stats, combine measurements, recruiting, draft info)
+- Target variable: career value metric (NFL production)
 
 ## Setup
 
-1. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-2. Create a `.env` file from the template and fill in your Supabase credentials:
-   ```bash
-   cp .env.example .env
-   ```
+Add `CFBD_API_KEY` to `.env` (get free key at https://api.collegefootballdata.com)
 
 ## Usage
 
-Pull data from the Supabase `analytics` schema:
+Run the data pipeline:
 ```bash
-python -m src.data.extract
+python -m src.data.run_pipeline
 ```
+
+See `DATASET_OVERVIEW.md` for schema and data quality details.
