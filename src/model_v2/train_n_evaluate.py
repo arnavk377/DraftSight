@@ -40,6 +40,8 @@ os.makedirs(OUT_DIR, exist_ok=True)
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+WALK_FORWARD_START_YEAR = 1999  # first training year; first test year is START_YEAR + 1
+
 # TabNet hyperparameters
 TABNET_CFG = dict(
     n_d=16,
@@ -379,14 +381,15 @@ def main():
     years = df["draft_season"].values
 
     unique_years = sorted(np.unique(years))
-    if len(unique_years) < 2:
-        raise ValueError(f"Not enough labeled years. Found: {unique_years}")
+    test_years = [y for y in unique_years if y > WALK_FORWARD_START_YEAR]
+    if not test_years:
+        raise ValueError(f"No test years after {WALK_FORWARD_START_YEAR}. Labeled years: {unique_years}")
 
     results = []
-    latest_year = max(unique_years)
+    latest_year = max(test_years)
 
-    for test_year in unique_years[1:]:
-        train_mask = years < test_year
+    for test_year in test_years:
+        train_mask = (years >= WALK_FORWARD_START_YEAR) & (years < test_year)
         test_mask = years == test_year
 
         X_tr_raw = X_raw[train_mask]
