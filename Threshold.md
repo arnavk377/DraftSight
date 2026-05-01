@@ -5,7 +5,7 @@
 - Attempts > 90
 
 ## Rushing
-- Position RB & Attempts > 40
+- Position RB & Rushing Attempts > 40
 - Position QB & Attempts > 20
 
 ## Receiving
