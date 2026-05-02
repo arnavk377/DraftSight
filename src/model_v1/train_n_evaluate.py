@@ -225,8 +225,9 @@ def main():
     labeled = df["av_2yr"].notna().sum()
     print(f"Join coverage: labeled {labeled}/{total} = {labeled/total:.1%}")
 
-    # Keep labeled only
+    # Keep labeled only, restrict to 2000+ to avoid sparse/incomplete early data
     df = df.dropna(subset=["av_2yr"]).copy()
+    df = df[df["draft_season"] >= 2000].copy()
     df["av_2yr"] = df["av_2yr"].astype(float)
 
     # Feature columns (draft-night only)
