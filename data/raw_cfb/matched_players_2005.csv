@@ -1,0 +1,56 @@
+player_id,player,position,team,conference,category,stat_type,stat
+169337,Tony Moeaki,TE,Iowa,Big Ten,receiving,LONG,36
+169337,Tony Moeaki,TE,Iowa,Big Ten,receiving,REC,8
+169337,Tony Moeaki,TE,Iowa,Big Ten,receiving,TD,0
+169337,Tony Moeaki,TE,Iowa,Big Ten,receiving,YDS,112
+169337,Tony Moeaki,TE,Iowa,Big Ten,receiving,YPR,14.0
+169755,Ryan Williams,?,Air Force,Mountain West,receiving,LONG,16
+169755,Ryan Williams,?,Air Force,Mountain West,receiving,REC,3
+169755,Ryan Williams,?,Air Force,Mountain West,receiving,TD,1
+169755,Ryan Williams,?,Air Force,Mountain West,receiving,YDS,32
+169755,Ryan Williams,?,Air Force,Mountain West,receiving,YPR,10.7
+169755,Ryan Williams,?,Air Force,Mountain West,rushing,CAR,72
+169755,Ryan Williams,?,Air Force,Mountain West,rushing,LONG,34
+169755,Ryan Williams,?,Air Force,Mountain West,rushing,TD,3
+169755,Ryan Williams,?,Air Force,Mountain West,rushing,YDS,290
+169755,Ryan Williams,?,Air Force,Mountain West,rushing,YPC,4.0
+169855,DeMarco Sampson,WR,San Diego State,Mountain West,receiving,LONG,23
+169855,DeMarco Sampson,WR,San Diego State,Mountain West,receiving,REC,6
+169855,DeMarco Sampson,WR,San Diego State,Mountain West,receiving,TD,1
+169855,DeMarco Sampson,WR,San Diego State,Mountain West,receiving,YDS,60
+169855,DeMarco Sampson,WR,San Diego State,Mountain West,receiving,YPR,10.0
+170810,Brandon Jones,QB,Ohio,Mid-American,passing,ATT,35
+170810,Brandon Jones,QB,Ohio,Mid-American,passing,COMPLETIONS,11
+170810,Brandon Jones,QB,Ohio,Mid-American,passing,INT,1
+170810,Brandon Jones,QB,Ohio,Mid-American,passing,PCT,0.314
+170810,Brandon Jones,QB,Ohio,Mid-American,passing,TD,1
+170810,Brandon Jones,QB,Ohio,Mid-American,passing,YDS,124
+170810,Brandon Jones,QB,Ohio,Mid-American,passing,YPA,3.5
+170810,Brandon Jones,QB,Ohio,Mid-American,rushing,CAR,9
+170810,Brandon Jones,QB,Ohio,Mid-American,rushing,LONG,5
+170810,Brandon Jones,QB,Ohio,Mid-American,rushing,TD,0
+170810,Brandon Jones,QB,Ohio,Mid-American,rushing,YDS,-19
+170810,Brandon Jones,QB,Ohio,Mid-American,rushing,YPC,-2.1
+173649,Richard Goodman,WR,Florida State,ACC,receiving,LONG,12
+173649,Richard Goodman,WR,Florida State,ACC,receiving,REC,4
+173649,Richard Goodman,WR,Florida State,ACC,receiving,TD,0
+173649,Richard Goodman,WR,Florida State,ACC,receiving,YDS,30
+173649,Richard Goodman,WR,Florida State,ACC,receiving,YPR,7.5
+175602,Logan Paulsen,TE,UCLA,Pac-10,receiving,LONG,29
+175602,Logan Paulsen,TE,UCLA,Pac-10,receiving,REC,2
+175602,Logan Paulsen,TE,UCLA,Pac-10,receiving,TD,0
+175602,Logan Paulsen,TE,UCLA,Pac-10,receiving,YDS,33
+175602,Logan Paulsen,TE,UCLA,Pac-10,receiving,YPR,16.5
+175660,Montario Hardesty,RB,Tennessee,SEC,rushing,CAR,6
+175660,Montario Hardesty,RB,Tennessee,SEC,rushing,LONG,11
+175660,Montario Hardesty,RB,Tennessee,SEC,rushing,TD,0
+175660,Montario Hardesty,RB,Tennessee,SEC,rushing,YDS,18
+175660,Montario Hardesty,RB,Tennessee,SEC,rushing,YPC,3.0
+176957,Randy Phillips,DB,Miami,ACC,interceptions,AVG,55.0
+176957,Randy Phillips,DB,Miami,ACC,interceptions,INT,1
+176957,Randy Phillips,DB,Miami,ACC,interceptions,TD,0
+176957,Randy Phillips,DB,Miami,ACC,interceptions,YDS,55
+177397,Chris Cook,CB,Virginia,ACC,interceptions,AVG,30.0
+177397,Chris Cook,CB,Virginia,ACC,interceptions,INT,1
+177397,Chris Cook,CB,Virginia,ACC,interceptions,TD,1
+177397,Chris Cook,CB,Virginia,ACC,interceptions,YDS,30
