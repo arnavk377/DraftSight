@@ -1,0 +1,50 @@
+[
+  {
+    "file": "drafts.csv",
+    "rows": 12670,
+    "columns": 40,
+    "description": "Draft pick table from PFR/nflverse-style draft data."
+  },
+  {
+    "file": "draft_board.csv",
+    "rows": 6901,
+    "columns": 22,
+    "description": "CFBD/board-style draft table from 2000-2026, including 2026 prospects and pre-draft rankings."
+  },
+  {
+    "file": "av.csv",
+    "rows": 55014,
+    "columns": 12,
+    "description": "Player-season Approximate Value table combined from yearly AV files."
+  },
+  {
+    "file": "college_stats.csv",
+    "rows": 3395,
+    "columns": 66,
+    "description": "Enriched college career aggregate table from the 05_19 player stats pull."
+  },
+  {
+    "file": "college_player_seasons.csv",
+    "rows": 10636,
+    "columns": 66,
+    "description": "Wide college player-season statistics table from the latest all_results pull."
+  },
+  {
+    "file": "rosters.csv",
+    "rows": 60308,
+    "columns": 38,
+    "description": "Cleaned player-season-team roster table."
+  },
+  {
+    "file": "trades.csv",
+    "rows": 1632,
+    "columns": 39,
+    "description": "One row per NFL trade, with JSON asset/team summaries preserved."
+  },
+  {
+    "file": "draft_pick_context_features.csv",
+    "rows": 12670,
+    "columns": 47,
+    "description": "Derived draft-pick feature table combining roster context and traded-pick structure."
+  }
+]
