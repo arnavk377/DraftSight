@@ -10,12 +10,12 @@ Models:
   6. LightGBM
 
 Input:
-  - src/data/raw/draft_picks.csv
-  - data/clean_cfb/05_04_all_players_2004_2024.csv
-  - scraping_av/data/*_av.csv
+  - data/raw/nfl/draft_picks.csv
+  - data/processed/college/05_04_all_players_2004_2024.csv
+  - data/raw/av/*_av.csv
 
 Output:
-  - poc_outputs_v3/  (CSV + scatter plots + feature importance)
+  - reports/model_v3/  (CSV + scatter plots + feature importance)
 """
 
 import os
@@ -52,10 +52,10 @@ from src.model_v3.data_loader import (
 # ── Config ───────────────────────────────────────────────────────────────────
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-DRAFT_CSV = os.path.join(REPO_ROOT, "src", "data", "raw", "draft_picks.csv")
-CFB_CSV   = os.path.join(REPO_ROOT, "data", "clean_cfb", "05_04_all_players_2004_2024.csv")
-AV_DIR    = os.path.join(REPO_ROOT, "scraping_av", "data")
-OUT_DIR   = os.path.join(REPO_ROOT, "poc_outputs_v3")
+DRAFT_CSV = os.path.join(REPO_ROOT, "data", "raw", "nfl", "draft_picks.csv")
+CFB_CSV   = os.path.join(REPO_ROOT, "data", "processed", "college", "05_04_all_players_2004_2024.csv")
+AV_DIR    = os.path.join(REPO_ROOT, "data", "raw", "av")
+OUT_DIR   = os.path.join(REPO_ROOT, "reports", "model_v3")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")

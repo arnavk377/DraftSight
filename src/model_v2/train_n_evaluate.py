@@ -2,8 +2,8 @@
 TabNet walk-forward training and evaluation for NFL draft 2-year AV prediction.
 
 Input/output contract mirrors src/model_v1/train_n_evaluate.py:
-  - Reads draft picks from src/data/raw/draft_picks.csv
-  - Reads per-year AV from scraping_av/data/*_av.csv
+  - Reads draft picks from data/raw/nfl/draft_picks.csv
+  - Reads per-year AV from data/raw/av/*_av.csv
   - Target: av_2yr = AV(draft_year) + AV(draft_year + 1)
   - Walk-forward backtesting: train on years < test_year, evaluate on test_year
   - Outputs: CSV of per-year metrics + scatter plots + feature importance plot
@@ -33,9 +33,9 @@ from src.model_v2.tabnet import TabNetRegressor
 # ---------------------------------------------------------------------------
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-DRAFT_CSV = os.path.join(REPO_ROOT, "src", "data", "raw", "draft_picks.csv")
-AV_DIR = os.path.join(REPO_ROOT, "scraping_av", "data")
-OUT_DIR = os.path.join(REPO_ROOT, "poc_outputs")
+DRAFT_CSV = os.path.join(REPO_ROOT, "data", "raw", "nfl", "draft_picks.csv")
+AV_DIR = os.path.join(REPO_ROOT, "data", "raw", "av")
+OUT_DIR = os.path.join(REPO_ROOT, "reports", "model_v2")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")

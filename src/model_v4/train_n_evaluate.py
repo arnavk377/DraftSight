@@ -8,12 +8,12 @@ Builds on main branch model_v3 and adds:
   - walk-forward metric grids, residual diagnostics, loss curves, and value curves
 
 Inputs:
-  - src/data/raw/draft_picks.csv
-  - data/clean_cfb/05_04_all_players_2004_2024.csv
-  - scraping_av/data/*_av.csv
+  - data/raw/nfl/draft_picks.csv
+  - data/processed/college/05_04_all_players_2004_2024.csv
+  - data/raw/av/*_av.csv
 
 Outputs:
-  - poc_outputs_v4/
+  - reports/model_v4/
 """
 
 import os
@@ -48,10 +48,10 @@ from src.model_v3.tabnet import TabNetRegressor
 
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-DRAFT_CSV = os.path.join(REPO_ROOT, "src", "data", "raw", "draft_picks.csv")
-CFB_CSV = os.path.join(REPO_ROOT, "data", "clean_cfb", "05_04_all_players_2004_2024.csv")
-AV_DIR = os.path.join(REPO_ROOT, "scraping_av", "data")
-OUT_DIR = os.path.join(REPO_ROOT, "poc_outputs_v4")
+DRAFT_CSV = os.path.join(REPO_ROOT, "data", "raw", "nfl", "draft_picks.csv")
+CFB_CSV = os.path.join(REPO_ROOT, "data", "processed", "college", "05_04_all_players_2004_2024.csv")
+AV_DIR = os.path.join(REPO_ROOT, "data", "raw", "av")
+OUT_DIR = os.path.join(REPO_ROOT, "reports", "model_v4")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")

@@ -15,8 +15,8 @@ from statsmodels.nonparametric.smoothers_lowess import lowess
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE_DIR = ROOT / "poc_outputs_v4"
-OUTPUT_DIR = ROOT / "poc_outputs"
+SOURCE_DIR = ROOT / "reports" / "model_v4"
+OUTPUT_DIR = ROOT / "reports" / "poster_figures"
 
 OVERALL_SUMMARY = SOURCE_DIR / "model_v4_overall_summary.csv"
 WALKFORWARD_RESULTS = SOURCE_DIR / "model_v4_walkforward_results.csv"

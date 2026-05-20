@@ -17,12 +17,14 @@ import pandas as pd
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_ROSTER_INPUT = REPO_ROOT / "data" / "roster" / "rosters.csv"
-DEFAULT_DRAFT_INPUT = REPO_ROOT / "src" / "data" / "raw" / "draft_picks.csv"
-DEFAULT_CLEAN_OUTPUT = REPO_ROOT / "data" / "roster" / "rosters_cleaned.csv"
-DEFAULT_TEAM_FEATURES_OUTPUT = REPO_ROOT / "data" / "roster" / "team_roster_features.csv"
-DEFAULT_DRAFT_CONTEXT_OUTPUT = REPO_ROOT / "data" / "roster" / "draft_team_context_features.csv"
-DEFAULT_PICK_CONTEXT_OUTPUT = REPO_ROOT / "data" / "roster" / "draft_pick_roster_context_features.csv"
+DEFAULT_ROSTER_INPUT = REPO_ROOT / "data" / "processed" / "rosters" / "rosters.csv"
+DEFAULT_DRAFT_INPUT = REPO_ROOT / "data" / "raw" / "nfl" / "draft_picks.csv"
+DEFAULT_CLEAN_OUTPUT = REPO_ROOT / "data" / "processed" / "rosters" / "rosters_cleaned.csv"
+DEFAULT_TEAM_FEATURES_OUTPUT = REPO_ROOT / "data" / "processed" / "rosters" / "team_roster_features.csv"
+DEFAULT_DRAFT_CONTEXT_OUTPUT = REPO_ROOT / "data" / "processed" / "rosters" / "draft_team_context_features.csv"
+DEFAULT_PICK_CONTEXT_OUTPUT = (
+    REPO_ROOT / "data" / "processed" / "rosters" / "draft_pick_roster_context_features.csv"
+)
 
 STATUS_PRIORITY = {
     "ACT": 0,

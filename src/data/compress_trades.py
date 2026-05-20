@@ -28,11 +28,11 @@ import pandas as pd
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_INPUT = REPO_ROOT / "data" / "trades" / "trades.csv"
-DEFAULT_TRADE_OUTPUT = REPO_ROOT / "data" / "trades" / "trades_compressed.csv"
-DEFAULT_TEAM_LEDGER_OUTPUT = REPO_ROOT / "data" / "trades" / "team_trade_ledger.csv"
-DEFAULT_PICK_LEDGER_OUTPUT = REPO_ROOT / "data" / "trades" / "traded_pick_ledger.csv"
-DEFAULT_PICK_FEATURES_OUTPUT = REPO_ROOT / "data" / "trades" / "draft_pick_trade_features.csv"
+DEFAULT_INPUT = REPO_ROOT / "data" / "processed" / "trades" / "trades.csv"
+DEFAULT_TRADE_OUTPUT = REPO_ROOT / "data" / "processed" / "trades" / "trades_compressed.csv"
+DEFAULT_TEAM_LEDGER_OUTPUT = REPO_ROOT / "data" / "processed" / "trades" / "team_trade_ledger.csv"
+DEFAULT_PICK_LEDGER_OUTPUT = REPO_ROOT / "data" / "processed" / "trades" / "traded_pick_ledger.csv"
+DEFAULT_PICK_FEATURES_OUTPUT = REPO_ROOT / "data" / "processed" / "trades" / "draft_pick_trade_features.csv"
 
 # Approximation of common NFL draft trade-chart points. Values are for relative
 # draft capital only; they are not labels and should not be interpreted as AV.

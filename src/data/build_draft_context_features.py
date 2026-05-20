@@ -13,9 +13,11 @@ import pandas as pd
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_ROSTER_CONTEXT = REPO_ROOT / "data" / "roster" / "draft_pick_roster_context_features.csv"
-DEFAULT_TRADE_CONTEXT = REPO_ROOT / "data" / "trades" / "draft_pick_trade_features.csv"
-DEFAULT_OUTPUT = REPO_ROOT / "data" / "features" / "draft_pick_context_features.csv"
+DEFAULT_ROSTER_CONTEXT = (
+    REPO_ROOT / "data" / "processed" / "rosters" / "draft_pick_roster_context_features.csv"
+)
+DEFAULT_TRADE_CONTEXT = REPO_ROOT / "data" / "processed" / "trades" / "draft_pick_trade_features.csv"
+DEFAULT_OUTPUT = REPO_ROOT / "data" / "processed" / "features" / "draft_pick_context_features.csv"
 
 TRADE_COUNT_COLS = [
     "pick_trade_count",

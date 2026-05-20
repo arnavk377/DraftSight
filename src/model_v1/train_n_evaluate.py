@@ -23,10 +23,10 @@ from xgboost import XGBRegressor
 # repo root = two levels up from src/model_v1/
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
-DRAFT_CSV = os.path.join(REPO_ROOT, "src", "data", "raw", "draft_picks.csv")
+DRAFT_CSV = os.path.join(REPO_ROOT, "data", "raw", "nfl", "draft_picks.csv")
 
 # Output directory
-OUT_DIR = os.path.join(REPO_ROOT, "poc_outputs")
+OUT_DIR = os.path.join(REPO_ROOT, "reports", "model_v1")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 
@@ -150,7 +150,7 @@ def load_draft(draft_csv: str) -> pd.DataFrame:
 
     return df
 
-AV_DIR = os.path.join(REPO_ROOT, "scraping_av", "data")
+AV_DIR = os.path.join(REPO_ROOT, "data", "raw", "av")
 
 def load_av_from_year_files(av_dir: str) -> pd.DataFrame:
     paths = sorted(glob.glob(os.path.join(av_dir, "*_av.csv")))

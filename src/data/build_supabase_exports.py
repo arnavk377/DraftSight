@@ -33,17 +33,19 @@ from src.data.clean_rosters import clean_position, draft_team_code, franchise_id
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-EXPORT_DIR = REPO_ROOT / "data" / "supabase_exports"
+EXPORT_DIR = REPO_ROOT / "data" / "exports" / "supabase"
 
-DRAFTS_INPUT = REPO_ROOT / "src" / "data" / "raw" / "draft_picks.csv"
-DRAFT_BOARD_INPUT = REPO_ROOT / "data" / "raw_cfb" / "draft_picks_2000_2026.csv"
-COLLEGE_AGG_INPUT = REPO_ROOT / "data" / "clean_cfb" / "05_19_player_stats_aggregated.csv"
-COLLEGE_SEASON_INPUT = REPO_ROOT / "data" / "all_results_wide.csv"
-COLLEGE_SEASON_DRAFT_OVERALL_INPUT = REPO_ROOT / "data" / "clean_cfb" / "all_results_wide.csv"
-AV_DIR = REPO_ROOT / "scraping_av" / "data"
-ROSTERS_CLEANED = REPO_ROOT / "data" / "roster" / "rosters_cleaned.csv"
-TRADES_COMPRESSED = REPO_ROOT / "data" / "trades" / "trades_compressed.csv"
-CONTEXT_FEATURES = REPO_ROOT / "data" / "features" / "draft_pick_context_features.csv"
+DRAFTS_INPUT = REPO_ROOT / "data" / "raw" / "nfl" / "draft_picks.csv"
+DRAFT_BOARD_INPUT = REPO_ROOT / "data" / "raw" / "cfb" / "draft_picks_2000_2026.csv"
+COLLEGE_AGG_INPUT = REPO_ROOT / "data" / "processed" / "college" / "05_19_player_stats_aggregated.csv"
+COLLEGE_SEASON_INPUT = REPO_ROOT / "data" / "processed" / "college" / "all_results_wide.csv"
+COLLEGE_SEASON_DRAFT_OVERALL_INPUT = (
+    REPO_ROOT / "data" / "processed" / "college" / "all_results_wide_with_draft_overall.csv"
+)
+AV_DIR = REPO_ROOT / "data" / "raw" / "av"
+ROSTERS_CLEANED = REPO_ROOT / "data" / "processed" / "rosters" / "rosters_cleaned.csv"
+TRADES_COMPRESSED = REPO_ROOT / "data" / "processed" / "trades" / "trades_compressed.csv"
+CONTEXT_FEATURES = REPO_ROOT / "data" / "processed" / "features" / "draft_pick_context_features.csv"
 
 DEPENDENCY_SCRIPTS = [
     REPO_ROOT / "src" / "data" / "compress_trades.py",
