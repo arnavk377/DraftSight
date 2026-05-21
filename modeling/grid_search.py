@@ -10,9 +10,13 @@ Run:
     python modeling/grid_search.py
 """
 
+import argparse
+import ast
 import json
+import re
 import warnings
 from pathlib import Path
+from sklearn.base import clone
 
 import joblib
 import numpy as np
@@ -20,6 +24,7 @@ import pandas as pd
 from catboost import CatBoostRegressor
 from scipy.stats import loguniform, randint, uniform
 from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
 from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import KFold, RandomizedSearchCV, cross_val_score
@@ -33,6 +38,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 warnings.filterwarnings("ignore")
+np.seterr(all="ignore")
+
+import os
+os.environ["PYTHONWARNINGS"] = "ignore"  # propagates to sklearn parallel workers
 
 # ── Paths ────────────────────────────────────────────────────────────────────
 
@@ -69,6 +78,11 @@ DROP_IDS = {
     "pick_last_gave_team", "pick_last_received_team",
     "pick_trade_team_chain",
     "roster_context_available", "roster_context_season",
+    # draft_season: kept in frame for joins/walk-forward splits but is not a valid
+    # feature — it's a proxy for AV era trends (AV accumulation has shifted over decades)
+    "draft_season",
+    # pick_post_year_trade_count: all zeros, zero variance, no signal
+    "pick_post_year_trade_count",
 }
 
 # low-cardinality categoricals safe to one-hot encode
@@ -164,7 +178,10 @@ def prepare_features(frame: pd.DataFrame, use_college_name: bool = False):
 def make_preprocessor(num_cols, cat_cols):
     return ColumnTransformer(
         transformers=[
-            ("num", StandardScaler(), num_cols),
+            ("num", Pipeline([
+                ("imputer", SimpleImputer(strategy="median")),
+                ("scaler", StandardScaler()),
+            ]), num_cols),
             ("cat", OneHotEncoder(handle_unknown="ignore", sparse_output=False), cat_cols),
         ],
         remainder="drop",
@@ -289,8 +306,10 @@ def spline_search(X, y, cv, num_cols, cat_cols):
     preprocessor = ColumnTransformer(
         transformers=[
             ("spline", Pipeline([
+                ("imputer", SimpleImputer(strategy="median")),
                 ("scaler", StandardScaler()),
                 ("spline", SplineTransformer()),
+                ("post_scaler", StandardScaler()),  # prevent overflow from high-degree basis
             ]), num_cols),
             ("cat", OneHotEncoder(handle_unknown="ignore", sparse_output=False), cat_cols),
         ],
@@ -374,6 +393,247 @@ def eval_catboost(model, best_params, best_mse, X, y, name="CatBoost"):
     print(f"  Best params:     {best_params}")
     return {"cv_rmse": cv_rmse, "train_rmse": rmse, "train_r2": r2,
             "best_params": str(best_params), "preds": preds}
+
+
+# ── Walk-forward backtest ─────────────────────────────────────────────────────
+
+def _prep_sk_walkforward(train_frame, test_frame):
+    """Aligned train/test matrices for sklearn models (no college name)."""
+    X_tr, y_tr, num_tr, cat_tr = prepare_features(train_frame, use_college_name=False)
+    X_te, y_te, _,      _      = prepare_features(test_frame,  use_college_name=False)
+
+    X_te = X_te.reindex(columns=X_tr.columns)
+    X_tr = X_tr.replace([np.inf, -np.inf], np.nan)
+    X_te = X_te.replace([np.inf, -np.inf], np.nan)
+
+    for c in num_tr:
+        med = X_tr[c].median()
+        if pd.isna(med):
+            med = 0.0
+        X_tr[c] = X_tr[c].fillna(med)
+        X_te[c] = X_te[c].fillna(med)
+
+    for c in cat_tr:
+        X_tr[c] = X_tr[c].fillna("_missing_").astype(str)
+        X_te[c] = X_te[c].fillna("_missing_").astype(str)
+
+    return X_tr, y_tr, X_te, y_te
+
+
+def _prep_cb_walkforward(train_frame, test_frame):
+    """Aligned train/test matrices for CatBoost (includes college name)."""
+    X_tr, y_tr, num_tr, cat_tr = prepare_features(train_frame, use_college_name=True)
+    X_te, y_te, _,      _      = prepare_features(test_frame,  use_college_name=True)
+
+    X_te = X_te.reindex(columns=X_tr.columns)
+    X_tr = X_tr.replace([np.inf, -np.inf], np.nan)
+    X_te = X_te.replace([np.inf, -np.inf], np.nan)
+
+    for c in num_tr:
+        med = X_tr[c].median()
+        if pd.isna(med):
+            med = 0.0
+        X_tr[c] = X_tr[c].fillna(med)
+        X_te[c] = X_te[c].fillna(med)
+
+    for c in cat_tr:
+        X_tr[c] = X_tr[c].fillna("_missing_").astype(str)
+        X_te[c] = X_te[c].fillna("_missing_").astype(str)
+
+    return X_tr, y_tr, X_te, y_te, cat_tr
+
+
+def walk_forward_backtest(frame, sk_estimators, cb_params=None, min_train_years=2):
+    """
+    Expanding-window walk-forward backtest for all available models.
+
+    sk_estimators: dict {name: fitted_sklearn_estimator} — cloned fresh each fold.
+    cb_params:     CatBoost best param dict, or None to skip CatBoost.
+
+    For each draft year T:
+      - Train on all classes < T, predict class T
+      - Last 2 years flagged as incomplete (av_2yr needs 2 seasons to materialise)
+    """
+    years    = sorted(frame["draft_season"].dropna().unique().astype(int))
+    max_year = max(years)
+
+    model_names = list(sk_estimators.keys()) + (["CatBoost"] if cb_params else [])
+    all_rows    = {name: [] for name in model_names}
+
+    print("\n[Walk-Forward Backtest] Expanding window, all models ...")
+    print(f"  Models included: {', '.join(model_names)}")
+    print(f"  Years: {min(years)} → {max(years)}  |  min_train_years={min_train_years}")
+    print(f"  Last 2 years ({max(years)-1}, {max(years)}) flagged as incomplete outcomes")
+    print()
+    for t in years:
+        train_years = [y for y in years if y < t]
+        if len(train_years) < min_train_years:
+            continue
+
+        train_frame = frame[frame["draft_season"].isin(train_years)]
+        test_frame  = frame[frame["draft_season"] == t]
+        incomplete  = t > max_year - 2
+
+        # ── sklearn models (XGBoost, Spline, MLP) ────────────────────────────
+        X_tr_sk, y_tr_sk, X_te_sk, y_te_sk = _prep_sk_walkforward(train_frame, test_frame)
+
+        if y_tr_sk.std() == 0:
+            print(f"  {t}  skipped — training targets all equal")
+            continue
+
+        for name, est in sk_estimators.items():
+            print(f"    → {name}: training on {len(y_tr_sk)} samples, predicting {len(y_te_sk)} ...")
+            model = clone(est)
+            model.fit(X_tr_sk, y_tr_sk)
+            preds = model.predict(X_te_sk)
+            all_rows[name].append({
+                "draft_year":         t,
+                "n_train":            len(y_tr_sk),
+                "n_test":             len(y_te_sk),
+                "rmse":               np.sqrt(mean_squared_error(y_te_sk, preds)),
+                "r2":                 r2_score(y_te_sk, preds),
+                "incomplete_outcome": incomplete,
+                "preds":              preds,
+                "actuals":            y_te_sk,
+            })
+
+        # ── CatBoost ──────────────────────────────────────────────────────────
+        if cb_params:
+            print(f"    → CatBoost: training on {len(y_tr_sk)} samples, predicting {len(y_te_sk)} ...")
+            X_tr_cb, y_tr_cb, X_te_cb, y_te_cb, cat_cols = _prep_cb_walkforward(
+                train_frame, test_frame
+            )
+            cat_indices = [list(X_tr_cb.columns).index(c) for c in cat_cols
+                           if c in X_tr_cb.columns]
+            cb_model = CatBoostRegressor(
+                **cb_params, loss_function="RMSE",
+                random_seed=RANDOM_STATE, verbose=False, cat_features=cat_indices,
+            )
+            cb_model.fit(X_tr_cb, y_tr_cb)
+            for i in cb_model.get_cat_feature_indices():
+                col = X_te_cb.columns[i]
+                if X_te_cb[col].isna().any():
+                    X_te_cb[col] = X_te_cb[col].fillna("_missing_").astype(str)
+            preds = cb_model.predict(X_te_cb)
+            all_rows["CatBoost"].append({
+                "draft_year":         t,
+                "n_train":            len(y_tr_cb),
+                "n_test":             len(y_te_cb),
+                "rmse":               np.sqrt(mean_squared_error(y_te_cb, preds)),
+                "r2":                 r2_score(y_te_cb, preds),
+                "incomplete_outcome": incomplete,
+                "preds":              preds,
+                "actuals":            y_te_cb,
+            })
+
+        flag = "  *** incomplete 2yr outcome ***" if incomplete else ""
+        print(f"  [{t}] train={len(y_tr_sk):4d}  test={len(y_te_sk):3d}{flag}")
+        for name in model_names:
+            if all_rows[name] and all_rows[name][-1]["draft_year"] == t:
+                r = all_rows[name][-1]
+                print(f"    {name:<22} RMSE={r['rmse']:.4f}  R²={r['r2']:.4f}")
+        print()
+
+    return all_rows
+
+
+def generate_backtest_plots(all_rows):
+    """
+    Figures 7a–7c: walk-forward results for all models.
+      7a — RMSE by draft year (all models overlaid)
+      7b — R² by draft year (all models overlaid)
+      7c_<model> — predicted vs actual scatter per model
+    """
+    sns.set_theme(style="whitegrid", palette="muted", font_scale=1.15)
+
+    # ── Fig 7a: RMSE by year, all models ─────────────────────────────────────
+    fig, ax = plt.subplots(figsize=(13, 5))
+    for name, rows in all_rows.items():
+        color  = COLORS.get(name, "#607D8B")
+        valid  = [r for r in rows if not r["incomplete_outcome"]]
+        inc    = [r for r in rows if r["incomplete_outcome"]]
+        if not valid:
+            continue
+        ax.plot([r["draft_year"] for r in valid],
+                [r["rmse"]       for r in valid],
+                marker="o", linewidth=2, color=color, label=name)
+        if inc:
+            ax.plot([r["draft_year"] for r in inc],
+                    [r["rmse"]       for r in inc],
+                    marker="o", linewidth=2, linestyle="--", color=color, alpha=0.5)
+    ax.set_xlabel("Draft Year")
+    ax.set_ylabel("RMSE (AV units)")
+    ax.set_title("Figure 7a: Walk-Forward Backtest — RMSE by Draft Year\n"
+                 "(dashed = incomplete 2yr outcome)", fontsize=12, fontweight="bold")
+    ax.legend(fontsize=9)
+    plt.tight_layout()
+    fig.savefig(OUT_DIR / "fig7a_walkforward_rmse.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print("  Saved: fig7a_walkforward_rmse.png")
+
+    # ── Fig 7b: R² by year, all models ───────────────────────────────────────
+    fig, ax = plt.subplots(figsize=(13, 5))
+    for name, rows in all_rows.items():
+        color = COLORS.get(name, "#607D8B")
+        valid = [r for r in rows if not r["incomplete_outcome"]]
+        inc   = [r for r in rows if r["incomplete_outcome"]]
+        if not valid:
+            continue
+        ax.plot([r["draft_year"] for r in valid],
+                [r["r2"]         for r in valid],
+                marker="o", linewidth=2, color=color, label=name)
+        if inc:
+            ax.plot([r["draft_year"] for r in inc],
+                    [r["r2"]         for r in inc],
+                    marker="o", linewidth=2, linestyle="--", color=color, alpha=0.5)
+    ax.axhline(0, color="black", linestyle="--", linewidth=1, alpha=0.4)
+    ax.set_xlabel("Draft Year")
+    ax.set_ylabel("R²")
+    ax.set_title("Figure 7b: Walk-Forward Backtest — R² by Draft Year",
+                 fontsize=12, fontweight="bold")
+    ax.legend(fontsize=9)
+    plt.tight_layout()
+    fig.savefig(OUT_DIR / "fig7b_walkforward_r2.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print("  Saved: fig7b_walkforward_r2.png")
+
+    # ── Fig 7c: per-model predicted vs actual scatter ─────────────────────────
+    summary = {}
+    for name, rows in all_rows.items():
+        valid = [r for r in rows if not r["incomplete_outcome"]]
+        if not valid:
+            continue
+        all_preds   = np.concatenate([r["preds"]   for r in valid])
+        all_actuals = np.concatenate([r["actuals"] for r in valid])
+        overall_rmse = np.sqrt(mean_squared_error(all_actuals, all_preds))
+        overall_r2   = r2_score(all_actuals, all_preds)
+        summary[name] = (overall_rmse, overall_r2)
+
+        color = COLORS.get(name, "#607D8B")
+        fig, ax = plt.subplots(figsize=(7, 6))
+        ax.scatter(all_actuals, all_preds, alpha=0.25, s=12,
+                   color=color, edgecolors="none")
+        lim = max(float(all_actuals.max()), float(all_preds.max())) * 1.08
+        ax.plot([0, lim], [0, lim], "k--", linewidth=1.5, label="y = x  (perfect)")
+        ax.set_xlim(0, lim)
+        ax.set_ylim(0, lim)
+        ax.set_xlabel("Actual 2-Year AV")
+        ax.set_ylabel("Predicted 2-Year AV")
+        ax.set_title(
+            f"Figure 7c: {name} — Walk-Forward Predicted vs. Actual\n"
+            f"(All validated draft classes pooled)\n"
+            f"RMSE = {overall_rmse:.3f}   R² = {overall_r2:.3f}",
+            fontsize=11, fontweight="bold",
+        )
+        ax.legend(fontsize=8)
+        plt.tight_layout()
+        slug  = name.lower().replace(" ", "_")
+        fname = f"fig7c_walkforward_scatter_{slug}.png"
+        fig.savefig(OUT_DIR / fname, dpi=150, bbox_inches="tight")
+        plt.close(fig)
+        print(f"  Saved: {fname}")
+
+    return summary
 
 
 # ── Plotting ──────────────────────────────────────────────────────────────────
@@ -519,6 +779,17 @@ def generate_plots(results, y, xgb_est=None, cb_model=None):
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
+    parser = argparse.ArgumentParser(description="NFL Draft Value Grid Search")
+    parser.add_argument(
+        "--fast", action="store_true",
+        help="Skip XGBoost and CatBoost — run only Spline Regression and MLP",
+    )
+    parser.add_argument(
+        "--refit", action="store_true",
+        help="Skip grid search: load saved best params, re-fit all models once, run walk-forward",
+    )
+    args = parser.parse_args()
+
     print("Loading data ...")
     drafts, av, college, context = load_data()
     print(f"  drafts:  {drafts.shape}  |  av: {av.shape}  |  "
@@ -533,46 +804,187 @@ def main():
     print(f"\nFeature matrix: {X.shape[1]} features, {X.shape[0]} rows")
     print(f"  Numeric: {len(num_cols)}  |  Categorical: {len(cat_cols)} → {cat_cols}")
 
-    # Fill numeric NaNs with column median for sklearn models
+    # Fill NaNs before passing to sklearn models (pipeline also imputes numerics)
     X_sk = X.copy()
     X_sk = X_sk.replace([np.inf, -np.inf], np.nan)
     for c in num_cols:
         if X_sk[c].isna().any():
-            X_sk[c] = X_sk[c].fillna(X_sk[c].median())
+            med = X_sk[c].median()
+            X_sk[c] = X_sk[c].fillna(med if not pd.isna(med) else 0.0)
+    for c in cat_cols:
+        X_sk[c] = X_sk[c].fillna("_missing_").astype(str)
 
     cv = KFold(n_splits=CV_FOLDS, shuffle=True, random_state=RANDOM_STATE)
 
-    results = {}
+    results  = {}
+    xgb_est  = None
+    spl_est  = None
+    mlp_est  = None
+    cb_model = None
+    cb_params = None
 
-    # ── XGBoost ───────────────────────────────────────────────────────────────
-    xgb_search = xgboost_search(X_sk, y, cv)
-    xgb_search.fit(X_sk, y)
-    results["XGBoost"] = eval_best(xgb_search, X_sk, y, "XGBoost")
-    joblib.dump(xgb_search.best_estimator_, OUT_DIR / "xgboost_best.pkl")
+    def _parse_params(raw):
+        return ast.literal_eval(re.sub(r"np\.\w+\(([^)]+)\)", r"\1", raw))
 
-    # ── CatBoost (uses college name as cat feature) ───────────────────────────
-    X_cb, y_cb, num_cols_cb, cat_cols_cb = prepare_features(frame, use_college_name=True)
-    X_cb = X_cb.replace([np.inf, -np.inf], np.nan)
-    for c in num_cols_cb:
-        if X_cb[c].isna().any():
-            X_cb[c] = X_cb[c].fillna(X_cb[c].median())
-    for c in cat_cols_cb:
-        X_cb[c] = X_cb[c].fillna("Unknown").astype(str)
-    cb_model, cb_params, cb_mse = catboost_search(X_cb, y_cb, cv, cat_cols_cb)
-    results["CatBoost"] = eval_catboost(cb_model, cb_params, cb_mse, X_cb, y_cb)
-    cb_model.save_model(str(OUT_DIR / "catboost_best.cbm"))
+    if args.refit:
+        # ── Re-fit all models with saved hyperparams (no CV) ─────────────────
+        saved_json_path = OUT_DIR / "grid_search_results.json"
+        if not saved_json_path.exists():
+            raise FileNotFoundError(
+                "No saved results found — run without --refit first to run the grid search."
+            )
+        with open(saved_json_path) as f:
+            saved = json.load(f)
+        print("\n[--refit] Loading saved hyperparams and re-fitting with updated features ...")
 
-    # ── Spline Regression ─────────────────────────────────────────────────────
-    spl_search = spline_search(X_sk, y, cv, num_cols, cat_cols)
-    spl_search.fit(X_sk, y)
-    results["SplineRegression"] = eval_best(spl_search, X_sk, y, "Spline Regression")
-    joblib.dump(spl_search.best_estimator_, OUT_DIR / "spline_best.pkl")
+        if "XGBoost" in saved:
+            print("  [XGBoost] re-fitting ...")
+            xgb_params = _parse_params(saved["XGBoost"]["best_params"])
+            xgb_est = Pipeline([
+                ("pre", make_preprocessor(
+                    [c for c in X_sk.columns if c not in OHE_COLS],
+                    [c for c in OHE_COLS if c in X_sk.columns],
+                )),
+                ("model", xgb.XGBRegressor(
+                    objective="reg:squarederror", random_state=RANDOM_STATE,
+                    verbosity=0, n_jobs=1,
+                )),
+            ])
+            xgb_est.set_params(**xgb_params)
+            xgb_est.fit(X_sk, y)
+            preds = xgb_est.predict(X_sk)
+            results["XGBoost"] = {
+                "cv_rmse":    saved["XGBoost"]["cv_rmse"],
+                "train_rmse": float(np.sqrt(mean_squared_error(y, preds))),
+                "train_r2":   float(r2_score(y, preds)),
+                "best_params": saved["XGBoost"]["best_params"],
+                "preds": preds,
+            }
+            joblib.dump(xgb_est, OUT_DIR / "xgboost_best.pkl")
 
-    # ── MLP ───────────────────────────────────────────────────────────────────
-    mlp_srch = mlp_search(X_sk, y, cv, num_cols, cat_cols)
-    mlp_srch.fit(X_sk, y)
-    results["MLP"] = eval_best(mlp_srch, X_sk, y, "MLP")
-    joblib.dump(mlp_srch.best_estimator_, OUT_DIR / "mlp_best.pkl")
+        if "CatBoost" in saved:
+            print("  [CatBoost] re-fitting ...")
+            cb_params = _parse_params(saved["CatBoost"]["best_params"])
+            X_cb, y_cb, num_cols_cb, cat_cols_cb = prepare_features(frame, use_college_name=True)
+            X_cb = X_cb.replace([np.inf, -np.inf], np.nan)
+            for c in num_cols_cb:
+                med = X_cb[c].median()
+                X_cb[c] = X_cb[c].fillna(med if not pd.isna(med) else 0.0)
+            for c in cat_cols_cb:
+                X_cb[c] = X_cb[c].fillna("_missing_").astype(str)
+            cat_indices = [list(X_cb.columns).index(c) for c in cat_cols_cb if c in X_cb.columns]
+            cb_model = CatBoostRegressor(
+                **cb_params, loss_function="RMSE", random_seed=RANDOM_STATE,
+                verbose=False, cat_features=cat_indices,
+            )
+            cb_model.fit(X_cb, y_cb)
+            cb_mse = saved["CatBoost"]["cv_rmse"] ** 2
+            results["CatBoost"] = eval_catboost(cb_model, cb_params, cb_mse, X_cb, y_cb)
+            cb_model.save_model(str(OUT_DIR / "catboost_best.cbm"))
+
+        if "SplineRegression" in saved:
+            print("  [SplineRegression] re-fitting ...")
+            spl_params = _parse_params(saved["SplineRegression"]["best_params"])
+            spl_pre = ColumnTransformer(
+                transformers=[
+                    ("spline", Pipeline([
+                        ("imputer",     SimpleImputer(strategy="median")),
+                        ("scaler",      StandardScaler()),
+                        ("spline",      SplineTransformer()),
+                        ("post_scaler", StandardScaler()),
+                    ]), num_cols),
+                    ("cat", OneHotEncoder(handle_unknown="ignore", sparse_output=False), cat_cols),
+                ],
+                remainder="drop",
+            )
+            spl_est = Pipeline([("pre", spl_pre), ("model", Ridge())])
+            spl_est.set_params(**spl_params)
+            spl_est.fit(X_sk, y)
+            preds = spl_est.predict(X_sk)
+            results["SplineRegression"] = {
+                "cv_rmse":    saved["SplineRegression"]["cv_rmse"],
+                "train_rmse": float(np.sqrt(mean_squared_error(y, preds))),
+                "train_r2":   float(r2_score(y, preds)),
+                "best_params": saved["SplineRegression"]["best_params"],
+                "preds": preds,
+            }
+            joblib.dump(spl_est, OUT_DIR / "spline_best.pkl")
+
+        if "MLP" in saved:
+            print("  [MLP] re-fitting ...")
+            mlp_params = _parse_params(saved["MLP"]["best_params"])
+            mlp_est = Pipeline([
+                ("pre", make_preprocessor(num_cols, cat_cols)),
+                ("model", MLPRegressor(
+                    max_iter=500, early_stopping=True,
+                    validation_fraction=0.1, random_state=RANDOM_STATE,
+                )),
+            ])
+            mlp_est.set_params(**mlp_params)
+            mlp_est.fit(X_sk, y)
+            preds = mlp_est.predict(X_sk)
+            results["MLP"] = {
+                "cv_rmse":    saved["MLP"]["cv_rmse"],
+                "train_rmse": float(np.sqrt(mean_squared_error(y, preds))),
+                "train_r2":   float(r2_score(y, preds)),
+                "best_params": saved["MLP"]["best_params"],
+                "preds": preds,
+            }
+            joblib.dump(mlp_est, OUT_DIR / "mlp_best.pkl")
+
+    elif args.fast:
+        print("\n[--fast] Skipping XGBoost and CatBoost.")
+        saved_json_path = OUT_DIR / "grid_search_results.json"
+        if saved_json_path.exists():
+            with open(saved_json_path) as f:
+                saved = json.load(f)
+            if "CatBoost" in saved:
+                cb_params = _parse_params(saved["CatBoost"]["best_params"])
+                print("  Loaded saved CatBoost params for walk-forward backtest.")
+
+        spl_search = spline_search(X_sk, y, cv, num_cols, cat_cols)
+        spl_search.fit(X_sk, y)
+        results["SplineRegression"] = eval_best(spl_search, X_sk, y, "Spline Regression")
+        spl_est = spl_search.best_estimator_
+        joblib.dump(spl_est, OUT_DIR / "spline_best.pkl")
+
+        mlp_srch = mlp_search(X_sk, y, cv, num_cols, cat_cols)
+        mlp_srch.fit(X_sk, y)
+        results["MLP"] = eval_best(mlp_srch, X_sk, y, "MLP")
+        mlp_est = mlp_srch.best_estimator_
+        joblib.dump(mlp_est, OUT_DIR / "mlp_best.pkl")
+
+    else:
+        # ── Full grid search ──────────────────────────────────────────────────
+        xgb_search = xgboost_search(X_sk, y, cv)
+        xgb_search.fit(X_sk, y)
+        results["XGBoost"] = eval_best(xgb_search, X_sk, y, "XGBoost")
+        xgb_est = xgb_search.best_estimator_
+        joblib.dump(xgb_est, OUT_DIR / "xgboost_best.pkl")
+
+        X_cb, y_cb, num_cols_cb, cat_cols_cb = prepare_features(frame, use_college_name=True)
+        X_cb = X_cb.replace([np.inf, -np.inf], np.nan)
+        for c in num_cols_cb:
+            if X_cb[c].isna().any():
+                med = X_cb[c].median()
+                X_cb[c] = X_cb[c].fillna(med if not pd.isna(med) else 0.0)
+        for c in cat_cols_cb:
+            X_cb[c] = X_cb[c].fillna("_missing_").astype(str)
+        cb_model, cb_params, cb_mse = catboost_search(X_cb, y_cb, cv, cat_cols_cb)
+        results["CatBoost"] = eval_catboost(cb_model, cb_params, cb_mse, X_cb, y_cb)
+        cb_model.save_model(str(OUT_DIR / "catboost_best.cbm"))
+
+        spl_search = spline_search(X_sk, y, cv, num_cols, cat_cols)
+        spl_search.fit(X_sk, y)
+        results["SplineRegression"] = eval_best(spl_search, X_sk, y, "Spline Regression")
+        spl_est = spl_search.best_estimator_
+        joblib.dump(spl_est, OUT_DIR / "spline_best.pkl")
+
+        mlp_srch = mlp_search(X_sk, y, cv, num_cols, cat_cols)
+        mlp_srch.fit(X_sk, y)
+        results["MLP"] = eval_best(mlp_srch, X_sk, y, "MLP")
+        mlp_est = mlp_srch.best_estimator_
+        joblib.dump(mlp_est, OUT_DIR / "mlp_best.pkl")
 
     # ── Summary ───────────────────────────────────────────────────────────────
     print("\n" + "=" * 65)
@@ -580,8 +992,7 @@ def main():
     print("=" * 65)
     print(f"  {'Model':<22} {'CV RMSE':>10} {'Train RMSE':>12} {'Train R²':>10}")
     print("  " + "-" * 58)
-    summary = sorted(results.items(), key=lambda kv: kv[1]["cv_rmse"])
-    for name, r in summary:
+    for name, r in sorted(results.items(), key=lambda kv: kv[1]["cv_rmse"]):
         print(f"  {name:<22} {r['cv_rmse']:>10.4f} {r['train_rmse']:>12.4f} {r['train_r2']:>10.4f}")
     print("=" * 65)
 
@@ -592,8 +1003,63 @@ def main():
     with open(OUT_DIR / "grid_search_results.json", "w") as f:
         json.dump(json_results, f, indent=2)
 
+    for old_fig in OUT_DIR.glob("*.png"):
+        old_fig.unlink()
+
     print(f"\nGenerating plots ...")
-    generate_plots(results, y, xgb_search.best_estimator_, cb_model)
+    generate_plots(results, y, xgb_est, cb_model)
+
+    # ── Walk-forward backtest (all models, expanding window) ─────────────────
+    sk_estimators = {}
+    if xgb_est is not None:
+        sk_estimators["XGBoost"] = xgb_est
+    if spl_est is not None:
+        sk_estimators["SplineRegression"] = spl_est
+    if mlp_est is not None:
+        sk_estimators["MLP"] = mlp_est
+
+    all_rows = walk_forward_backtest(frame, sk_estimators, cb_params, min_train_years=2)
+
+    # Print per-model summary tables
+    for name, rows in all_rows.items():
+        valid = [r for r in rows if not r["incomplete_outcome"]]
+        print(f"\n[Walk-Forward: {name}]")
+        print(f"  {'Year':<6} {'N Train':>8} {'N Test':>7} {'RMSE':>8} {'R²':>8}  Note")
+        print("  " + "-" * 55)
+        for r in rows:
+            note = "* incomplete" if r["incomplete_outcome"] else ""
+            print(f"  {r['draft_year']:<6} {r['n_train']:>8} {r['n_test']:>7} "
+                  f"{r['rmse']:>8.4f} {r['r2']:>8.4f}  {note}")
+        if valid:
+            overall_rmse = np.sqrt(mean_squared_error(
+                np.concatenate([r["actuals"] for r in valid]),
+                np.concatenate([r["preds"]   for r in valid]),
+            ))
+            print(f"  → Overall RMSE = {overall_rmse:.4f}")
+
+    wf_summary = generate_backtest_plots(all_rows)
+    print("\n[Walk-Forward Overall Summary]")
+    print(f"  {'Model':<22} {'WF RMSE':>10} {'WF R²':>8}")
+    print("  " + "-" * 44)
+    for name, (rmse, r2) in sorted(wf_summary.items(), key=lambda x: x[1][0]):
+        print(f"  {name:<22} {rmse:>10.4f} {r2:>8.4f}")
+
+    # Save per-year results for all models to CSV
+    csv_rows = []
+    for name, rows in all_rows.items():
+        for r in rows:
+            csv_rows.append({
+                "model":            name,
+                "draft_year":       r["draft_year"],
+                "n_train":          r["n_train"],
+                "n_test":           r["n_test"],
+                "rmse":             r["rmse"],
+                "r2":               r["r2"],
+                "incomplete_outcome": r["incomplete_outcome"],
+            })
+    pd.DataFrame(csv_rows).to_csv(OUT_DIR / "walkforward_results.csv", index=False)
+    print("  Saved: walkforward_results.csv")
+
     print(f"\nAll outputs saved to {OUT_DIR}/")
 
 
