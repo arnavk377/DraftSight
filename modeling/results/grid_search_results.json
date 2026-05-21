@@ -1,0 +1,26 @@
+{
+  "XGBoost": {
+    "cv_rmse": 3.0483722895403687,
+    "train_rmse": 2.6981699577259306,
+    "train_r2": 0.6549907787478205,
+    "best_params": "{'model__colsample_bytree': np.float64(0.7886140723248174), 'model__gamma': np.float64(0.0005203769953158188), 'model__learning_rate': np.float64(0.007470605578031121), 'model__max_depth': 5, 'model__min_child_weight': 7, 'model__n_estimators': 909, 'model__reg_alpha': np.float64(0.03578792453502322), 'model__reg_lambda': np.float64(0.012219544456335454), 'model__subsample': np.float64(0.6110539052353652)}"
+  },
+  "CatBoost": {
+    "cv_rmse": 3.0459545861995734,
+    "train_rmse": 2.83055827835349,
+    "train_r2": 0.6203037568965959,
+    "best_params": "{'iterations': 566, 'depth': 6, 'learning_rate': np.float64(0.015959778867053777), 'l2_leaf_reg': np.float64(1.7457261249791118), 'bagging_temperature': np.float64(0.7320397736334108), 'random_strength': np.float64(0.35414261861446383), 'border_count': 252}"
+  },
+  "SplineRegression": {
+    "cv_rmse": 3.3850729309665595,
+    "train_rmse": 3.251978788240281,
+    "train_r2": 0.4988271841773033,
+    "best_params": "{'model__alpha': np.float64(15.321449415450726), 'pre__spline__spline__degree': 4, 'pre__spline__spline__n_knots': 10}"
+  },
+  "MLP": {
+    "cv_rmse": 3.2636509644455245,
+    "train_rmse": 2.7853698000168445,
+    "train_r2": 0.6323303149661431,
+    "best_params": "{'model__activation': 'tanh', 'model__alpha': np.float64(0.00021618942406574428), 'model__batch_size': 512, 'model__hidden_layer_sizes': (512, 256, 128), 'model__learning_rate_init': np.float64(0.0020034427927560737)}"
+  }
+}

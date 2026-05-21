@@ -6,7 +6,7 @@ Target: 2-year Approximate Value (AV) from av.csv
 Frame:  drafts.csv + college_stats.csv + draft_pick_context_features.csv
 
 Run:
-    pip install xgboost catboost scikit-learn pandas numpy scipy joblib
+    pip install xgboost catboost scikit-learn pandas numpy scipy joblib matplotlib seaborn
     python modeling/grid_search.py
 """
 
@@ -27,6 +27,10 @@ from sklearn.neural_network import MLPRegressor
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, SplineTransformer, StandardScaler
 import xgboost as xgb
+import matplotlib
+matplotlib.use("Agg")  # non-interactive backend, safe for scripts
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 warnings.filterwarnings("ignore")
 
@@ -222,8 +226,7 @@ def catboost_search(X, y, cv, cat_cols):
 
     rng = np.random.default_rng(RANDOM_STATE)
     samples = [
-        {k: (int(v.rvs(random_state=rng.integers(1e6)))
-             if hasattr(v, "rvs") else v)
+        {k: (v.rvs(random_state=int(rng.integers(1e6))) if hasattr(v, "rvs") else v)
          for k, v in param_dist.items()}
         for _ in range(N_ITER)
     ]
@@ -351,10 +354,15 @@ def eval_best(search, X, y, name):
     print(f"  Train R²:        {r2:.4f}")
     print(f"  Best params:     {search.best_params_}")
     return {"cv_rmse": cv_rmse, "train_rmse": rmse, "train_r2": r2,
-            "best_params": str(search.best_params_)}
+            "best_params": str(search.best_params_), "preds": preds}
 
 
 def eval_catboost(model, best_params, best_mse, X, y, name="CatBoost"):
+    X = X.copy()
+    for i in model.get_cat_feature_indices():
+        col = X.columns[i]
+        if X[col].isna().any():
+            X[col] = X[col].fillna("_missing_").astype(str)
     preds = model.predict(X)
     rmse  = np.sqrt(mean_squared_error(y, preds))
     r2    = r2_score(y, preds)
@@ -365,7 +373,145 @@ def eval_catboost(model, best_params, best_mse, X, y, name="CatBoost"):
     print(f"  Train R²:        {r2:.4f}")
     print(f"  Best params:     {best_params}")
     return {"cv_rmse": cv_rmse, "train_rmse": rmse, "train_r2": r2,
-            "best_params": str(best_params)}
+            "best_params": str(best_params), "preds": preds}
+
+
+# ── Plotting ──────────────────────────────────────────────────────────────────
+
+COLORS = {
+    "XGBoost":          "#2196F3",
+    "CatBoost":         "#4CAF50",
+    "SplineRegression": "#FF9800",
+    "MLP":              "#9C27B0",
+}
+
+
+def generate_plots(results, y, xgb_est=None, cb_model=None):
+    """Save all evaluation figures to OUT_DIR."""
+    sns.set_theme(style="whitegrid", palette="muted", font_scale=1.15)
+
+    # ── Fig 1: Predicted vs Actual (2×2) ─────────────────────────────────────
+    fig, axes = plt.subplots(2, 2, figsize=(13, 11))
+    fig.suptitle(
+        "Figure 1: Predicted vs. Actual 2-Year Approximate Value (AV)\n"
+        "(Closer to y = x line indicates better predictive accuracy)",
+        fontsize=13, fontweight="bold",
+    )
+    for ax, (name, r) in zip(axes.flat, results.items()):
+        preds = r["preds"]
+        color = COLORS.get(name, "#607D8B")
+        ax.scatter(y, preds, alpha=0.35, s=18, color=color, edgecolors="none")
+        lim = max(float(y.max()), float(preds.max())) * 1.08
+        ax.plot([0, lim], [0, lim], "k--", linewidth=1.5, label="y = x  (perfect)")
+        ax.set_xlim(0, lim)
+        ax.set_ylim(0, lim)
+        ax.set_xlabel("Actual 2-Year AV")
+        ax.set_ylabel("Predicted 2-Year AV")
+        ax.set_title(f"{name}\nCV RMSE = {r['cv_rmse']:.3f}   Train R² = {r['train_r2']:.3f}")
+        ax.legend(fontsize=8)
+    plt.tight_layout()
+    fig.savefig(OUT_DIR / "fig1_predicted_vs_actual.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print("  Saved: fig1_predicted_vs_actual.png")
+
+    # ── Fig 2: Model Comparison bar chart ────────────────────────────────────
+    names    = list(results.keys())
+    cv_rmses = [results[n]["cv_rmse"]  for n in names]
+    r2s      = [results[n]["train_r2"] for n in names]
+    colors   = [COLORS.get(n, "#607D8B") for n in names]
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+    fig.suptitle("Figure 2: Model Performance Comparison", fontsize=13, fontweight="bold")
+
+    bars1 = ax1.bar(names, cv_rmses, color=colors, edgecolor="white", width=0.55)
+    ax1.bar_label(bars1, fmt="%.3f", padding=4)
+    ax1.set_title("Cross-Validated RMSE  (lower is better)")
+    ax1.set_ylabel("CV RMSE")
+    ax1.set_ylim(0, max(cv_rmses) * 1.2)
+
+    bars2 = ax2.bar(names, r2s, color=colors, edgecolor="white", width=0.55)
+    ax2.bar_label(bars2, fmt="%.3f", padding=4)
+    ax2.set_title("Train R²  (higher is better)")
+    ax2.set_ylabel("R²")
+    ax2.set_ylim(0, min(max(r2s) * 1.2, 1.15))
+
+    plt.tight_layout()
+    fig.savefig(OUT_DIR / "fig2_model_comparison.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print("  Saved: fig2_model_comparison.png")
+
+    # ── Fig 3: Residual Distributions (2×2) ──────────────────────────────────
+    fig, axes = plt.subplots(2, 2, figsize=(13, 10))
+    fig.suptitle(
+        "Figure 3: Residual Distributions  (Residual = Actual − Predicted)\n"
+        "(Ideal: symmetric around 0)",
+        fontsize=13, fontweight="bold",
+    )
+    for ax, (name, r) in zip(axes.flat, results.items()):
+        resid = y - r["preds"]
+        color = COLORS.get(name, "#607D8B")
+        sns.histplot(resid, kde=True, ax=ax, color=color, bins=40, alpha=0.7)
+        ax.axvline(0, color="black", linestyle="--", linewidth=1.5)
+        ax.set_title(f"{name}  (mean={resid.mean():.2f}, std={resid.std():.2f})")
+        ax.set_xlabel("Residual (AV units)")
+        ax.set_ylabel("Count")
+    plt.tight_layout()
+    fig.savefig(OUT_DIR / "fig3_residual_distributions.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print("  Saved: fig3_residual_distributions.png")
+
+    # ── Fig 4: XGBoost Feature Importance ────────────────────────────────────
+    if xgb_est is not None:
+        try:
+            pre         = xgb_est.named_steps["pre"]
+            feat_names  = [n.split("__", 1)[-1] for n in pre.get_feature_names_out()]
+            importances = xgb_est.named_steps["model"].feature_importances_
+            top_n = min(20, len(feat_names))
+            idx   = np.argsort(importances)[-top_n:]
+
+            fig, ax = plt.subplots(figsize=(10, 7))
+            ax.barh([feat_names[i] for i in idx], importances[idx], color=COLORS["XGBoost"])
+            ax.set_title(f"Figure 4: XGBoost — Top {top_n} Feature Importances",
+                         fontsize=13, fontweight="bold")
+            ax.set_xlabel("Importance (F-score gain)")
+            plt.tight_layout()
+            fig.savefig(OUT_DIR / "fig4_xgboost_importance.png", dpi=150, bbox_inches="tight")
+            plt.close(fig)
+            print("  Saved: fig4_xgboost_importance.png")
+        except Exception as e:
+            print(f"  [warn] XGBoost importance plot skipped: {e}")
+
+    # ── Fig 5: CatBoost Feature Importance ───────────────────────────────────
+    if cb_model is not None:
+        try:
+            feat_names  = list(cb_model.feature_names_)
+            importances = cb_model.get_feature_importance()
+            top_n = min(20, len(feat_names))
+            idx   = np.argsort(importances)[-top_n:]
+
+            fig, ax = plt.subplots(figsize=(10, 7))
+            ax.barh([feat_names[i] for i in idx], importances[idx], color=COLORS["CatBoost"])
+            ax.set_title(f"Figure 5: CatBoost — Top {top_n} Feature Importances",
+                         fontsize=13, fontweight="bold")
+            ax.set_xlabel("Importance")
+            plt.tight_layout()
+            fig.savefig(OUT_DIR / "fig5_catboost_importance.png", dpi=150, bbox_inches="tight")
+            plt.close(fig)
+            print("  Saved: fig5_catboost_importance.png")
+        except Exception as e:
+            print(f"  [warn] CatBoost importance plot skipped: {e}")
+
+    # ── Fig 6: Target Distribution ────────────────────────────────────────────
+    fig, ax = plt.subplots(figsize=(9, 5))
+    sns.histplot(y, kde=True, ax=ax, color="#607D8B", bins=50)
+    ax.set_title("Figure 6: Distribution of 2-Year AV (Target Variable)",
+                 fontsize=13, fontweight="bold")
+    ax.set_xlabel("2-Year Approximate Value (AV)")
+    ax.set_ylabel("Count")
+    plt.tight_layout()
+    fig.savefig(OUT_DIR / "fig6_target_distribution.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print("  Saved: fig6_target_distribution.png")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -387,6 +533,7 @@ def main():
 
     # Fill numeric NaNs with column median for sklearn models
     X_sk = X.copy()
+    X_sk = X_sk.replace([np.inf, -np.inf], np.nan)
     for c in num_cols:
         if X_sk[c].isna().any():
             X_sk[c] = X_sk[c].fillna(X_sk[c].median())
@@ -402,7 +549,13 @@ def main():
     joblib.dump(xgb_search.best_estimator_, OUT_DIR / "xgboost_best.pkl")
 
     # ── CatBoost (uses college name as cat feature) ───────────────────────────
-    X_cb, y_cb, _, cat_cols_cb = prepare_features(frame, use_college_name=True)
+    X_cb, y_cb, num_cols_cb, cat_cols_cb = prepare_features(frame, use_college_name=True)
+    X_cb = X_cb.replace([np.inf, -np.inf], np.nan)
+    for c in num_cols_cb:
+        if X_cb[c].isna().any():
+            X_cb[c] = X_cb[c].fillna(X_cb[c].median())
+    for c in cat_cols_cb:
+        X_cb[c] = X_cb[c].fillna("Unknown").astype(str)
     cb_model, cb_params, cb_mse = catboost_search(X_cb, y_cb, cv, cat_cols_cb)
     results["CatBoost"] = eval_catboost(cb_model, cb_params, cb_mse, X_cb, y_cb)
     cb_model.save_model(str(OUT_DIR / "catboost_best.cbm"))
@@ -420,16 +573,26 @@ def main():
     joblib.dump(mlp_srch.best_estimator_, OUT_DIR / "mlp_best.pkl")
 
     # ── Summary ───────────────────────────────────────────────────────────────
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 65)
     print("SUMMARY  (sorted by CV RMSE)")
-    print("=" * 60)
+    print("=" * 65)
+    print(f"  {'Model':<22} {'CV RMSE':>10} {'Train RMSE':>12} {'Train R²':>10}")
+    print("  " + "-" * 58)
     summary = sorted(results.items(), key=lambda kv: kv[1]["cv_rmse"])
     for name, r in summary:
-        print(f"  {name:<20} CV RMSE={r['cv_rmse']:.4f}  R²={r['train_r2']:.4f}")
+        print(f"  {name:<22} {r['cv_rmse']:>10.4f} {r['train_rmse']:>12.4f} {r['train_r2']:>10.4f}")
+    print("=" * 65)
 
+    json_results = {
+        k: {kk: vv for kk, vv in v.items() if kk != "preds"}
+        for k, v in results.items()
+    }
     with open(OUT_DIR / "grid_search_results.json", "w") as f:
-        json.dump(results, f, indent=2)
-    print(f"\nResults saved to {OUT_DIR}/")
+        json.dump(json_results, f, indent=2)
+
+    print(f"\nGenerating plots ...")
+    generate_plots(results, y, xgb_search.best_estimator_, cb_model)
+    print(f"\nAll outputs saved to {OUT_DIR}/")
 
 
 if __name__ == "__main__":
