@@ -390,16 +390,11 @@ def generate_plots(results, y, xgb_est=None, cb_model=None):
     """Save all evaluation figures to OUT_DIR."""
     sns.set_theme(style="whitegrid", palette="muted", font_scale=1.15)
 
-    # ── Fig 1: Predicted vs Actual (2×2) ─────────────────────────────────────
-    fig, axes = plt.subplots(2, 2, figsize=(13, 11))
-    fig.suptitle(
-        "Figure 1: Predicted vs. Actual 2-Year Approximate Value (AV)\n"
-        "(Closer to y = x line indicates better predictive accuracy)",
-        fontsize=13, fontweight="bold",
-    )
-    for ax, (name, r) in zip(axes.flat, results.items()):
+    # ── Fig 1: Predicted vs Actual (one image per model) ─────────────────────
+    for i, (name, r) in enumerate(results.items(), start=1):
         preds = r["preds"]
         color = COLORS.get(name, "#607D8B")
+        fig, ax = plt.subplots(figsize=(6.5, 5.5))
         ax.scatter(y, preds, alpha=0.35, s=18, color=color, edgecolors="none")
         lim = max(float(y.max()), float(preds.max())) * 1.08
         ax.plot([0, lim], [0, lim], "k--", linewidth=1.5, label="y = x  (perfect)")
@@ -407,12 +402,19 @@ def generate_plots(results, y, xgb_est=None, cb_model=None):
         ax.set_ylim(0, lim)
         ax.set_xlabel("Actual 2-Year AV")
         ax.set_ylabel("Predicted 2-Year AV")
-        ax.set_title(f"{name}\nCV RMSE = {r['cv_rmse']:.3f}   Train R² = {r['train_r2']:.3f}")
+        ax.set_title(
+            f"Figure 1{chr(96 + i)}: {name} — Predicted vs. Actual 2-Year AV\n"
+            f"CV RMSE = {r['cv_rmse']:.3f}   Train R² = {r['train_r2']:.3f}\n"
+            "(Closer to y = x line indicates better predictive accuracy)",
+            fontsize=11,
+        )
         ax.legend(fontsize=8)
-    plt.tight_layout()
-    fig.savefig(OUT_DIR / "fig1_predicted_vs_actual.png", dpi=150, bbox_inches="tight")
-    plt.close(fig)
-    print("  Saved: fig1_predicted_vs_actual.png")
+        plt.tight_layout()
+        slug = name.lower().replace(" ", "_")
+        fname = f"fig1{chr(96 + i)}_predicted_vs_actual_{slug}.png"
+        fig.savefig(OUT_DIR / fname, dpi=150, bbox_inches="tight")
+        plt.close(fig)
+        print(f"  Saved: {fname}")
 
     # ── Fig 2: Model Comparison bar chart ────────────────────────────────────
     names    = list(results.keys())
