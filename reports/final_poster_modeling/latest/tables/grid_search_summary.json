@@ -1,0 +1,42 @@
+[
+  {
+    "model": "XGBoost",
+    "model_key": "xgboost",
+    "cv_rmse": 4.0302991972609945,
+    "train_mae": 2.7196302607379184,
+    "train_rmse": 3.697862745388474,
+    "train_r2": 0.5065788887049193,
+    "train_spearman": 0.6800320092087624,
+    "best_params": "{\"model__colsample_bytree\": 0.7946612641953124, \"model__gamma\": 1.0900808140765596e-05, \"model__learning_rate\": 0.0032663945566867823, \"model__max_depth\": 4, \"model__min_child_weight\": 11, \"model__n_estimators\": 760, \"model__reg_alpha\": 6.236936575328395e-05, \"model__reg_lambda\": 0.018051899059704852, \"model__subsample\": 0.6965447373174767}"
+  },
+  {
+    "model": "CatBoost",
+    "model_key": "catboost",
+    "cv_rmse": 4.023644674780975,
+    "train_mae": 2.7811033597787094,
+    "train_rmse": 3.853413072545929,
+    "train_r2": 0.4641943544778866,
+    "train_spearman": 0.6581703154412268,
+    "best_params": "{\"bagging_temperature\": 1.4092484123462836, \"border_count\": 253, \"depth\": 6, \"iterations\": 519, \"l2_leaf_reg\": 4.5904504735893275, \"learning_rate\": 0.012145077807605997, \"random_strength\": 1.1408879488107988}"
+  },
+  {
+    "model": "MLP Neural Net",
+    "model_key": "mlp",
+    "cv_rmse": 4.497848694336439,
+    "train_mae": 2.827778169051245,
+    "train_rmse": 4.352296643569455,
+    "train_r2": 0.316477005794496,
+    "train_spearman": 0.6346003607186007,
+    "best_params": "{\"regressor__model__activation\": \"tanh\", \"regressor__model__alpha\": 0.00021009638415064324, \"regressor__model__batch_size\": 512, \"regressor__model__hidden_layer_sizes\": [256, 128], \"regressor__model__learning_rate_init\": 7.843006551565001e-05}"
+  },
+  {
+    "model": "Spline Ridge",
+    "model_key": "spline",
+    "cv_rmse": 4.297069891619671,
+    "train_mae": 2.651295009942182,
+    "train_rmse": 4.0768955704609535,
+    "train_r2": 0.4002429981788316,
+    "train_spearman": 0.6727000182033899,
+    "best_params": "{\"regressor__model__alpha\": 16.396163627523325, \"regressor__pre__pick_spline__spline__degree\": 2, \"regressor__pre__pick_spline__spline__n_knots\": 6}"
+  }
+]

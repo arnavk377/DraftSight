@@ -1,0 +1,11 @@
+{
+  "model": "CatBoost",
+  "model_key": "catboost",
+  "n_predictions": 3836,
+  "mae": 3.0976142023043294,
+  "rmse": 4.289828696158086,
+  "r2": 0.40493490569796153,
+  "spearman": 0.6227459554518571,
+  "mean_yearly_rmse": 4.278596602696781,
+  "mean_yearly_r2": 0.4046230923662853
+}

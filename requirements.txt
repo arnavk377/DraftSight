@@ -5,6 +5,8 @@ pyarrow
 matplotlib
 seaborn
 scikit-learn
+xgboost
+catboost
 nfl_data_py
 cfbd
 thefuzz

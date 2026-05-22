@@ -1,0 +1,9 @@
+table,rows,columns,duplicate_rows,duplicate_model_key_rows,missing_cells,nonfinite_numeric_values
+av,53245,4,0,0,0,0
+college_player_seasons,10636,66,0,0,455516,0
+college_stats,3395,66,0,0,40085,0
+draft_board,6901,22,0,0,7170,0
+draft_pick_context_features,12670,47,0,0,173146,0
+drafts,12670,40,0,0,74020,0
+rosters,60308,38,0,0,54433,0
+trades,1632,39,0,0,0,0

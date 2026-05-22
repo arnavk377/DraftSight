@@ -1,0 +1,25 @@
+feature,importance
+pick,0.060552347
+round,0.060498476
+board_round,0.049030382
+board_pre_draft_ranking,0.011284522
+cfb_passing_td,0.010149194
+cfb_passing_yds,0.008085523
+cfb_rushing_td,0.0076250127
+position_group_RB,0.0075885076
+board_pre_draft_grade,0.007520916
+category_DL,0.0073162555
+cfb_rushing_long,0.0072432198
+context_pick_last_received_team_BAL,0.0072199437
+category_OL,0.0072093536
+college_Miami (FL),0.007090655
+position_RB,0.0069408957
+position_group_OL,0.006864648
+position_group_DL,0.006795181
+college_Wisconsin,0.0065366854
+context_pick_last_gave_team_SF,0.0064030723
+context_draft_position_group_OL,0.006304061
+cfb_conference_SEC,0.006133141
+cfb_conference_,0.0060777124
+cfb_fumbles_fum,0.0060623214
+college_LSU,0.006028643
