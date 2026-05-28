@@ -1,0 +1,8 @@
+model,param_alpha,param_n_knots_pick,mean_mae,mean_rmse,mean_spearman,mean_r2,param_max_depth,param_min_child_weight,param_reg_lambda,param_depth,param_l2_leaf_reg,param_learning_rate,param_min_samples_leaf,param_max_features,param_hidden_dims,param_dropout,param_d_token,param_n_layers,param_n_d,param_n_steps,param_gamma
+spline,25.0,8,3.2475,4.6813,0.6182,0.3165,,,,,,,,,,,,,,,
+xgb,,,3.1949,4.5815,0.6077,0.3426,3,2,5.0,,,,,,,,,,,,
+catboost,,,3.176,4.5518,0.6125,0.3519,,,,5,3.0,0.03,,,,,,,,,
+rf,,,3.228,4.6328,0.615,0.3296,None,,,,,,10,0.5,,,,,,,
+mlpe,,,3.7064,5.6286,0.5559,-0.0171,,,,,,,,,"(256, 128, 64)",0.3,,,,,
+ftt,,,3.2582,4.5747,0.5961,0.3451,,,,,,,,,,0.2,16,2,,,
+tabnet,,,3.3972,4.8216,0.5739,0.2709,,,,,,,,,,,,,32,3,1.3
