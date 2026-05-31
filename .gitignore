@@ -2,3 +2,12 @@
 __pycache__/
 *.pyc
 data/raw/
+
+# macOS
+.DS_Store
+
+# CatBoost auto-generated training artifacts
+catboost_info/
+
+# API cache
+data/cfbd_cache/
