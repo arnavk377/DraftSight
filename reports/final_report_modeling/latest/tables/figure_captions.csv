@@ -1,0 +1,27 @@
+figure_file,caption
+calibration_by_prediction_decile_requested_models.png,Calibration by prediction decile. Curves close to the diagonal indicate that predicted AV levels match realized average AV levels.
+feature_importance_rf_top20.png,Top 20 Random Forest feature importances from the final training window. Higher bars indicate features with larger average contribution to split quality.
+feature_importance_xgb_top20.png,Top 20 XGBoost feature importances from the final training window. Higher bars indicate features used more strongly by the model.
+mae_by_pick_bin_requested_models.png,Mean absolute error by draft pick range. This diagnostic shows where each model is most and least accurate across the draft board.
+overall_model_performance_grid.png,"Overall out-of-sample model performance across all walk-forward test years. MAE and RMSE summarize absolute prediction error, Spearman measures ranking quality, and R² measures variance explained."
+pick_value_curve_monotonic_report.png,Empirical draft pick-value curve. Gray points are observed 16-pick averages and the black line is a monotonic smooth showing the overall decline in expected 2-year AV as picks get later.
+pick_value_curves_exact_pick_no_bins.png,Exact-pick value comparison using overall pick numbers. Points show realized average AV at each pick; curves use exact picks with enough history and monotonic smoothing for readability.
+pick_value_curves_model_facets.png,Appendix view of pick-value curves by model. Each panel compares one model's out-of-sample estimated AV curve with the same realized empirical draft value curve.
+pick_value_curves_oos_by_model.png,"Report-ready draft pick-value comparison. The black curve is realized average 2-year AV by draft slot, while the colored curves show the Pick-Bin baseline and tree-model estimates."
+pred_vs_actual_ftt_2024.png,Predicted versus actual 2-year AV for FT-Transformer on the 2024 held-out draft class. The diagonal line represents perfect prediction; points closer to the line are more accurate.
+pred_vs_actual_ftt_all_years.png,Predicted versus actual 2-year AV for FT-Transformer on all walk-forward held-out draft classes. The diagonal line represents perfect prediction; points closer to the line are more accurate.
+pred_vs_actual_grid_requested_models_2024.png,Predicted versus actual 2-year AV for the 2024 held-out draft class. Points closer to the diagonal represent more accurate predictions.
+pred_vs_actual_grid_requested_models_all_years.png,Predicted versus actual 2-year AV across all walk-forward held-out draft classes. This shows the full out-of-sample prediction pattern by model.
+pred_vs_actual_pick_bin_2024.png,Predicted versus actual 2-year AV for Pick-Bin Baseline on the 2024 held-out draft class. The diagonal line represents perfect prediction; points closer to the line are more accurate.
+pred_vs_actual_pick_bin_all_years.png,Predicted versus actual 2-year AV for Pick-Bin Baseline on all walk-forward held-out draft classes. The diagonal line represents perfect prediction; points closer to the line are more accurate.
+pred_vs_actual_rf_2024.png,Predicted versus actual 2-year AV for Random Forest on the 2024 held-out draft class. The diagonal line represents perfect prediction; points closer to the line are more accurate.
+pred_vs_actual_rf_all_years.png,Predicted versus actual 2-year AV for Random Forest on all walk-forward held-out draft classes. The diagonal line represents perfect prediction; points closer to the line are more accurate.
+pred_vs_actual_spline_2024.png,Predicted versus actual 2-year AV for Spline Ridge on the 2024 held-out draft class. The diagonal line represents perfect prediction; points closer to the line are more accurate.
+pred_vs_actual_spline_all_years.png,Predicted versus actual 2-year AV for Spline Ridge on all walk-forward held-out draft classes. The diagonal line represents perfect prediction; points closer to the line are more accurate.
+pred_vs_actual_xgb_2024.png,Predicted versus actual 2-year AV for XGBoost on the 2024 held-out draft class. The diagonal line represents perfect prediction; points closer to the line are more accurate.
+pred_vs_actual_xgb_all_years.png,Predicted versus actual 2-year AV for XGBoost on all walk-forward held-out draft classes. The diagonal line represents perfect prediction; points closer to the line are more accurate.
+prediction_distribution_2024.png,Distribution of actual 2024 2-year AV compared with each model's predicted distribution. This shows whether models reproduce the skew and spread of draft outcomes.
+residual_distributions_requested_models.png,"Residual distributions by model, where residual equals actual AV minus predicted AV. Centering near zero indicates less systematic over- or under-prediction."
+tree_feature_importance_top5.png,"Top five feature importances for XGBoost and Random Forest from the final training window, normalized within each model so the top feature equals 100. This compact version highlights the clearest tree-model signals for the main report."
+walkforward_metrics_requested_models.png,"Year-by-year walk-forward performance for the requested models. Each point is a held-out draft class, trained only on prior draft classes."
+walkforward_rmse_teaser_requested_models.png,"Year-by-year walk-forward RMSE for the requested models. This report-facing teaser focuses on absolute prediction error; the full MAE, Spearman, and R² metric grid is included in the appendix."

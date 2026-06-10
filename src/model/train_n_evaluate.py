@@ -5,7 +5,7 @@ Walk-forward backtesting with OOF stacking.  MLPE, TabNet, and naive baselines
 removed vs v5.1a.  Base models stacked: CatBoost, RF, FTT.
 Meta-learner: NNLS (scipy) with recency weighting.
 
-Outputs: poc_outputs_v6/
+Outputs: results/
 """
 
 import math
@@ -27,6 +27,7 @@ from scipy.stats import spearmanr
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.impute import SimpleImputer
+from sklearn.isotonic import IsotonicRegression
 from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.pipeline import Pipeline
@@ -73,7 +74,7 @@ ROSTER_DIR = os.path.join(REPO_ROOT, "data", "roster")
 VET_PERF_CSV = os.path.join(ROSTER_DIR, "veteran_performance_features.csv")
 DRAFT_POS_CONTEXT_CSV = os.path.join(ROSTER_DIR, "draft_positional_context_features.csv")
 PICK_TRADE_FLAGS_CSV = os.path.join(ROSTER_DIR, "pick_trade_flags.csv")
-OUT_DIR = os.path.join(REPO_ROOT, "poc_outputs_v6")
+OUT_DIR = os.path.join(REPO_ROOT, "results")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 if torch.cuda.is_available():
@@ -104,7 +105,11 @@ PERF_BIN_COUNT = 4
 SELECTED_SUMMARY_YEARS = [2010, 2015, 2020, 2024]
 
 USE_POSITION_MEDIAN_IMPUTE: bool = False
-EXCLUDE_COLLEGE_STATS: bool = True
+EXCLUDE_COLLEGE_STATS: bool = os.getenv("DRAFTSIGHT_EXCLUDE_COLLEGE_STATS", "0").lower() in {
+    "1",
+    "true",
+    "yes",
+}
 
 
 # ── Model registry ────────────────────────────────────────────────────────────
@@ -147,9 +152,18 @@ RF_CFG = dict(
     max_features=0.5, n_jobs=1, random_state=RANDOM_STATE,
 )
 
-FTT_CFG = dict(d_token=64, n_heads=4, n_layers=2, dropout=0.2)
+FTT_CFG = dict(
+    d_token=int(os.getenv("DRAFTSIGHT_FTT_D_TOKEN", "32")),
+    n_heads=int(os.getenv("DRAFTSIGHT_FTT_N_HEADS", "4")),
+    n_layers=int(os.getenv("DRAFTSIGHT_FTT_N_LAYERS", "1")),
+    dropout=float(os.getenv("DRAFTSIGHT_FTT_DROPOUT", "0.2")),
+)
 EMBED_TRAIN_CFG = dict(
-    lr=3e-4, batch_size=128, max_epochs=200, patience=35, val_fraction=0.15,
+    lr=float(os.getenv("DRAFTSIGHT_FTT_LR", "3e-4")),
+    batch_size=int(os.getenv("DRAFTSIGHT_FTT_BATCH_SIZE", "256")),
+    max_epochs=int(os.getenv("DRAFTSIGHT_FTT_MAX_EPOCHS", "10")),
+    patience=int(os.getenv("DRAFTSIGHT_FTT_PATIENCE", "3")),
+    val_fraction=0.15,
 )
 HUBER_DELTA = 1.0
 
@@ -644,39 +658,48 @@ def save_residual_diagnostics(y_true, y_pred, picks, out_path, draft_year, model
 
 
 def save_pick_value_curve(spline_model, train_df, scorer, out_path, draft_year):
-    """Spline model pick value curve for low / median / high college perf score tiers."""
-    max_pick = 256
-    picks = np.arange(1, max_pick + 1)
-    labels = ["Lower college score", "Median college score", "Higher college score"]
-    colors = ["#457B9D", "#E9C46A", "#E76F51"]
+    """Empirical pick-value curve with a monotonic smooth.
 
-    matched = train_df.loc[train_df["cfb_matched"] > 0.5] if "cfb_matched" in train_df.columns else train_df
-    if matched.empty:
-        matched = train_df
-    scores = matched["college_perf_score"].dropna()
-    if scores.empty or scores.nunique() < 3:
+    The earlier spline-only synthetic curve could show unrealistic late-round
+    upturns at the boundary. For reports, the safer story is the observed
+    training-set value by pick bin plus a monotonic fit.
+    """
+    del spline_model, scorer
+    curve_df = train_df[["pick", "av_2yr"]].dropna().copy()
+    if curve_df.empty:
         return
-    ref_scores = np.quantile(scores, [0.2, 0.5, 0.8])
 
-    fig, ax = plt.subplots(figsize=(9, 5.5), dpi=200)
-    for perf_score, label, color in zip(ref_scores, labels, colors):
-        grid = pd.DataFrame({"pick": picks})
-        for col in train_df.columns:
-            if col == "pick":
-                continue
-            if col in MODEL_CAT_COLS:
-                mode = train_df[col].mode(dropna=True)
-                grid[col] = mode.iloc[0] if not mode.empty else "UNK"
-            else:
-                vals = pd.to_numeric(train_df[col], errors="coerce")
-                grid[col] = float(vals.median()) if vals.notna().any() else 0.0
-        grid["college_perf_score"] = perf_score
-        grid["cfb_matched"] = 1.0
-        ax.plot(picks, np.expm1(spline_model.predict(grid)), label=label, linewidth=2.0, color=color)
+    bin_size = PICK_BIN_SIZE
+    curve_df["pick_bin"] = ((curve_df["pick"].astype(int) - 1) // bin_size) * bin_size + 1
+    binned = (
+        curve_df.groupby("pick_bin", as_index=False)
+        .agg(pick=("pick", "mean"), actual_av=("av_2yr", "mean"), n=("av_2yr", "size"))
+        .sort_values("pick")
+    )
+    if len(binned) < 3:
+        return
+
+    iso = IsotonicRegression(increasing=False, out_of_bounds="clip")
+    smooth = iso.fit_transform(binned["pick"].to_numpy(dtype=float), binned["actual_av"].to_numpy(dtype=float))
+
+    fig, ax = plt.subplots(figsize=(9.5, 5.5), dpi=200)
+    ax.scatter(
+        binned["pick"], binned["actual_av"],
+        s=np.clip(binned["n"] / 1.8, 18, 80),
+        color="#9AA9B5", alpha=0.65, edgecolor="white", linewidth=0.6,
+        label=f"Actual AV, {bin_size}-pick bins",
+    )
+    ax.plot(
+        binned["pick"], smooth,
+        color="#1F6F8B", linewidth=2.8,
+        label="Monotonic empirical smooth",
+    )
+    for boundary in [32, 64, 100, 135, 176, 215]:
+        ax.axvline(boundary + 0.5, color="#DFE5EA", linewidth=0.8, zorder=0)
 
     ax.set_xlabel("Pick number", fontsize=11)
-    ax.set_ylabel("Predicted 2-Year AV", fontsize=11)
-    ax.set_title(f"Spline Pick Value Curve — Trained Through {draft_year - 1}", fontsize=13, pad=10)
+    ax.set_ylabel("2-Year AV", fontsize=11)
+    ax.set_title(f"Draft Pick Value Curve — Training Data Through {draft_year - 1}", fontsize=13, pad=10)
     ax.legend(frameon=False, fontsize=9)
     _nice_axes(ax)
     fig.tight_layout()
@@ -876,7 +899,12 @@ def main():
             build_embed_data(X_train, X_test)
         print("  [ftt] fitting...", flush=True)
         ftt = FTTransformer(X_num_tr.shape[1], cardinalities, **FTT_CFG).to(DEVICE)
-        ftt = train_embed_model(ftt, X_num_tr, X_cat_tr, y_train, desc="FTT", use_huber=False, lr=1e-4, patience=50)
+        ftt = train_embed_model(
+            ftt, X_num_tr, X_cat_tr, y_train,
+            desc="FTT", use_huber=False,
+            lr=EMBED_TRAIN_CFG["lr"],
+            patience=EMBED_TRAIN_CFG["patience"],
+        )
         ftt.eval()
         with torch.no_grad():
             prediction_map["ftt"] = ftt(
@@ -1026,6 +1054,13 @@ def main():
             ("catboost", latest_artifacts["cb_importance"],  latest_artifacts["cb_feat_names"]),
             ("rf",       latest_artifacts["rf_importance"],  latest_artifacts["rf_feat_names"]),
         ]:
+            pd.DataFrame({
+                "feature": feat_names,
+                "importance": imp,
+            }).sort_values("importance", ascending=False).to_csv(
+                os.path.join(OUT_DIR, f"{model_name}_feature_importance_v6.csv"),
+                index=False,
+            )
             save_feature_importance(
                 imp, feat_names,
                 os.path.join(OUT_DIR, f"plot_{model_name}_feature_importance_v6.png"),

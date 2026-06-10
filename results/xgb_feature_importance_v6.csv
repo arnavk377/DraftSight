@@ -1,0 +1,589 @@
+feature,importance
+prev_same_position_group_active_players,0.24094568
+pick_within_round,0.053992704
+prev_same_position_group_active_share,0.04524098
+round,0.03295241
+vet_av,0.031915832
+prev_roster_young_players,0.02441167
+prev_roster_top100_draftees,0.021185204
+pos_x_round_mean_av,0.017037628
+age,0.014909569
+prev_same_position_group_share,0.014436543
+pick,0.0125488285
+prev_same_position_group_drafted_players,0.011851605
+prev_roster_rookies,0.010009638
+team_TEN,0.009106327
+team_BAL,0.008592025
+team_STL,0.0077363765
+team_IND,0.007594755
+position_group_ST,0.0074567934
+age_x_log_pick,0.007260915
+side_S,0.0068379887
+team_ARI,0.006639615
+team_NOR,0.006562676
+college_Kansas St.,0.0064146807
+prev_roster_players,0.005999896
+team_ATL,0.005580551
+team_NYG,0.005381312
+team_NYJ,0.005246103
+college_LSU,0.005113647
+was_traded,0.004771058
+team_BUF,0.004623198
+college_Louisiana Tech,0.0045677023
+team_OAK,0.0043896935
+college_Eastern Illinois,0.004292032
+position_OL,0.0042257276
+team_NWE,0.004154332
+team_RAM,0.0040564467
+team_MIA,0.004006263
+college_Colorado St.,0.003838804
+side_O,0.0037466446
+college_Weber St.,0.003704274
+college_Memphis,0.0036314325
+team_SDG,0.0036223722
+college_Georgia,0.0034088728
+college_Hofstra,0.0033935022
+college_Miami (FL),0.0033744879
+position_group_DL,0.0033321206
+college_Yale,0.0032782617
+puntreturns_no,0.0032373306
+team_RAI,0.0031172903
+log_pick_x_qb,0.0030539653
+position_group_TE,0.0030460572
+college_Coastal Carolina,0.003017918
+team_HOU,0.0030005495
+rushing_ypc,0.0029599029
+position_QB,0.0029273885
+team_CIN,0.0028660058
+rushing_car,0.0028066938
+college_Syracuse,0.0027386786
+prev_same_position_group_avg_age,0.002691907
+team_KAN,0.0026795352
+prev_roster_avg_draft_number,0.0026731347
+prev_same_position_group_veterans_5plus,0.0026688322
+pos_group_drafted_before,0.0026664475
+team_CLE,0.0026451962
+college_Idaho,0.0026034906
+college_Central Florida,0.0025938563
+log_pick_x_rb,0.0025766839
+college_Kentucky,0.002571134
+college_Marshall,0.0025261308
+position_FB,0.002505092
+college_Tulane,0.0024756724
+puntreturns_yds,0.0024720586
+college_Arizona St.,0.0024497965
+college_Baylor,0.002446848
+log_pick_x_te,0.0024113583
+team_PIT,0.0024063587
+position_K,0.002401836
+prev_same_position_group_rookies,0.0023948464
+college_North Carolina St.,0.002363249
+pos_pick_rank,0.0023493168
+prev_same_position_group_young_players,0.002307061
+passing_yds,0.0022918442
+position_WR,0.0022891432
+position_DT,0.0022843047
+prev_roster_veterans_5plus,0.0022725798
+team_DAL,0.0022537876
+position_C,0.0022338557
+college_Michigan St.,0.0022124993
+college_Wake Forest,0.002180249
+prev_roster_active_avg_years_exp,0.0021766608
+college_Temple,0.0021720468
+college_Northwestern,0.002171414
+college_Houston,0.0021645178
+college_Nebraska-Omaha,0.0021613722
+log_pick_x_ol,0.0021554201
+category_K,0.0021237656
+college_Michigan,0.002112114
+team_WAS,0.002095967
+college_Mississippi St.,0.0020931228
+team_SFO,0.0020722034
+position_NT,0.0020717236
+prev_roster_drafted_players,0.002066983
+position_G,0.0020514631
+team_CHI,0.0020479017
+college_San Diego St.,0.002021261
+college_SMU,0.0020111639
+team_DET,0.0020084104
+prev_same_position_group_avg_years_exp,0.002003288
+college_Northern Colorado,0.0019943672
+college_Fordham,0.0019937004
+need_score,0.0019824908
+log_pick_x_wr,0.001981378
+pos_first_overall,0.001976327
+prev_roster_avg_years_exp,0.0019723722
+position_RB,0.0019623449
+college_Virginia,0.001938253
+prev_same_position_group_players,0.0018952651
+interceptions_yds,0.0018802182
+prev_roster_avg_age,0.0018758407
+college_perf_score,0.0018669775
+team_JAX,0.001865078
+college_Liberty,0.0018649772
+college_Washington,0.0018608897
+log_pick_x_lb,0.0018522706
+prev_same_position_group_top100_draftees,0.0018499661
+college_BYU,0.0018345972
+category_WR,0.0018203828
+position_group_OL,0.0018178807
+college_Nebraska,0.0017787706
+college_Iowa,0.0017742268
+receiving_ypr,0.0017593534
+rushing_td,0.0017207549
+trade_had_players,0.0017181737
+college_Oregon,0.0017158095
+college_Florida St.,0.0017059032
+college_Louisville,0.0017036315
+team_PHO,0.0017015553
+college_Abilene Christian,0.0016976187
+team_GNB,0.0016919657
+rushing_yds,0.0016553135
+position_T,0.0016454906
+passing_td,0.0016328963
+prev_roster_active_avg_age,0.0016063857
+side_D,0.001596301
+interceptions_int,0.0015906895
+team_SEA,0.0015261535
+college_USC,0.001518082
+passing_completions,0.0015027238
+position_CB,0.0014919515
+log_pick_x_dl,0.0014838605
+receiving_rec,0.0014831452
+passing_att,0.0014449019
+team_DEN,0.0014359938
+career_years,0.0014350928
+college_Florida,0.001401592
+kickreturns_yds,0.0013937595
+log_pick_x_db,0.001381638
+college_Tennessee,0.001370298
+college_Jackson St.,0.0013665055
+receiving_td,0.0013449659
+kickreturns_avg,0.0013449439
+college_Kansas,0.0013449349
+college_Toledo,0.001336047
+college_Alabama,0.0013333185
+vet_age,0.0013143754
+team_TAM,0.0012948987
+college_Notre Dame,0.0012809793
+position_TE,0.0012707942
+was_primary_pick,0.0012476384
+college_Purdue,0.0012453363
+college_Sam Houston St.,0.0012431032
+puntreturns_avg,0.0012359835
+position_OLB,0.0012352933
+college_NW Oklahoma St.,0.0012342739
+college_Wisconsin,0.0012262772
+college_Mars Hill,0.0012144033
+college_Ohio St.,0.0012069693
+college_Missouri,0.0011979935
+college_Connecticut,0.0011548068
+position_DE,0.001153284
+position_DB,0.0011268787
+prev_roster_active_players,0.0010954392
+cfb_matched,0.0010794881
+college_Texas St.,0.0010371528
+college_California,0.0010283043
+college_Colorado,0.0010221112
+college_Arizona,0.00094739394
+college_Delaware,0.00092711515
+college_Miami (OH),0.00091036776
+team_CAR,0.0009064746
+college_Arkansas,0.00089773216
+college_Oregon St.,0.0008916519
+team_PHI,0.0008772459
+college_Stanford,0.00087464304
+college_Texas,0.0008723576
+passing_pct,0.00079993217
+college_East Carolina,0.0007954345
+college_SE Missouri St.,0.0007694455
+college_Washington St.,0.0007635459
+college_Boise St.,0.0007584205
+college_Mississippi,0.0007276688
+pos_drafted,0.00071737723
+position_group_RB,0.0007115832
+college_UCLA,0.0007106239
+college_Oklahoma,0.0006861615
+college_Harvard,0.00067206373
+position_ILB,0.0006042368
+interceptions_td,0.00060194713
+college_Texas A&M,0.00059314485
+kickreturns_no,0.0005887203
+college_Northern Illinois,0.00055535126
+college_South Florida,0.000524938
+college_Minnesota,0.0005197014
+college_Ala-Birmingham,0.00047726813
+college_Penn St.,0.000469876
+college_South Carolina,0.000444401
+college_TCU,0.0004387751
+position_S,0.0004197259
+college_West Virginia,0.0004194532
+college_North Carolina,0.00041622118
+passing_int,0.00033012405
+team_MIN,0.00030779932
+college_Virginia Tech,0.00028826637
+college_Duke,8.6822016e-05
+college_Rhode Island,0.0
+college_Navy,0.0
+college_Pennsylvania,0.0
+college_NW Missouri St.,0.0
+college_Pittsburg St.,0.0
+college_Richmond,0.0
+college_Rice,0.0
+college_Pittsburgh-Johnstown,0.0
+college_Regina,0.0
+college_Pittsburgh,0.0
+college_Nebraska-Kearney,0.0
+college_Puget Sound,0.0
+college_Princeton,0.0
+college_Presbyterian,0.0
+college_Prairie View A&M,0.0
+college_Portland St.,0.0
+college_Pomona,0.0
+college_Queens (Canada),0.0
+college_New Haven,0.0
+college_Pearl River CC,0.0
+college_Morgan St.,0.0
+college_Norfolk St.,0.0
+college_Nicholls St.,0.0
+college_Newberry,0.0
+college_New Mexico St.,0.0
+college_Murray St.,0.0
+college_Morehead St.,0.0
+college_Morehouse,0.0
+college_Morningside,0.0
+college_North Carolina A&T,0.0
+college_Mount Union,0.0
+college_Mount San Antonio JC,0.0
+college_Morris Brown,0.0
+college_Rowan,0.0
+college_Nevada,0.0
+college_New Hampshire,0.0
+college_New Mexico,0.0
+college_North Alabama,0.0
+college_North Carolina Central,0.0
+college_Pasadena CC,0.0
+college_Northwestern St. (LA),0.0
+college_Pacific Lutheran,0.0
+college_Pacific,0.0
+college_Ottawa (KS),0.0
+college_Oregon Tech,0.0
+college_Oklahoma St.,0.0
+college_Ohio,0.0
+college_Occidental,0.0
+college_Northern Michigan,0.0
+college_Nebraska Wesleyan,0.0
+college_Northern Iowa,0.0
+college_NE State (OK),0.0
+college_Northern Arizona,0.0
+college_Northeastern,0.0
+college_North Texas,0.0
+college_North Dakota St.,0.0
+college_North Dakota,0.0
+college_Robert Morris,0.0
+college_Utah,0.0
+college_Rutgers,0.0
+college_Virginia St.,0.0
+college_Western Carolina,0.0
+college_West Virginia Tech,0.0
+college_West Texas A&M,0.0
+college_West Chester,0.0
+college_West Alabama,0.0
+college_Wayne State (NE),0.0
+college_Washburn,0.0
+college_Wake Technical CC,0.0
+college_Wabash,0.0
+college_Virginia Union,0.0
+college_Villanova,0.0
+college_S.F. Austin,0.0
+college_Vanderbilt,0.0
+college_Valdosta St.,0.0
+college_VMI,0.0
+college_Utah St.,0.0
+college_Montclair St.,0.0
+college_Union (NY),0.0
+college_UT Martin,0.0
+college_UNLV,0.0
+college_UC Davis,0.0
+college_U.S. International,0.0
+college_Western Illinois,0.0
+college_Western Kentucky,0.0
+college_Western Michigan,0.0
+college_Western New Mexico,0.0
+college_nan,0.0
+college_Youngstown St.,0.0
+college_Wyoming,0.0
+college_Wisconsin–Whitewater,0.0
+college_Wisconsin–Stout,0.0
+college_Wisconsin–Stevens Point,0.0
+college_Wisconsin–LaCrosse,0.0
+college_Winston-Salem St.,0.0
+college_Wingate,0.0
+college_Wilmington,0.0
+college_Williams,0.0
+college_William Penn,0.0
+college_William Jewell,0.0
+college_William & Mary,0.0
+college_Widener,0.0
+college_Wichita St.,0.0
+college_Whitworth,0.0
+college_Wheaton,0.0
+college_Western St. (CO),0.0
+college_Western Oregon,0.0
+college_Western Ontario,0.0
+college_Tuskegee,0.0
+college_Tusculum,0.0
+college_Tulsa,0.0
+college_Southern Oregon,0.0
+college_Southern Illinois,0.0
+college_Southern Connecticut St.,0.0
+college_Southern,0.0
+college_Southeastern Louisiana,0.0
+college_South Dakota St.,0.0
+college_South Dakota,0.0
+college_South Carolina St.,0.0
+college_Sonoma St.,0.0
+college_Slippery Rock,0.0
+college_Sioux Falls,0.0
+college_Savannah St.,0.0
+college_Santa Clara,0.0
+college_San Jose St.,0.0
+college_San Francisco St.,0.0
+college_San Diego,0.0
+college_Samford,0.0
+college_Salem,0.0
+college_Saginaw Valley St.,0.0
+college_Sacred Heart,0.0
+college_Sacramento St.,0.0
+college_SW Oklahoma St.,0.0
+college_Southern Miss,0.0
+college_Southern Utah,0.0
+college_Truman St.,0.0
+college_Southwest Minnesota,0.0
+college_Troy,0.0
+college_Trinity (CT),0.0
+college_Towson,0.0
+college_Toronto,0.0
+college_The Citadel,0.0
+college_Texas-San Antonio,0.0
+college_Texas-El Paso,0.0
+college_Texas-Arlington,0.0
+college_Texas Tech,0.0
+college_Texas Southern,0.0
+college_Texas A&M-Kingsville,0.0
+college_Texas A&M-Commerce,0.0
+college_Tennessee Tech,0.0
+college_Tennessee St.,0.0
+college_Tarleton St.,0.0
+college_Stillman,0.0
+college_St. Paul's,0.0
+college_St. Mary's (CA),0.0
+college_St. Francis (IL),0.0
+college_St. Cloud St.,0.0
+college_St. Augustine's,0.0
+college_Moorhead State (MN),0.0
+college_Hampton,0.0
+college_Montana St.,0.0
+college_Benedictine,0.0
+college_Buffalo,0.0
+college_Brown,0.0
+college_Bowling Green,0.0
+college_Boston Univ.,0.0
+college_Boston Col.,0.0
+college_Bloomsburg,0.0
+college_Bishop,0.0
+college_Bethune-Cookman,0.0
+college_Bethel (TN),0.0
+college_Bentley College,0.0
+college_Ball St.,0.0
+college_C.W. Post,0.0
+college_Azusa Pacific,0.0
+college_Austin Peay St.,0.0
+college_Augustana (SD),0.0
+college_Auburn,0.0
+college_Ashland,0.0
+college_Army,0.0
+college_Arkansas–Monticello,0.0
+college_Arkansas Tech,0.0
+college_Arkansas St.,0.0
+college_Ark-Pine Bluff,0.0
+college_Butte JC (CA),0.0
+college_Cal Poly-San Luis Obispo,0.0
+college_Montana,0.0
+college_Central Michigan,0.0
+college_Clemson,0.0
+college_Clark (GA),0.0
+college_Clarion,0.0
+college_Cincinnati,0.0
+college_Chattanooga,0.0
+college_Chadron St.,0.0
+college_Central Washington,0.0
+college_Central State (OH),0.0
+college_Central Oklahoma,0.0
+college_Central Missouri St.,0.0
+college_Central Connecticut St.,0.0
+college_Cal State-Chico,0.0
+college_Central Arkansas,0.0
+college_Catawba,0.0
+college_Case Western Reserve,0.0
+college_Carson-Newman,0.0
+college_Capital,0.0
+college_Cameron,0.0
+college_California Lutheran,0.0
+college_California (PA),0.0
+college_Cal State-Northridge,0.0
+college_Cal State-Fullerton,0.0
+college_Appalachian St.,0.0
+college_Angelo State (TX),0.0
+college_Anderson (IN),0.0
+fumbles_rec,0.0
+position_LB,0.0
+position_KR,0.0
+position_DL,0.0
+punting_ypp,0.0
+punting_yds,0.0
+punting_no,0.0
+kicking_pct,0.0
+kicking_pts,0.0
+kicking_fgm,0.0
+kicking_fga,0.0
+fumbles_lost,0.0
+college_American Int.,0.0
+fumbles_fum,0.0
+defensive_tot,0.0
+defensive_tfl,0.0
+defensive_td,0.0
+defensive_solo,0.0
+defensive_sacks,0.0
+defensive_qb_hur,0.0
+defensive_pd,0.0
+receiving_yds,0.0
+passing_ypa,0.0
+position_LS,0.0
+position_P,0.0
+position_group_DB,0.0
+position_group_LB,0.0
+college_Alcorn St.,0.0
+college_Albion,0.0
+college_Albany State (GA),0.0
+college_Albany (NY),0.0
+college_Alabama St.,0.0
+college_Alabama A&M,0.0
+college_Akron,0.0
+college_Air Force,0.0
+team_LAR,0.0
+category_TE,0.0
+category_RB,0.0
+category_QB,0.0
+category_P,0.0
+category_OL,0.0
+category_LS,0.0
+category_LB,0.0
+category_KR,0.0
+category_DL,0.0
+category_DB,0.0
+position_group_WR,0.0
+position_group_QB,0.0
+college_Colgate,0.0
+college_Colorado Mesa,0.0
+college_Colorado State-Pueblo,0.0
+college_Kutztown (PA),0.0
+college_Lindenwood,0.0
+college_Lenoir-Rhyne,0.0
+college_Lehigh,0.0
+college_Langston,0.0
+college_Lane,0.0
+college_Lambuth,0.0
+college_Lamar,0.0
+college_Lafayette,0.0
+college_La-Monroe,0.0
+college_La Verne,0.0
+college_Knoxville,0.0
+college_Indiana,0.0
+college_Kentucky St.,0.0
+college_Kent St.,0.0
+college_Johnson C. Smith,0.0
+college_John Carroll,0.0
+college_Jamestown,0.0
+college_James Madison,0.0
+college_Jacksonville St.,0.0
+college_Itawamba (MS),0.0
+college_Iowa St.,0.0
+college_Indiana St.,0.0
+college_Livingstone,0.0
+college_Long Beach CC,0.0
+college_Long Beach St.,0.0
+college_Louisiana,0.0
+college_Monmouth,0.0
+college_Missouri Western St.,0.0
+college_Missouri State,0.0
+college_Missouri Southern,0.0
+college_Mississippi Delta CC,0.0
+college_Mississippi Col.,0.0
+college_Miss. Valley St.,0.0
+college_Minnesota-Duluth,0.0
+college_Minnesota St.,0.0
+college_Millikin,0.0
+college_Millersville,0.0
+college_Midwestern St.,0.0
+college_Middle Tenn. St.,0.0
+college_Michigan Tech,0.0
+college_McNeese St.,0.0
+college_McGill,0.0
+college_Massachusetts,0.0
+college_Maryland,0.0
+college_Marist,0.0
+college_Manitoba,0.0
+college_Maine,0.0
+college_Indiana (PA),0.0
+college_Illinois St.,0.0
+college_Columbia,0.0
+college_Eastern Kentucky,0.0
+college_Florida A&M,0.0
+college_Findlay,0.0
+college_Ferrum,0.0
+college_Fairmont St.,0.0
+college_Emporia St.,0.0
+college_Elon,0.0
+college_Elizabeth City St.,0.0
+college_Eastern Washington,0.0
+college_Eastern New Mexico,0.0
+college_Eastern Michigan,0.0
+college_East Tennessee St.,0.0
+college_Illinois,0.0
+college_East Stroudsburg,0.0
+college_East Central (OK),0.0
+college_Drake,0.0
+college_Delta St.,0.0
+college_Delaware St.,0.0
+college_Dartmouth,0.0
+college_Cornell,0.0
+college_Concordia-St.Paul (MN),0.0
+college_Concordia-Moorhead (MN),0.0
+college_Concordia (QB),0.0
+college_Florida Atlantic,0.0
+college_Florida International,0.0
+college_Fort Hays St.,0.0
+college_Fort Valley St.,0.0
+college_Idaho St.,0.0
+college_Humboldt St.,0.0
+college_Howard Payne,0.0
+college_Howard,0.0
+college_Holy Cross,0.0
+college_Hobart,0.0
+college_Hinds CC,0.0
+college_Hillsdale,0.0
+college_Henderson St.,0.0
+college_Hawaii,0.0
+college_Harding,0.0
+college_Gustavus Adolphus,0.0
+college_Grand Valley St.,0.0
+college_Grambling St.,0.0
+college_Georgia Tech,0.0
+college_Georgia St.,0.0
+college_Georgia Southern,0.0
+college_Georgetown (KY),0.0
+college_Gardner-Webb,0.0
+college_Furman,0.0
+college_Fresno St.,0.0
+side_nan,0.0
