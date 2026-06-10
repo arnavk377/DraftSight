@@ -1,0 +1,150 @@
+pfr_player_id,player_name,pfr_player_name,position,primary_position,last_team,last_class,n_seasons,first_season,last_season,first_av_year,target_av,games
+CannA.00,A.J. Cann,A.J. Cann,G,RG,South Carolina,SR,2,2012,2014,2015,14.0,26
+ShipA.20,A.Q. Shipley,A.Q. Shipley,OL,C,Penn State,JR,2,2006,2007,2012,7.0,26
+ArcuAJ00,AJ Arcuri,AJ Arcuri,T,OL,Michigan State,SR,1,2021,2021,2022,1.0,13
+JoneAd20,Adrian Jones,Adrian Jones,OL,T,Kansas,,1,2003,2003,2004,7.0,13
+AkinAl00,Alex Akingbulu,Alex Akingbulu,OL,T,Fresno State,SR,1,2021,2021,2023,0.0,13
+LewiAl01,Alex Lewis,Alex Lewis,OL,LG,Nebraska,SR,1,2015,2015,2016,8.0,13
+MackAl20,Alex Mack,Alex Mack,OL,C,California,JR,1,2007,2007,2009,13.0,13
+ParsAl00,Alex Parsons,Alex Parsons,OL,G,USC,SR,2,2007,2009,2012,1.0,26
+BailAl01,Alvin Bailey,Alvin Bailey,OL,G,Arkansas,FR,1,2010,2010,2013,5.0,13
+MimsAm00,Amarius Mims,Amarius Mims,OL,OT,Georgia,SO,1,2022,2022,2024,16.0,14
+DillAn00,Andre Dillard,Andre Dillard,OL,T,Washington State,SR,2,2016,2018,2019,6.0,26
+SmitAn23,Andre Smith,Andre Smith,OL,RT,Alabama,SO,2,2006,2007,2009,4.0,26
+StueAn00,Andrew Stueber,Andrew Stueber,OL,OT,Michigan,SR,1,2021,2021,2024,1.0,14
+TillAn01,Andrew Tiller,Andrew Tiller,OL,RG,Syracuse,SR,1,2010,2010,2014,3.0,13
+VorhAn00,Andrew Vorhees,Andrew Vorhees,T,OL,USC,FR,1,2017,2017,2024,9.0,13
+PeatAn00,Andrus Peat,Andrus Peat,OL,LG,Stanford,JR,1,2014,2014,2015,14.0,13
+LeviAn20,Andy Levitre,Andy Levitre,OL,LG,Oregon State,SR,2,2007,2008,2009,12.0,26
+CastAn00,Anthony Castonzo,Anthony Castonzo,OL,LT,Boston College,JR,2,2007,2009,2011,11.0,26
+DaviAn24,Anthony Davis,Anthony Davis,OL,T,Rutgers,FR,1,2007,2007,2004,7.0,13
+SteeAn00,Anthony Steen,Anthony Steen,OL,C,Alabama,JR,1,2012,2012,2016,6.0,14
+HarrAn00,Anton Harrison,Anton Harrison,OL,OL,Oklahoma,SO,1,2021,2021,2023,16.0,13
+RichAs00,Asim Richards,Asim Richards,OL,OL,North Carolina,SR,2,2021,2022,2023,2.0,26
+MafiAt00,Atonio Mafi,Atonio Mafi,OL,G,UCLA,SR,1,2022,2022,2023,2.0,13
+PleaAu00,Austen Pleasants,Austen Pleasants,OL,OL,Ohio,SR,1,2019,2019,2021,0.0,13
+BlytAu00,Austin Blythe,Austin Blythe,OL,C,Iowa,SR,2,2014,2015,2016,3.0,27
+CorbAu00,Austin Corbett,Austin Corbett,OL,G,Nevada,SO,1,2015,2015,2018,5.0,13
+DecuAu00,Austin Deculus,Austin Deculus,OL,T,LSU,SO,1,2018,2018,2022,1.0,13
+JackAu00,Austin Jackson,Austin Jackson,OL,OL,USC,JR,2,2017,2019,2020,12.0,27
+SchlAu00,Austin Schlottmann,Austin Schlottmann,C,G,Texas Christian,SO,1,2015,2015,2019,3.0,13
+BenzBe01,Beau Benzschawel,Beau Benzschawel,OL,G,Wisconsin,SO,1,2016,2016,2019,0.0,14
+LimmBe00,Beaux Limmer,Beaux Limmer,OL,C,Arkansas,JR,2,2021,2022,2024,7.0,26
+BradBe00,Ben Braden,Ben Braden,OL,G,Michigan,JR,1,2015,2015,2018,0.0,13
+ClevBe00,Ben Cleveland,Ben Cleveland,OL,G,Georgia,FR,1,2017,2017,2021,3.0,15
+ColeBe20,Ben Coleman,Ben Coleman,OL,LG,Arizona State,SR,1,2024,2024,1999,13.0,14
+GrubBe20,Ben Grubbs,Ben Grubbs,OL,LG,Auburn,SR,1,2006,2006,2007,12.0,13
+JoneBe01,Ben Jones,Ben Jones,OL,C,Georgia,SO,1,2009,2009,2012,6.0,13
+PoweBe00,Ben Powers,Ben Powers,OL,G,Oklahoma,SR,2,2017,2018,2019,4.0,27
+PricBi01,Billy Price,Billy Price,OL,C,Ohio State,SR,2,2015,2017,2018,9.0,27
+FreeBl00,Blake Freeland,Blake Freeland,OL,T,BYU,JR,2,2021,2022,2023,6.0,26
+EvanBo00,Bobby Evans,Bobby Evans,OL,G,Oklahoma,JR,1,2018,2018,2019,4.0,14
+LundBr00,Brad Lundblade,Brad Lundblade,OL,C,Oklahoma State,SO,1,2015,2015,2019,0.0,13
+SmitBr06,Braden Smith,Braden Smith,OL,RT,Auburn,SO,1,2015,2015,2018,15.0,13
+BozeBr00,Bradley Bozeman,Bradley Bozeman,OL,C,Alabama,SO,1,2015,2015,2018,12.0,15
+SoweBr00,Bradley Sowell,Bradley Sowell,OL,T,Ole Miss,FR,1,2008,2008,2012,7.0,13
+ChriBr00,Brady Christensen,Brady Christensen,OL,G,BYU,FR,1,2018,2018,2021,10.0,13
+CartBr20,Brandon Carter,Brandon Carter,OL,G,Texas Tech,JR,1,2008,2008,2010,0.0,13
+ColeBr02,Brandon Coleman,Brandon Coleman,OL,LT,Texas Christian,JR,1,2022,2022,2024,11.0,14
+MoslBr00,Brandon Mosley,Brandon Mosley,OL,T,Auburn,SR,2,2010,2011,2013,2.0,27
+ScheBr00,Brandon Scherff,Brandon Scherff,OL,RG,Iowa,SR,1,2014,2014,2015,20.0,13
+ShelBr00,Brandon Shell,Brandon Shell,T,RT,South Carolina,JR,1,2014,2014,2016,7.0,13
+WashBr00,Brandon Washington,Brandon Washington,OL,G,Miami (FL),SO,1,2010,2010,2013,0.0,13
+MahoBr00,Brendan Mahon,Brendan Mahon,G,G,Penn State,SO,1,2015,2015,2018,0.0,13
+BoykBr01,Brett Boyko,Brett Boyko,OL,T,Nevada-Las Vegas,SR,1,2014,2014,2017,0.0,13
+AlleBr02,Brian Allen,Brian Allen,OL,C,Michigan State,SO,1,2015,2015,2018,6.0,14
+ONeiBr00,Brian O'Neill,Brian O'Neill,OL,RT,Pitt,SO,2,2015,2016,2018,13.0,26
+JoneBr09,Broderick Jones,Broderick Jones,OL,OT,Georgia,SO,2,2021,2022,2023,13.0,29
+StorBr00,Bryan Stork,Bryan Stork,OL,C,Florida State,JR,1,2012,2012,2014,11.0,13
+BrowBr01,Bryant Browning,Bryant Browning,OL,G,Ohio State,SR,2,2009,2010,2011,0.0,26
+HarrBr01,Bryce Harris,Bryce Harris,OL,T,Toledo,SR,2,2017,2021,2012,3.0,27
+WallCa00,Caedan Wallace,Caedan Wallace,OL,T,Penn State,SR,2,2021,2023,2024,1.0,26
+BeneCa00,Caleb Benenoch,Caleb Benenoch,OL,T,UCLA,JR,2,2014,2015,2016,4.0,26
+JoneCa03,Caleb Jones,Caleb Jones,OL,T,Indiana,SO,1,2019,2019,2023,0.0,13
+SchlCa00,Caleb Schlauderaff,Caleb Schlauderaff,OL,G,Utah,FR,1,2007,2007,2011,1.0,13
+ThroCa01,Calvin Throckmorton,Calvin Throckmorton,OL,G,Oregon,SR,2,2017,2019,2021,9.0,27
+FlemCa00,Cameron Fleming,Cameron Fleming,OL,T,Stanford,JR,1,2012,2012,2014,7.0,14
+TomxCa00,Cameron Tom,Cameron Tom,OL,C,Southern Mississippi,SR,2,2015,2016,2018,2.0,27
+WarrCa00,Carter Warren,Carter Warren,OL,T,Pitt,SR,1,2021,2021,2023,3.0,14
+RuizCe00,Cesar Ruiz,Cesar Ruiz,OL,RG,Michigan,SO,1,2018,2018,2020,11.0,13
+WarmCh00,Chance Warmack,Chance Warmack,OL,G,Alabama,,1,2012,2012,2013,14.0,14
+BrewCh01,Chandler Brewer,Chandler Brewer,OL,G,Middle Tennessee State,SR,2,2015,2018,2019,3.0,26
+GlasCh01,Chris Glaser,Chris Glaser,T,OL,Virginia,JR,1,2019,2019,2023,0.0,14
+WichCo00,Cody Wichmann,Cody Wichmann,OL,RG,Fresno State,SR,1,2014,2014,2015,6.0,14
+CrosCo00,Cole Croston,Cole Croston,OL,T,Iowa,JR,1,2015,2015,2017,0.0,14
+ShelCo00,Coleman Shelton,Coleman Shelton,OL,C,Washington,JR,1,2016,2016,2019,2.0,14
+BrowCo23,Colin Brown,Colin Brown,OL,T,Missouri,SR,1,2008,2008,2011,1.0,14
+GalvCo00,Connor Galvin,Connor Galvin,OL,OL,Baylor,SR,1,2021,2021,2023,0.0,14
+McGoCo00,Connor McGovern,Connor McGovern,OL,C,Missouri,JR,1,2014,2014,2017,9.0,14
+BeebCo00,Cooper Beebe,Cooper Beebe,OL,C,Kansas State,JR,1,2022,2022,2024,10.0,14
+HumpCr00,Creed Humphrey,Creed Humphrey,OL,C,Oklahoma,SO,2,2018,2019,2021,22.0,28
+LewiDa05,Damien Lewis,Damien Lewis,G,LG,LSU,SR,1,2019,2019,2020,14.0,15
+WillDa07,Darrell Williams,Darrell Williams,OL,T,Western Kentucky,JR,1,2015,2015,2015,2.0,14
+SharDa02,David Sharpe,David Sharpe,OL,T,Florida,SO,1,2015,2015,2017,1.0,14
+DawkDi00,Dion Dawkins,Dion Dawkins,OL,LT,Temple,SR,2,2015,2016,2017,10.0,28
+StepDo00,Donald Stephenson,Donald Stephenson,OL,LT,Oklahoma,JR,1,2010,2010,2012,7.0,14
+MillDr00,Drew Miller,Drew Miller,OL,C,Florida,JR,1,2006,2006,2011,0.0,14
+BrowDu20,Duane Brown,Duane Brown,OL,LT,Virginia Tech,SR,1,2007,2007,2008,16.0,14
+WangEd20,Ed Wang,Ed Wang,OL,T,Virginia Tech,JR,1,2008,2008,2010,0.0,14
+NkanEl00,Elijah Nkansah,Elijah Nkansah,OL,T,Toledo,SR,1,2017,2017,2018,0.0,14
+NealEv00,Evan Neal,Evan Neal,OL,T,Alabama,JR,1,2021,2021,2022,8.0,14
+LampFo00,Forrest Lamp,Forrest Lamp,OL,G,Western Kentucky,JR,1,2015,2015,2018,1.0,14
+PrinIs00,Isaiah Prince,Isaiah Prince,OL,T,Ohio State,JR,1,2017,2017,2019,4.0,14
+LathJC00,JC Latham,JC Latham,OL,LT,Alabama,JR,2,2021,2023,2024,11.0,28
+BartJa00,Jackson Barton,Jackson Barton,OL,OL,Utah,SR,1,2018,2018,2021,0.0,14
+CarmJa00,Jackson Carman,Jackson Carman,OL,G,Clemson,SO,1,2019,2019,2021,4.0,15
+CarpJa00,James Carpenter,James Carpenter,OL,LG,Alabama,JR,1,2009,2009,2011,7.0,14
+DaniJa01,James Daniels,James Daniels,OL,LG,Iowa,FR,1,2015,2015,2018,11.0,14
+KirkJa03,Jaxson Kirkland,Jaxson Kirkland,OL,G,Washington,FR,1,2018,2018,2024,0.0,14
+SirlJe00,Jeremiah Sirles,Jeremiah Sirles,OL,T,Nebraska,JR,1,2012,2012,2014,6.0,14
+StalJo20,Joe Staley,Joe Staley,OL,LT,Central Michigan,,1,2006,2006,2007,13.0,14
+BitoJo00,Joel Bitonio,Joel Bitonio,OL,LG,Nevada,FR,1,2010,2010,2014,10.0,14
+OjukJo00,John Ojukwu,John Ojukwu,OL,OL,Boise State,SR,1,2022,2022,2023,3.0,14
+SimpJo00,John Simpson,John Simpson,OL,G,Clemson,SR,2,2018,2019,2020,8.0,29
+LuigJo20,Jonathan Luigs,Jonathan Luigs,OL,C,Arkansas,JR,1,2006,2006,2009,1.0,14
+McFaJo00,Jordan McFadden,Jordan McFadden,OL,OL,Clemson,SR,1,2022,2022,2023,1.0,14
+GarnJo00,Joshua Garnett,Joshua Garnett,OL,G,Stanford,SR,1,2015,2015,2016,5.0,14
+McGaKa00,Kaleb McGary,Kaleb McGary,OL,RT,Washington,SO,1,2016,2016,2019,15.0,14
+MurpKy00,Kyle Murphy,Kyle Murphy,OL,T,Stanford,SR,1,2015,2015,2016,2.0,14
+HolmLa00,Lamar Holmes,Lamar Holmes,OL,T,Southern Mississippi,SR,1,2011,2011,2012,8.0,14
+TurnLa00,Landon Turner,Landon Turner,G,G,North Carolina,SR,1,2015,2015,2016,1.0,14
+WattLu00,Luke Wattenberg,Luke Wattenberg,OL,C,Washington,SO,1,2018,2018,2022,2.0,14
+AumaMa00,Malaesala Aumavae-Laulu,Malaesala Aumavae-Laulu,OL,G,Oregon,JR,1,2021,2021,2024,0.0,14
+WrotMa20,Mansfield Wrotto,Mansfield Wrotto,OL,G,Georgia Tech,SR,1,2006,2006,2008,3.0,14
+HenrMa02,Marcus Henry,Marcus Henry,OL,C,Boise State,JR,1,2014,2014,2020,0.0,14
+PryoMa00,Matt Pryor,Matt Pryor,G,OL,Texas Christian,SR,1,2017,2017,2019,5.0,14
+PounMa20,Maurkice Pouncey,Maurkice Pouncey,OL,C,Florida,JR,2,2008,2009,2010,25.0,28
+SchaMa01,Max Scharping,Max Scharping,OL,G,Northern Illinois,FR,1,2015,2015,2019,13.0,14
+DeitMi00,Michael Deiter,Michael Deiter,OL,C,Wisconsin,JR,1,2017,2017,2019,7.0,14
+JohnMi23,Mike Johnson,Mike Johnson,OL,G,Alabama,JR,1,2008,2008,2011,2.0,14
+TorrOC00,O'Cyrus Torrence,O'Cyrus Torrence,OL,G,Louisiana,FR,1,2019,2019,2023,16.0,14
+PaulPa01,Patrick Paul,Patrick Paul,OL,OT,Houston,FR,1,2021,2021,2024,10.0,14
+SewePe00,Penei Sewell,Penei Sewell,OL,RT,Oregon,SO,1,2019,2019,2021,20.0,14
+HillRa01,Rashod Hill,Rashod Hill,OL,T,Southern Mississippi,SR,1,2015,2015,2016,5.0,14
+HenrRi00,Ricky Henry,Ricky Henry,OL,G,Nebraska,SR,1,2010,2010,2011,0.0,14
+HudsRo00,Rodney Hudson,Rodney Hudson,OL,C,Florida State,SR,1,2010,2010,2011,2.0,14
+RoseRo01,Roger Rosengarten,Roger Rosengarten,OL,RT,Washington,SO,1,2023,2023,2024,17.0,15
+PierRo00,Ross Pierschbacher,Ross Pierschbacher,OL,C,Alabama,SR,2,2015,2018,2019,0.0,30
+GroyRy00,Ryan Groy,Ryan Groy,OL,G,Wisconsin,JR,2,2011,2012,2014,1.0,28
+HayeRy00,Ryan Hayes,Ryan Hayes,OL,T,Michigan,SR,1,2021,2021,2024,0.0,14
+HuntRy00,Ryan Hunter,Ryan Hunter,OL,T,Bowling Green,SO,1,2015,2015,2019,0.0,14
+KellRy00,Ryan Kelly,Ryan Kelly,OL,C,Alabama,SR,1,2015,2015,2016,13.0,15
+TeckSa00,Sam Tecklenburg,Sam Tecklenburg,OL,T,Baylor,SR,1,2019,2019,2020,1.0,14
+CosmSa00,Samuel Cosmi,Samuel Cosmi,OL,RT,Texas,FR,1,2018,2018,2021,7.0,14
+LaumSa00,Sataoa Laumea,Sataoa Laumea,OL,G,Utah,SO,1,2022,2022,2024,2.0,14
+WediSc00,Scott Wedige,Scott Wedige,OL,C,Northern Illinois,SR,1,2011,2011,2012,0.0,14
+LongSp00,Spencer Long,Spencer Long,OL,C,Nebraska,JR,1,2012,2012,2014,7.0,14
+BassTJ00,T.J. Bass,T.J. Bass,OL,G,Oregon,JR,1,2021,2021,2023,4.0,14
+DeckTa00,Taylor Decker,Taylor Decker,OL,LT,Ohio State,JR,1,2014,2014,2016,12.0,15
+HearTa00,Taylor Hearn,Taylor Hearn,G,G,Clemson,JR,2,2016,2017,2018,0.0,28
+FredTr00,Travis Frederick,Travis Frederick,OL,C,Wisconsin,JR,1,2012,2012,2013,21.0,14
+AnchTr00,Tremayne Anchrum,Tremayne Anchrum,T,G,Clemson,SO,1,2017,2017,2020,1.0,14
+WillTr21,Trent Williams,Trent Williams,OL,LT,Oklahoma,JR,1,2008,2008,2010,10.0,14
+KeegTr00,Trevor Keegan,Trevor Keegan,OL,G,Michigan,SR,1,2023,2023,2024,0.0,15
+FautTr00,Troy Fautanu,Troy Fautanu,OL,OT,Washington,JR,1,2023,2023,2024,9.0,15
+GrabTy00,Tylan Grable,Tylan Grable,OL,OT,UCF,SR,1,2022,2022,2024,2.0,14
+BiadTy00,Tyler Biadasz,Tyler Biadasz,OL,C,Wisconsin,JR,1,2019,2019,2020,9.0,14
+LindTy00,Tyler Linderbaum,Tyler Linderbaum,OL,C,Iowa,JR,1,2021,2021,2022,16.0,14
+McClWa00,Warren McClendon,Warren McClendon,OL,OL,Georgia,SO,1,2021,2021,2023,3.0,15
+BannZa00,Zach Banner,Zach Banner,T,T,USC,JR,1,2015,2015,2017,1.0,14
+TomxZa00,Zach Tom,Zach Tom,OL,RT,Wake Forest,JR,1,2021,2021,2022,12.0,14

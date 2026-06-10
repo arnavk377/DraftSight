@@ -1,0 +1,35 @@
+player_id,player,position,team,conference,category,stat_type,stat
+118118,J.J. Jones,S,NC State,ACC,interceptions,AVG,2.0
+118118,J.J. Jones,S,NC State,ACC,interceptions,INT,1
+118118,J.J. Jones,S,NC State,ACC,interceptions,TD,0
+118118,J.J. Jones,S,NC State,ACC,interceptions,YDS,2
+135811,Justin Miller,TE,Clemson,ACC,interceptions,AVG,4.7
+135811,Justin Miller,TE,Clemson,ACC,interceptions,INT,3
+135811,Justin Miller,TE,Clemson,ACC,interceptions,TD,0
+135811,Justin Miller,TE,Clemson,ACC,interceptions,YDS,14
+135811,Justin Miller,TE,Clemson,ACC,passing,ATT,1
+135811,Justin Miller,TE,Clemson,ACC,passing,COMPLETIONS,1
+135811,Justin Miller,TE,Clemson,ACC,passing,INT,0
+135811,Justin Miller,TE,Clemson,ACC,passing,PCT,1.000
+135811,Justin Miller,TE,Clemson,ACC,passing,TD,0
+135811,Justin Miller,TE,Clemson,ACC,passing,YDS,2
+135811,Justin Miller,TE,Clemson,ACC,passing,YPA,2.0
+135811,Justin Miller,TE,Clemson,ACC,puntReturns,AVG,12.1
+135811,Justin Miller,TE,Clemson,ACC,puntReturns,LONG,69
+135811,Justin Miller,TE,Clemson,ACC,puntReturns,NO,28
+135811,Justin Miller,TE,Clemson,ACC,puntReturns,TD,1
+135811,Justin Miller,TE,Clemson,ACC,puntReturns,YDS,338
+135811,Justin Miller,TE,Clemson,ACC,rushing,CAR,1
+135811,Justin Miller,TE,Clemson,ACC,rushing,LONG,3
+135811,Justin Miller,TE,Clemson,ACC,rushing,TD,0
+135811,Justin Miller,TE,Clemson,ACC,rushing,YDS,3
+135811,Justin Miller,TE,Clemson,ACC,rushing,YPC,3.0
+156974,Dennis Pitta,TE,BYU,Mountain West,receiving,LONG,21
+156974,Dennis Pitta,TE,BYU,Mountain West,receiving,REC,17
+156974,Dennis Pitta,TE,BYU,Mountain West,receiving,TD,2
+156974,Dennis Pitta,TE,BYU,Mountain West,receiving,YDS,176
+156974,Dennis Pitta,TE,BYU,Mountain West,receiving,YPR,10.4
+161040,Torri Williams,S,Purdue,Big Ten,interceptions,AVG,15.0
+161040,Torri Williams,S,Purdue,Big Ten,interceptions,INT,1
+161040,Torri Williams,S,Purdue,Big Ten,interceptions,TD,0
+161040,Torri Williams,S,Purdue,Big Ten,interceptions,YDS,15

@@ -1,0 +1,1118 @@
+player_id,player,position,team,conference,category,stat_type,stat
+136743,Spencer Larsen,WR,Arizona,Pac-10,interceptions,AVG,0.0
+136743,Spencer Larsen,WR,Arizona,Pac-10,interceptions,INT,1
+136743,Spencer Larsen,WR,Arizona,Pac-10,interceptions,TD,0
+136743,Spencer Larsen,WR,Arizona,Pac-10,interceptions,YDS,0
+148058,Mike Jones,LB,Western Michigan,Mid-American,kicking,FGA,1
+148058,Mike Jones,LB,Western Michigan,Mid-American,kicking,FGM,1
+148058,Mike Jones,LB,Western Michigan,Mid-American,kicking,LONG,22
+148058,Mike Jones,LB,Western Michigan,Mid-American,kicking,PCT,1.000
+148058,Mike Jones,LB,Western Michigan,Mid-American,kicking,PTS,3
+148058,Mike Jones,LB,Western Michigan,Mid-American,kicking,XPA,0
+148058,Mike Jones,LB,Western Michigan,Mid-American,kicking,XPM,0
+159665,Willie Young,DE,NC State,ACC,interceptions,AVG,34.0
+159665,Willie Young,DE,NC State,ACC,interceptions,INT,1
+159665,Willie Young,DE,NC State,ACC,interceptions,TD,1
+159665,Willie Young,DE,NC State,ACC,interceptions,YDS,34
+160327,Robert Henson,DT,TCU,Mountain West,puntReturns,AVG,3.0
+160327,Robert Henson,DT,TCU,Mountain West,puntReturns,LONG,3
+160327,Robert Henson,DT,TCU,Mountain West,puntReturns,NO,1
+160327,Robert Henson,DT,TCU,Mountain West,puntReturns,TD,0
+160327,Robert Henson,DT,TCU,Mountain West,puntReturns,YDS,3
+161305,Trevard Lindley,CB,Kentucky,SEC,interceptions,AVG,0.0
+161305,Trevard Lindley,CB,Kentucky,SEC,interceptions,INT,2
+161305,Trevard Lindley,CB,Kentucky,SEC,interceptions,TD,0
+161305,Trevard Lindley,CB,Kentucky,SEC,interceptions,YDS,0
+161972,Anthony Brown,DL,Arkansas,SEC,puntReturns,AVG,16.0
+161972,Anthony Brown,DL,Arkansas,SEC,puntReturns,LONG,16
+161972,Anthony Brown,DL,Arkansas,SEC,puntReturns,NO,1
+161972,Anthony Brown,DL,Arkansas,SEC,puntReturns,TD,0
+161972,Anthony Brown,DL,Arkansas,SEC,puntReturns,YDS,16
+162413,Jordan Shipley,WR,Texas,Big 12,receiving,LONG,56
+162413,Jordan Shipley,WR,Texas,Big 12,receiving,REC,16
+162413,Jordan Shipley,WR,Texas,Big 12,receiving,TD,4
+162413,Jordan Shipley,WR,Texas,Big 12,receiving,YDS,229
+162413,Jordan Shipley,WR,Texas,Big 12,receiving,YPR,14.3
+162413,Jordan Shipley,WR,Texas,Big 12,rushing,CAR,7
+162413,Jordan Shipley,WR,Texas,Big 12,rushing,LONG,40
+162413,Jordan Shipley,WR,Texas,Big 12,rushing,TD,0
+162413,Jordan Shipley,WR,Texas,Big 12,rushing,YDS,110
+162413,Jordan Shipley,WR,Texas,Big 12,rushing,YPC,15.7
+169065,Kevin Harris,RB,Wake Forest,ACC,receiving,LONG,8
+169065,Kevin Harris,RB,Wake Forest,ACC,receiving,REC,5
+169065,Kevin Harris,RB,Wake Forest,ACC,receiving,TD,0
+169065,Kevin Harris,RB,Wake Forest,ACC,receiving,YDS,6
+169065,Kevin Harris,RB,Wake Forest,ACC,receiving,YPR,1.2
+169065,Kevin Harris,RB,Wake Forest,ACC,rushing,CAR,78
+169065,Kevin Harris,RB,Wake Forest,ACC,rushing,LONG,41
+169065,Kevin Harris,RB,Wake Forest,ACC,rushing,TD,6
+169065,Kevin Harris,RB,Wake Forest,ACC,rushing,YDS,393
+169065,Kevin Harris,RB,Wake Forest,ACC,rushing,YPC,5.0
+169280,Mike Kafka,QB,Northwestern,Big Ten,passing,ATT,96
+169280,Mike Kafka,QB,Northwestern,Big Ten,passing,COMPLETIONS,55
+169280,Mike Kafka,QB,Northwestern,Big Ten,passing,INT,5
+169280,Mike Kafka,QB,Northwestern,Big Ten,passing,PCT,0.573
+169280,Mike Kafka,QB,Northwestern,Big Ten,passing,TD,1
+169280,Mike Kafka,QB,Northwestern,Big Ten,passing,YDS,494
+169280,Mike Kafka,QB,Northwestern,Big Ten,passing,YPA,5.1
+169280,Mike Kafka,QB,Northwestern,Big Ten,rushing,CAR,48
+169280,Mike Kafka,QB,Northwestern,Big Ten,rushing,LONG,55
+169280,Mike Kafka,QB,Northwestern,Big Ten,rushing,TD,2
+169280,Mike Kafka,QB,Northwestern,Big Ten,rushing,YDS,263
+169280,Mike Kafka,QB,Northwestern,Big Ten,rushing,YPC,5.5
+169289,Corey Wootton,DE,Northwestern,Big Ten,interceptions,AVG,5.5
+169289,Corey Wootton,DE,Northwestern,Big Ten,interceptions,INT,2
+169289,Corey Wootton,DE,Northwestern,Big Ten,interceptions,TD,0
+169289,Corey Wootton,DE,Northwestern,Big Ten,interceptions,YDS,11
+169337,Tony Moeaki,TE,Iowa,Big Ten,receiving,LONG,35
+169337,Tony Moeaki,TE,Iowa,Big Ten,receiving,REC,11
+169337,Tony Moeaki,TE,Iowa,Big Ten,receiving,TD,3
+169337,Tony Moeaki,TE,Iowa,Big Ten,receiving,YDS,140
+169337,Tony Moeaki,TE,Iowa,Big Ten,receiving,YPR,12.7
+169493,Stephen Williams,WR,Toledo,Mid-American,receiving,LONG,37
+169493,Stephen Williams,WR,Toledo,Mid-American,receiving,REC,6
+169493,Stephen Williams,WR,Toledo,Mid-American,receiving,TD,1
+169493,Stephen Williams,WR,Toledo,Mid-American,receiving,YDS,87
+169493,Stephen Williams,WR,Toledo,Mid-American,receiving,YPR,14.5
+169493,Stephen Williams,WR,Toledo,Mid-American,rushing,CAR,1
+169493,Stephen Williams,WR,Toledo,Mid-American,rushing,LONG,13
+169493,Stephen Williams,WR,Toledo,Mid-American,rushing,TD,0
+169493,Stephen Williams,WR,Toledo,Mid-American,rushing,YDS,13
+169493,Stephen Williams,WR,Toledo,Mid-American,rushing,YPC,13.0
+169679,Justin Anderson,?,Northern Illinois,Mid-American,rushing,CAR,25
+169679,Justin Anderson,?,Northern Illinois,Mid-American,rushing,LONG,16
+169679,Justin Anderson,?,Northern Illinois,Mid-American,rushing,TD,1
+169679,Justin Anderson,?,Northern Illinois,Mid-American,rushing,YDS,117
+169679,Justin Anderson,?,Northern Illinois,Mid-American,rushing,YPC,4.7
+169755,Ryan Williams,?,Air Force,Mountain West,receiving,LONG,2
+169755,Ryan Williams,?,Air Force,Mountain West,receiving,REC,1
+169755,Ryan Williams,?,Air Force,Mountain West,receiving,TD,0
+169755,Ryan Williams,?,Air Force,Mountain West,receiving,YDS,2
+169755,Ryan Williams,?,Air Force,Mountain West,receiving,YPR,2.0
+169755,Ryan Williams,?,Air Force,Mountain West,rushing,CAR,102
+169755,Ryan Williams,?,Air Force,Mountain West,rushing,LONG,43
+169755,Ryan Williams,?,Air Force,Mountain West,rushing,TD,4
+169755,Ryan Williams,?,Air Force,Mountain West,rushing,YDS,442
+169755,Ryan Williams,?,Air Force,Mountain West,rushing,YPC,4.3
+169991,Daryl Jones,WR,New Mexico,Mountain West,receiving,LONG,25
+169991,Daryl Jones,WR,New Mexico,Mountain West,receiving,REC,1
+169991,Daryl Jones,WR,New Mexico,Mountain West,receiving,TD,0
+169991,Daryl Jones,WR,New Mexico,Mountain West,receiving,YDS,25
+169991,Daryl Jones,WR,New Mexico,Mountain West,receiving,YPR,25.0
+170074,Seyi Ajirotutu,WR,Fresno State,Western Athletic,receiving,LONG,17
+170074,Seyi Ajirotutu,WR,Fresno State,Western Athletic,receiving,REC,4
+170074,Seyi Ajirotutu,WR,Fresno State,Western Athletic,receiving,TD,0
+170074,Seyi Ajirotutu,WR,Fresno State,Western Athletic,receiving,YDS,34
+170074,Seyi Ajirotutu,WR,Fresno State,Western Athletic,receiving,YPR,8.5
+170074,Seyi Ajirotutu,WR,Fresno State,Western Athletic,rushing,CAR,2
+170074,Seyi Ajirotutu,WR,Fresno State,Western Athletic,rushing,LONG,3
+170074,Seyi Ajirotutu,WR,Fresno State,Western Athletic,rushing,TD,0
+170074,Seyi Ajirotutu,WR,Fresno State,Western Athletic,rushing,YDS,3
+170074,Seyi Ajirotutu,WR,Fresno State,Western Athletic,rushing,YPC,1.5
+170086,Marlon Moore,WR,Fresno State,Western Athletic,receiving,LONG,75
+170086,Marlon Moore,WR,Fresno State,Western Athletic,receiving,REC,4
+170086,Marlon Moore,WR,Fresno State,Western Athletic,receiving,TD,1
+170086,Marlon Moore,WR,Fresno State,Western Athletic,receiving,YDS,105
+170086,Marlon Moore,WR,Fresno State,Western Athletic,receiving,YPR,26.3
+170086,Marlon Moore,WR,Fresno State,Western Athletic,rushing,CAR,3
+170086,Marlon Moore,WR,Fresno State,Western Athletic,rushing,LONG,15
+170086,Marlon Moore,WR,Fresno State,Western Athletic,rushing,TD,0
+170086,Marlon Moore,WR,Fresno State,Western Athletic,rushing,YDS,31
+170086,Marlon Moore,WR,Fresno State,Western Athletic,rushing,YPC,10.3
+170091,Chastin West,WR,Fresno State,Western Athletic,puntReturns,AVG,-1.0
+170091,Chastin West,WR,Fresno State,Western Athletic,puntReturns,LONG,-1
+170091,Chastin West,WR,Fresno State,Western Athletic,puntReturns,NO,1
+170091,Chastin West,WR,Fresno State,Western Athletic,puntReturns,TD,0
+170091,Chastin West,WR,Fresno State,Western Athletic,puntReturns,YDS,-1
+170091,Chastin West,WR,Fresno State,Western Athletic,receiving,LONG,60
+170091,Chastin West,WR,Fresno State,Western Athletic,receiving,REC,33
+170091,Chastin West,WR,Fresno State,Western Athletic,receiving,TD,3
+170091,Chastin West,WR,Fresno State,Western Athletic,receiving,YDS,365
+170091,Chastin West,WR,Fresno State,Western Athletic,receiving,YPR,11.1
+170091,Chastin West,WR,Fresno State,Western Athletic,rushing,CAR,10
+170091,Chastin West,WR,Fresno State,Western Athletic,rushing,LONG,20
+170091,Chastin West,WR,Fresno State,Western Athletic,rushing,TD,0
+170091,Chastin West,WR,Fresno State,Western Athletic,rushing,YDS,58
+170091,Chastin West,WR,Fresno State,Western Athletic,rushing,YPC,5.8
+170456,Jordan Richards,LB,UCF,Conference USA,puntReturns,AVG,22.0
+170456,Jordan Richards,LB,UCF,Conference USA,puntReturns,LONG,22
+170456,Jordan Richards,LB,UCF,Conference USA,puntReturns,NO,1
+170456,Jordan Richards,LB,UCF,Conference USA,puntReturns,TD,0
+170456,Jordan Richards,LB,UCF,Conference USA,puntReturns,YDS,22
+170558,Bryan Anderson,WR,Central Michigan,Mid-American,receiving,LONG,50
+170558,Bryan Anderson,WR,Central Michigan,Mid-American,receiving,REC,73
+170558,Bryan Anderson,WR,Central Michigan,Mid-American,receiving,TD,5
+170558,Bryan Anderson,WR,Central Michigan,Mid-American,receiving,YDS,867
+170558,Bryan Anderson,WR,Central Michigan,Mid-American,receiving,YPR,11.9
+170558,Bryan Anderson,WR,Central Michigan,Mid-American,rushing,CAR,9
+170558,Bryan Anderson,WR,Central Michigan,Mid-American,rushing,LONG,11
+170558,Bryan Anderson,WR,Central Michigan,Mid-American,rushing,TD,0
+170558,Bryan Anderson,WR,Central Michigan,Mid-American,rushing,YDS,14
+170558,Bryan Anderson,WR,Central Michigan,Mid-American,rushing,YPC,1.6
+170577,Josh Gordy,DB,Central Michigan,Mid-American,interceptions,AVG,50.0
+170577,Josh Gordy,DB,Central Michigan,Mid-American,interceptions,INT,2
+170577,Josh Gordy,DB,Central Michigan,Mid-American,interceptions,TD,1
+170577,Josh Gordy,DB,Central Michigan,Mid-American,interceptions,YDS,100
+170594,Sam Williams,DE,Central Michigan,Mid-American,receiving,LONG,28
+170594,Sam Williams,DE,Central Michigan,Mid-American,receiving,REC,10
+170594,Sam Williams,DE,Central Michigan,Mid-American,receiving,TD,0
+170594,Sam Williams,DE,Central Michigan,Mid-American,receiving,YDS,120
+170594,Sam Williams,DE,Central Michigan,Mid-American,receiving,YPR,12.0
+170692,Mike Newton,DB,Buffalo,Mid-American,interceptions,AVG,21.6
+170692,Mike Newton,DB,Buffalo,Mid-American,interceptions,INT,5
+170692,Mike Newton,DB,Buffalo,Mid-American,interceptions,TD,0
+170692,Mike Newton,DB,Buffalo,Mid-American,interceptions,YDS,108
+170697,James Starks,RB,Buffalo,Mid-American,receiving,LONG,30
+170697,James Starks,RB,Buffalo,Mid-American,receiving,REC,34
+170697,James Starks,RB,Buffalo,Mid-American,receiving,TD,0
+170697,James Starks,RB,Buffalo,Mid-American,receiving,YDS,226
+170697,James Starks,RB,Buffalo,Mid-American,receiving,YPR,6.6
+170697,James Starks,RB,Buffalo,Mid-American,rushing,CAR,175
+170697,James Starks,RB,Buffalo,Mid-American,rushing,LONG,54
+170697,James Starks,RB,Buffalo,Mid-American,rushing,TD,6
+170697,James Starks,RB,Buffalo,Mid-American,rushing,YDS,704
+170697,James Starks,RB,Buffalo,Mid-American,rushing,YPC,4.0
+170747,Matt Stevens,TE,Western Michigan,Mid-American,receiving,LONG,18
+170747,Matt Stevens,TE,Western Michigan,Mid-American,receiving,REC,4
+170747,Matt Stevens,TE,Western Michigan,Mid-American,receiving,TD,1
+170747,Matt Stevens,TE,Western Michigan,Mid-American,receiving,YDS,38
+170747,Matt Stevens,TE,Western Michigan,Mid-American,receiving,YPR,9.5
+170809,Chris Garrett,RB,Ohio,Mid-American,puntReturns,AVG,13.5
+170809,Chris Garrett,RB,Ohio,Mid-American,puntReturns,LONG,88
+170809,Chris Garrett,RB,Ohio,Mid-American,puntReturns,NO,28
+170809,Chris Garrett,RB,Ohio,Mid-American,puntReturns,TD,1
+170809,Chris Garrett,RB,Ohio,Mid-American,puntReturns,YDS,378
+170809,Chris Garrett,RB,Ohio,Mid-American,receiving,LONG,15
+170809,Chris Garrett,RB,Ohio,Mid-American,receiving,REC,10
+170809,Chris Garrett,RB,Ohio,Mid-American,receiving,TD,0
+170809,Chris Garrett,RB,Ohio,Mid-American,receiving,YDS,84
+170809,Chris Garrett,RB,Ohio,Mid-American,receiving,YPR,8.4
+170809,Chris Garrett,RB,Ohio,Mid-American,rushing,CAR,19
+170809,Chris Garrett,RB,Ohio,Mid-American,rushing,LONG,59
+170809,Chris Garrett,RB,Ohio,Mid-American,rushing,TD,0
+170809,Chris Garrett,RB,Ohio,Mid-American,rushing,YDS,97
+170809,Chris Garrett,RB,Ohio,Mid-American,rushing,YPC,5.1
+170941,Michael Smith,?,Arkansas,SEC,receiving,LONG,3
+170941,Michael Smith,?,Arkansas,SEC,receiving,REC,1
+170941,Michael Smith,?,Arkansas,SEC,receiving,TD,0
+170941,Michael Smith,?,Arkansas,SEC,receiving,YDS,3
+170941,Michael Smith,?,Arkansas,SEC,receiving,YPR,3.0
+170941,Michael Smith,?,Arkansas,SEC,rushing,CAR,35
+170941,Michael Smith,?,Arkansas,SEC,rushing,LONG,27
+170941,Michael Smith,?,Arkansas,SEC,rushing,TD,3
+170941,Michael Smith,?,Arkansas,SEC,rushing,YDS,247
+170941,Michael Smith,?,Arkansas,SEC,rushing,YPC,7.1
+171369,Brandon Williams,CB,Arkansas State,Sun Belt,interceptions,AVG,0.0
+171369,Brandon Williams,CB,Arkansas State,Sun Belt,interceptions,INT,1
+171369,Brandon Williams,CB,Arkansas State,Sun Belt,interceptions,TD,0
+171369,Brandon Williams,CB,Arkansas State,Sun Belt,interceptions,YDS,0
+171369,Brandon Williams,CB,Arkansas State,Sun Belt,receiving,LONG,3
+171369,Brandon Williams,CB,Arkansas State,Sun Belt,receiving,REC,0
+171369,Brandon Williams,CB,Arkansas State,Sun Belt,receiving,TD,0
+171369,Brandon Williams,CB,Arkansas State,Sun Belt,receiving,YDS,3
+171369,Brandon Williams,CB,Arkansas State,Sun Belt,receiving,YPR,0
+172872,Michael Moore,?,Georgia,SEC,receiving,LONG,19
+172872,Michael Moore,?,Georgia,SEC,receiving,REC,2
+172872,Michael Moore,?,Georgia,SEC,receiving,TD,0
+172872,Michael Moore,?,Georgia,SEC,receiving,YDS,36
+172872,Michael Moore,?,Georgia,SEC,receiving,YPR,18.0
+172878,Marcus Washington,DE,Georgia,SEC,kickReturns,AVG,1.0
+172878,Marcus Washington,DE,Georgia,SEC,kickReturns,LONG,1
+172878,Marcus Washington,DE,Georgia,SEC,kickReturns,NO,1
+172878,Marcus Washington,DE,Georgia,SEC,kickReturns,TD,0
+172878,Marcus Washington,DE,Georgia,SEC,kickReturns,YDS,1
+173148,Jerome Murphy,CB,South Florida,Big East,puntReturns,AVG,18.0
+173148,Jerome Murphy,CB,South Florida,Big East,puntReturns,LONG,18
+173148,Jerome Murphy,CB,South Florida,Big East,puntReturns,NO,1
+173148,Jerome Murphy,CB,South Florida,Big East,puntReturns,TD,0
+173148,Jerome Murphy,CB,South Florida,Big East,puntReturns,YDS,18
+173396,Ed Dickson,TE,Oregon,Pac-10,receiving,LONG,16
+173396,Ed Dickson,TE,Oregon,Pac-10,receiving,REC,4
+173396,Ed Dickson,TE,Oregon,Pac-10,receiving,TD,0
+173396,Ed Dickson,TE,Oregon,Pac-10,receiving,YDS,45
+173396,Ed Dickson,TE,Oregon,Pac-10,receiving,YPR,11.3
+173455,David Nelson,WR,Florida,SEC,receiving,LONG,23
+173455,David Nelson,WR,Florida,SEC,receiving,REC,5
+173455,David Nelson,WR,Florida,SEC,receiving,TD,0
+173455,David Nelson,WR,Florida,SEC,receiving,YDS,76
+173455,David Nelson,WR,Florida,SEC,receiving,YPR,15.2
+173558,Marshay Green,CB,Ole Miss,SEC,puntReturns,AVG,7.2
+173558,Marshay Green,CB,Ole Miss,SEC,puntReturns,LONG,47
+173558,Marshay Green,CB,Ole Miss,SEC,puntReturns,NO,31
+173558,Marshay Green,CB,Ole Miss,SEC,puntReturns,TD,1
+173558,Marshay Green,CB,Ole Miss,SEC,puntReturns,YDS,222
+173558,Marshay Green,CB,Ole Miss,SEC,receiving,LONG,47
+173558,Marshay Green,CB,Ole Miss,SEC,receiving,REC,19
+173558,Marshay Green,CB,Ole Miss,SEC,receiving,TD,2
+173558,Marshay Green,CB,Ole Miss,SEC,receiving,YDS,174
+173558,Marshay Green,CB,Ole Miss,SEC,receiving,YPR,9.2
+173558,Marshay Green,CB,Ole Miss,SEC,rushing,CAR,3
+173558,Marshay Green,CB,Ole Miss,SEC,rushing,LONG,18
+173558,Marshay Green,CB,Ole Miss,SEC,rushing,TD,0
+173558,Marshay Green,CB,Ole Miss,SEC,rushing,YDS,35
+173558,Marshay Green,CB,Ole Miss,SEC,rushing,YPC,11.7
+173613,Joe Pawelek,LB,Baylor,Big 12,interceptions,AVG,0.0
+173613,Joe Pawelek,LB,Baylor,Big 12,interceptions,INT,1
+173613,Joe Pawelek,LB,Baylor,Big 12,interceptions,TD,0
+173613,Joe Pawelek,LB,Baylor,Big 12,interceptions,YDS,0
+173642,Joe Webb,QB,UAB,Conference USA,passing,ATT,51
+173642,Joe Webb,QB,UAB,Conference USA,passing,COMPLETIONS,33
+173642,Joe Webb,QB,UAB,Conference USA,passing,INT,0
+173642,Joe Webb,QB,UAB,Conference USA,passing,PCT,0.647
+173642,Joe Webb,QB,UAB,Conference USA,passing,TD,1
+173642,Joe Webb,QB,UAB,Conference USA,passing,YDS,426
+173642,Joe Webb,QB,UAB,Conference USA,passing,YPA,8.4
+173642,Joe Webb,QB,UAB,Conference USA,rushing,CAR,24
+173642,Joe Webb,QB,UAB,Conference USA,rushing,LONG,36
+173642,Joe Webb,QB,UAB,Conference USA,rushing,TD,1
+173642,Joe Webb,QB,UAB,Conference USA,rushing,YDS,38
+173642,Joe Webb,QB,UAB,Conference USA,rushing,YPC,1.6
+173649,Richard Goodman,WR,Florida State,ACC,receiving,LONG,22
+173649,Richard Goodman,WR,Florida State,ACC,receiving,REC,3
+173649,Richard Goodman,WR,Florida State,ACC,receiving,TD,0
+173649,Richard Goodman,WR,Florida State,ACC,receiving,YDS,33
+173649,Richard Goodman,WR,Florida State,ACC,receiving,YPR,11.0
+174005,Anderson Russell,DB,Ohio State,Big Ten,interceptions,AVG,0.0
+174005,Anderson Russell,DB,Ohio State,Big Ten,interceptions,INT,1
+174005,Anderson Russell,DB,Ohio State,Big Ten,interceptions,TD,0
+174005,Anderson Russell,DB,Ohio State,Big Ten,interceptions,YDS,0
+174208,Syd'Quan Thompson,DB,California,Pac-10,interceptions,AVG,0.0
+174208,Syd'Quan Thompson,DB,California,Pac-10,interceptions,INT,1
+174208,Syd'Quan Thompson,DB,California,Pac-10,interceptions,TD,0
+174208,Syd'Quan Thompson,DB,California,Pac-10,interceptions,YDS,0
+174296,Demetrius McCray,RB,Indiana,Big Ten,receiving,LONG,43
+174296,Demetrius McCray,RB,Indiana,Big Ten,receiving,REC,8
+174296,Demetrius McCray,RB,Indiana,Big Ten,receiving,TD,2
+174296,Demetrius McCray,RB,Indiana,Big Ten,receiving,YDS,69
+174296,Demetrius McCray,RB,Indiana,Big Ten,receiving,YPR,8.6
+174296,Demetrius McCray,RB,Indiana,Big Ten,rushing,CAR,88
+174296,Demetrius McCray,RB,Indiana,Big Ten,rushing,LONG,53
+174296,Demetrius McCray,RB,Indiana,Big Ten,rushing,TD,2
+174296,Demetrius McCray,RB,Indiana,Big Ten,rushing,YDS,320
+174296,Demetrius McCray,RB,Indiana,Big Ten,rushing,YPC,3.6
+174430,Chris Maragos,DB,Western Michigan,Mid-American,passing,ATT,1
+174430,Chris Maragos,DB,Western Michigan,Mid-American,passing,COMPLETIONS,0
+174430,Chris Maragos,DB,Western Michigan,Mid-American,passing,INT,0
+174430,Chris Maragos,DB,Western Michigan,Mid-American,passing,PCT,0.000
+174430,Chris Maragos,DB,Western Michigan,Mid-American,passing,TD,0
+174430,Chris Maragos,DB,Western Michigan,Mid-American,passing,YDS,0
+174430,Chris Maragos,DB,Western Michigan,Mid-American,passing,YPA,0.0
+174430,Chris Maragos,DB,Western Michigan,Mid-American,receiving,LONG,23
+174430,Chris Maragos,DB,Western Michigan,Mid-American,receiving,REC,25
+174430,Chris Maragos,DB,Western Michigan,Mid-American,receiving,TD,0
+174430,Chris Maragos,DB,Western Michigan,Mid-American,receiving,YDS,222
+174430,Chris Maragos,DB,Western Michigan,Mid-American,receiving,YPR,8.9
+174430,Chris Maragos,DB,Western Michigan,Mid-American,rushing,CAR,3
+174430,Chris Maragos,DB,Western Michigan,Mid-American,rushing,LONG,9
+174430,Chris Maragos,DB,Western Michigan,Mid-American,rushing,TD,0
+174430,Chris Maragos,DB,Western Michigan,Mid-American,rushing,YDS,0
+174430,Chris Maragos,DB,Western Michigan,Mid-American,rushing,YPC,0.0
+174559,Brody Eldridge,TE,Oklahoma,Big 12,receiving,LONG,10
+174559,Brody Eldridge,TE,Oklahoma,Big 12,receiving,REC,3
+174559,Brody Eldridge,TE,Oklahoma,Big 12,receiving,TD,0
+174559,Brody Eldridge,TE,Oklahoma,Big 12,receiving,YDS,18
+174559,Brody Eldridge,TE,Oklahoma,Big 12,receiving,YPR,6.0
+174747,Richie Brockel,TE,Boise State,Western Athletic,receiving,LONG,12
+174747,Richie Brockel,TE,Boise State,Western Athletic,receiving,REC,2
+174747,Richie Brockel,TE,Boise State,Western Athletic,receiving,TD,0
+174747,Richie Brockel,TE,Boise State,Western Athletic,receiving,YDS,20
+174747,Richie Brockel,TE,Boise State,Western Athletic,receiving,YPR,10.0
+174771,Kyle Wilson,CB,Boise State,Western Athletic,interceptions,AVG,16.0
+174771,Kyle Wilson,CB,Boise State,Western Athletic,interceptions,INT,1
+174771,Kyle Wilson,CB,Boise State,Western Athletic,interceptions,TD,0
+174771,Kyle Wilson,CB,Boise State,Western Athletic,interceptions,YDS,16
+174771,Kyle Wilson,CB,Boise State,Western Athletic,puntReturns,AVG,3.0
+174771,Kyle Wilson,CB,Boise State,Western Athletic,puntReturns,LONG,3
+174771,Kyle Wilson,CB,Boise State,Western Athletic,puntReturns,NO,1
+174771,Kyle Wilson,CB,Boise State,Western Athletic,puntReturns,TD,0
+174771,Kyle Wilson,CB,Boise State,Western Athletic,puntReturns,YDS,3
+174808,Steve Warren,LB,North Texas,Sun Belt,interceptions,AVG,0.0
+174808,Steve Warren,LB,North Texas,Sun Belt,interceptions,INT,1
+174808,Steve Warren,LB,North Texas,Sun Belt,interceptions,TD,0
+174808,Steve Warren,LB,North Texas,Sun Belt,interceptions,YDS,0
+175063,Jason Davis,DB,Georgia Tech,ACC,rushing,CAR,2
+175063,Jason Davis,DB,Georgia Tech,ACC,rushing,LONG,8
+175063,Jason Davis,DB,Georgia Tech,ACC,rushing,TD,0
+175063,Jason Davis,DB,Georgia Tech,ACC,rushing,YDS,3
+175063,Jason Davis,DB,Georgia Tech,ACC,rushing,YPC,1.5
+175300,Ndamukong Suh,DT,Nebraska,Big 12,interceptions,AVG,0.0
+175300,Ndamukong Suh,DT,Nebraska,Big 12,interceptions,INT,1
+175300,Ndamukong Suh,DT,Nebraska,Big 12,interceptions,TD,0
+175300,Ndamukong Suh,DT,Nebraska,Big 12,interceptions,YDS,0
+175303,Barry Turner,DE,Nebraska,Big 12,receiving,LONG,29
+175303,Barry Turner,DE,Nebraska,Big 12,receiving,REC,1
+175303,Barry Turner,DE,Nebraska,Big 12,receiving,TD,1
+175303,Barry Turner,DE,Nebraska,Big 12,receiving,YDS,29
+175303,Barry Turner,DE,Nebraska,Big 12,receiving,YPR,29.0
+175602,Logan Paulsen,TE,UCLA,Pac-10,receiving,LONG,46
+175602,Logan Paulsen,TE,UCLA,Pac-10,receiving,REC,27
+175602,Logan Paulsen,TE,UCLA,Pac-10,receiving,TD,0
+175602,Logan Paulsen,TE,UCLA,Pac-10,receiving,YDS,331
+175602,Logan Paulsen,TE,UCLA,Pac-10,receiving,YPR,12.3
+175624,Chris Smith,?,TCU,Mountain West,rushing,CAR,9
+175624,Chris Smith,?,TCU,Mountain West,rushing,LONG,14
+175624,Chris Smith,?,TCU,Mountain West,rushing,TD,1
+175624,Chris Smith,?,TCU,Mountain West,rushing,YDS,41
+175624,Chris Smith,?,TCU,Mountain West,rushing,YPC,4.6
+175640,Dominique Harris,DB,Temple,FBS Independents,interceptions,AVG,10.0
+175640,Dominique Harris,DB,Temple,FBS Independents,interceptions,INT,2
+175640,Dominique Harris,DB,Temple,FBS Independents,interceptions,TD,0
+175640,Dominique Harris,DB,Temple,FBS Independents,interceptions,YDS,20
+175660,Montario Hardesty,RB,Tennessee,SEC,receiving,LONG,22
+175660,Montario Hardesty,RB,Tennessee,SEC,receiving,REC,6
+175660,Montario Hardesty,RB,Tennessee,SEC,receiving,TD,0
+175660,Montario Hardesty,RB,Tennessee,SEC,receiving,YDS,54
+175660,Montario Hardesty,RB,Tennessee,SEC,receiving,YPR,9.0
+175660,Montario Hardesty,RB,Tennessee,SEC,rushing,CAR,107
+175660,Montario Hardesty,RB,Tennessee,SEC,rushing,LONG,43
+175660,Montario Hardesty,RB,Tennessee,SEC,rushing,TD,4
+175660,Montario Hardesty,RB,Tennessee,SEC,rushing,YDS,384
+175660,Montario Hardesty,RB,Tennessee,SEC,rushing,YPC,3.6
+175772,Colt McCoy,QB,Texas,Big 12,passing,ATT,318
+175772,Colt McCoy,QB,Texas,Big 12,passing,COMPLETIONS,217
+175772,Colt McCoy,QB,Texas,Big 12,passing,INT,7
+175772,Colt McCoy,QB,Texas,Big 12,passing,PCT,0.682
+175772,Colt McCoy,QB,Texas,Big 12,passing,TD,29
+175772,Colt McCoy,QB,Texas,Big 12,passing,YDS,2570
+175772,Colt McCoy,QB,Texas,Big 12,passing,YPA,8.1
+175772,Colt McCoy,QB,Texas,Big 12,rushing,CAR,68
+175772,Colt McCoy,QB,Texas,Big 12,rushing,LONG,33
+175772,Colt McCoy,QB,Texas,Big 12,rushing,TD,2
+175772,Colt McCoy,QB,Texas,Big 12,rushing,YDS,170
+175772,Colt McCoy,QB,Texas,Big 12,rushing,YPC,2.5
+175801,Corey Hall,DB,Arizona,Pac-10,interceptions,AVG,0.0
+175801,Corey Hall,DB,Arizona,Pac-10,interceptions,INT,1
+175801,Corey Hall,DB,Arizona,Pac-10,interceptions,TD,0
+175801,Corey Hall,DB,Arizona,Pac-10,interceptions,YDS,0
+175839,Brandon Smith,WR,Arizona State,Pac-10,receiving,LONG,62
+175839,Brandon Smith,WR,Arizona State,Pac-10,receiving,REC,6
+175839,Brandon Smith,WR,Arizona State,Pac-10,receiving,TD,2
+175839,Brandon Smith,WR,Arizona State,Pac-10,receiving,YDS,167
+175839,Brandon Smith,WR,Arizona State,Pac-10,receiving,YPR,27.8
+176126,Eric Decker,WR,Minnesota,Big Ten,passing,ATT,1
+176126,Eric Decker,WR,Minnesota,Big Ten,passing,COMPLETIONS,1
+176126,Eric Decker,WR,Minnesota,Big Ten,passing,INT,0
+176126,Eric Decker,WR,Minnesota,Big Ten,passing,PCT,1.000
+176126,Eric Decker,WR,Minnesota,Big Ten,passing,TD,0
+176126,Eric Decker,WR,Minnesota,Big Ten,passing,YDS,22
+176126,Eric Decker,WR,Minnesota,Big Ten,passing,YPA,22.0
+176126,Eric Decker,WR,Minnesota,Big Ten,receiving,LONG,39
+176126,Eric Decker,WR,Minnesota,Big Ten,receiving,REC,26
+176126,Eric Decker,WR,Minnesota,Big Ten,receiving,TD,3
+176126,Eric Decker,WR,Minnesota,Big Ten,receiving,YDS,378
+176126,Eric Decker,WR,Minnesota,Big Ten,receiving,YPR,14.5
+176126,Eric Decker,WR,Minnesota,Big Ten,rushing,CAR,1
+176126,Eric Decker,WR,Minnesota,Big Ten,rushing,LONG,5
+176126,Eric Decker,WR,Minnesota,Big Ten,rushing,TD,0
+176126,Eric Decker,WR,Minnesota,Big Ten,rushing,YDS,5
+176126,Eric Decker,WR,Minnesota,Big Ten,rushing,YPC,5.0
+176279,Jim Dray,TE,Stanford,Pac-10,receiving,LONG,19
+176279,Jim Dray,TE,Stanford,Pac-10,receiving,REC,19
+176279,Jim Dray,TE,Stanford,Pac-10,receiving,TD,1
+176279,Jim Dray,TE,Stanford,Pac-10,receiving,YDS,178
+176279,Jim Dray,TE,Stanford,Pac-10,receiving,YPR,9.4
+176287,Erik Lorig,DE,Stanford,Pac-10,receiving,LONG,9
+176287,Erik Lorig,DE,Stanford,Pac-10,receiving,REC,3
+176287,Erik Lorig,DE,Stanford,Pac-10,receiving,TD,0
+176287,Erik Lorig,DE,Stanford,Pac-10,receiving,YDS,21
+176287,Erik Lorig,DE,Stanford,Pac-10,receiving,YPR,7.0
+176392,Brandon LaFell,WR,LSU,SEC,receiving,LONG,58
+176392,Brandon LaFell,WR,LSU,SEC,receiving,REC,5
+176392,Brandon LaFell,WR,LSU,SEC,receiving,TD,2
+176392,Brandon LaFell,WR,LSU,SEC,receiving,YDS,140
+176392,Brandon LaFell,WR,LSU,SEC,receiving,YPR,28.0
+176957,Randy Phillips,DB,Miami,ACC,interceptions,AVG,15.0
+176957,Randy Phillips,DB,Miami,ACC,interceptions,INT,1
+176957,Randy Phillips,DB,Miami,ACC,interceptions,TD,0
+176957,Randy Phillips,DB,Miami,ACC,interceptions,YDS,15
+177261,Kerry Meier,WR,Kansas,Big 12,passing,ATT,184
+177261,Kerry Meier,WR,Kansas,Big 12,passing,COMPLETIONS,104
+177261,Kerry Meier,WR,Kansas,Big 12,passing,INT,10
+177261,Kerry Meier,WR,Kansas,Big 12,passing,PCT,0.565
+177261,Kerry Meier,WR,Kansas,Big 12,passing,TD,13
+177261,Kerry Meier,WR,Kansas,Big 12,passing,YDS,1193
+177261,Kerry Meier,WR,Kansas,Big 12,passing,YPA,6.5
+177261,Kerry Meier,WR,Kansas,Big 12,receiving,LONG,5
+177261,Kerry Meier,WR,Kansas,Big 12,receiving,REC,1
+177261,Kerry Meier,WR,Kansas,Big 12,receiving,TD,0
+177261,Kerry Meier,WR,Kansas,Big 12,receiving,YDS,5
+177261,Kerry Meier,WR,Kansas,Big 12,receiving,YPR,5.0
+177261,Kerry Meier,WR,Kansas,Big 12,rushing,CAR,99
+177261,Kerry Meier,WR,Kansas,Big 12,rushing,LONG,31
+177261,Kerry Meier,WR,Kansas,Big 12,rushing,TD,5
+177261,Kerry Meier,WR,Kansas,Big 12,rushing,YDS,344
+177261,Kerry Meier,WR,Kansas,Big 12,rushing,YPC,3.5
+177359,Emmanuel Sanders,WR,SMU,Conference USA,receiving,LONG,56
+177359,Emmanuel Sanders,WR,SMU,Conference USA,receiving,REC,46
+177359,Emmanuel Sanders,WR,SMU,Conference USA,receiving,TD,9
+177359,Emmanuel Sanders,WR,SMU,Conference USA,receiving,YDS,605
+177359,Emmanuel Sanders,WR,SMU,Conference USA,receiving,YPR,13.2
+177359,Emmanuel Sanders,WR,SMU,Conference USA,rushing,CAR,2
+177359,Emmanuel Sanders,WR,SMU,Conference USA,rushing,LONG,4
+177359,Emmanuel Sanders,WR,SMU,Conference USA,rushing,TD,0
+177359,Emmanuel Sanders,WR,SMU,Conference USA,rushing,YDS,6
+177359,Emmanuel Sanders,WR,SMU,Conference USA,rushing,YPC,3.0
+177382,Jamie McCoy,TE,Texas A&M,Big 12,rushing,CAR,6
+177382,Jamie McCoy,TE,Texas A&M,Big 12,rushing,LONG,35
+177382,Jamie McCoy,TE,Texas A&M,Big 12,rushing,TD,1
+177382,Jamie McCoy,TE,Texas A&M,Big 12,rushing,YDS,68
+177382,Jamie McCoy,TE,Texas A&M,Big 12,rushing,YPC,11.3
+177397,Chris Cook,CB,Virginia,ACC,interceptions,AVG,0.0
+177397,Chris Cook,CB,Virginia,ACC,interceptions,INT,1
+177397,Chris Cook,CB,Virginia,ACC,interceptions,TD,0
+177397,Chris Cook,CB,Virginia,ACC,interceptions,YDS,0
+178759,Alfonso Smith,?,Kentucky,SEC,receiving,LONG,45
+178759,Alfonso Smith,?,Kentucky,SEC,receiving,REC,6
+178759,Alfonso Smith,?,Kentucky,SEC,receiving,TD,0
+178759,Alfonso Smith,?,Kentucky,SEC,receiving,YDS,96
+178759,Alfonso Smith,?,Kentucky,SEC,receiving,YPR,16.0
+178759,Alfonso Smith,?,Kentucky,SEC,rushing,CAR,60
+178759,Alfonso Smith,?,Kentucky,SEC,rushing,LONG,24
+178759,Alfonso Smith,?,Kentucky,SEC,rushing,TD,2
+178759,Alfonso Smith,?,Kentucky,SEC,rushing,YDS,250
+178759,Alfonso Smith,?,Kentucky,SEC,rushing,YPC,4.2
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,passing,ATT,194
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,passing,COMPLETIONS,108
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,passing,INT,8
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,passing,PCT,0.557
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,passing,TD,6
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,passing,YDS,1285
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,passing,YPA,6.6
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,receiving,LONG,7
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,receiving,REC,1
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,receiving,TD,0
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,receiving,YDS,7
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,receiving,YPR,7.0
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,rushing,CAR,25
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,rushing,LONG,3
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,rushing,TD,0
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,rushing,YDS,-110
+180299,Rusty Smith,QB,Florida Atlantic,Sun Belt,rushing,YPC,-4.4
+180823,Mitch Petrus,G,Arkansas,SEC,rushing,CAR,1
+180823,Mitch Petrus,G,Arkansas,SEC,rushing,LONG,1
+180823,Mitch Petrus,G,Arkansas,SEC,rushing,TD,0
+180823,Mitch Petrus,G,Arkansas,SEC,rushing,YDS,1
+180823,Mitch Petrus,G,Arkansas,SEC,rushing,YPC,1.0
+180834,Zoltan Mesko,P,Michigan,Big Ten,punting,In 20,0
+180834,Zoltan Mesko,P,Michigan,Big Ten,punting,LONG,64
+180834,Zoltan Mesko,P,Michigan,Big Ten,punting,NO,50
+180834,Zoltan Mesko,P,Michigan,Big Ten,punting,TB,0
+180834,Zoltan Mesko,P,Michigan,Big Ten,punting,YDS,2079
+180834,Zoltan Mesko,P,Michigan,Big Ten,punting,YPP,41.6
+181058,John Conner,FB,Kentucky,SEC,receiving,LONG,17
+181058,John Conner,FB,Kentucky,SEC,receiving,REC,2
+181058,John Conner,FB,Kentucky,SEC,receiving,TD,1
+181058,John Conner,FB,Kentucky,SEC,receiving,YDS,21
+181058,John Conner,FB,Kentucky,SEC,receiving,YPR,10.5
+181058,John Conner,FB,Kentucky,SEC,rushing,CAR,2
+181058,John Conner,FB,Kentucky,SEC,rushing,LONG,4
+181058,John Conner,FB,Kentucky,SEC,rushing,TD,0
+181058,John Conner,FB,Kentucky,SEC,rushing,YDS,5
+181058,John Conner,FB,Kentucky,SEC,rushing,YPC,2.5
+181680,Trindon Holliday,RB,LSU,SEC,puntReturns,AVG,6.0
+181680,Trindon Holliday,RB,LSU,SEC,puntReturns,LONG,6
+181680,Trindon Holliday,RB,LSU,SEC,puntReturns,NO,1
+181680,Trindon Holliday,RB,LSU,SEC,puntReturns,TD,0
+181680,Trindon Holliday,RB,LSU,SEC,puntReturns,YDS,6
+181680,Trindon Holliday,RB,LSU,SEC,rushing,CAR,14
+181680,Trindon Holliday,RB,LSU,SEC,rushing,LONG,38
+181680,Trindon Holliday,RB,LSU,SEC,rushing,TD,1
+181680,Trindon Holliday,RB,LSU,SEC,rushing,YDS,172
+181680,Trindon Holliday,RB,LSU,SEC,rushing,YPC,12.3
+183133,Sean Lee,LB,Penn State,Big Ten,interceptions,AVG,0.0
+183133,Sean Lee,LB,Penn State,Big Ten,interceptions,INT,1
+183133,Sean Lee,LB,Penn State,Big Ten,interceptions,TD,0
+183133,Sean Lee,LB,Penn State,Big Ten,interceptions,YDS,0
+183222,Allen Bradford,?,USC,Pac-10,receiving,LONG,17
+183222,Allen Bradford,?,USC,Pac-10,receiving,REC,3
+183222,Allen Bradford,?,USC,Pac-10,receiving,TD,1
+183222,Allen Bradford,?,USC,Pac-10,receiving,YDS,33
+183222,Allen Bradford,?,USC,Pac-10,receiving,YPR,11.0
+183222,Allen Bradford,?,USC,Pac-10,rushing,CAR,13
+183222,Allen Bradford,?,USC,Pac-10,rushing,LONG,11
+183222,Allen Bradford,?,USC,Pac-10,rushing,TD,1
+183222,Allen Bradford,?,USC,Pac-10,rushing,YDS,42
+183222,Allen Bradford,?,USC,Pac-10,rushing,YPC,3.2
+183225,Stanley Havili,FB,USC,Pac-10,receiving,LONG,8
+183225,Stanley Havili,FB,USC,Pac-10,receiving,REC,4
+183225,Stanley Havili,FB,USC,Pac-10,receiving,TD,0
+183225,Stanley Havili,FB,USC,Pac-10,receiving,YDS,24
+183225,Stanley Havili,FB,USC,Pac-10,receiving,YPR,6.0
+183232,Taylor Mays,S,USC,Pac-10,interceptions,AVG,13.3
+183232,Taylor Mays,S,USC,Pac-10,interceptions,INT,3
+183232,Taylor Mays,S,USC,Pac-10,interceptions,TD,0
+183232,Taylor Mays,S,USC,Pac-10,interceptions,YDS,40
+183275,Aaron Berry,DB,Pittsburgh,Big East,puntReturns,AVG,0.0
+183275,Aaron Berry,DB,Pittsburgh,Big East,puntReturns,LONG,0
+183275,Aaron Berry,DB,Pittsburgh,Big East,puntReturns,NO,2
+183275,Aaron Berry,DB,Pittsburgh,Big East,puntReturns,TD,0
+183275,Aaron Berry,DB,Pittsburgh,Big East,puntReturns,YDS,0
+183281,Dorin Dickerson,TE,Pittsburgh,Big East,receiving,LONG,5
+183281,Dorin Dickerson,TE,Pittsburgh,Big East,receiving,REC,1
+183281,Dorin Dickerson,TE,Pittsburgh,Big East,receiving,TD,0
+183281,Dorin Dickerson,TE,Pittsburgh,Big East,receiving,YDS,5
+183281,Dorin Dickerson,TE,Pittsburgh,Big East,receiving,YPR,5.0
+183281,Dorin Dickerson,TE,Pittsburgh,Big East,rushing,CAR,3
+183281,Dorin Dickerson,TE,Pittsburgh,Big East,rushing,LONG,14
+183281,Dorin Dickerson,TE,Pittsburgh,Big East,rushing,TD,1
+183281,Dorin Dickerson,TE,Pittsburgh,Big East,rushing,YDS,25
+183281,Dorin Dickerson,TE,Pittsburgh,Big East,rushing,YPC,8.3
+183321,Dimitri Nance,RB,Arizona State,Pac-10,receiving,LONG,10
+183321,Dimitri Nance,RB,Arizona State,Pac-10,receiving,REC,2
+183321,Dimitri Nance,RB,Arizona State,Pac-10,receiving,TD,0
+183321,Dimitri Nance,RB,Arizona State,Pac-10,receiving,YDS,16
+183321,Dimitri Nance,RB,Arizona State,Pac-10,receiving,YPR,8.0
+183321,Dimitri Nance,RB,Arizona State,Pac-10,rushing,CAR,56
+183321,Dimitri Nance,RB,Arizona State,Pac-10,rushing,LONG,17
+183321,Dimitri Nance,RB,Arizona State,Pac-10,rushing,TD,3
+183321,Dimitri Nance,RB,Arizona State,Pac-10,rushing,YDS,229
+183321,Dimitri Nance,RB,Arizona State,Pac-10,rushing,YPC,4.1
+183335,Kyle Williams,WR,Arizona State,Pac-10,puntReturns,AVG,4.8
+183335,Kyle Williams,WR,Arizona State,Pac-10,puntReturns,LONG,13
+183335,Kyle Williams,WR,Arizona State,Pac-10,puntReturns,NO,16
+183335,Kyle Williams,WR,Arizona State,Pac-10,puntReturns,TD,0
+183335,Kyle Williams,WR,Arizona State,Pac-10,puntReturns,YDS,77
+183335,Kyle Williams,WR,Arizona State,Pac-10,receiving,LONG,55
+183335,Kyle Williams,WR,Arizona State,Pac-10,receiving,REC,4
+183335,Kyle Williams,WR,Arizona State,Pac-10,receiving,TD,0
+183335,Kyle Williams,WR,Arizona State,Pac-10,receiving,YDS,87
+183335,Kyle Williams,WR,Arizona State,Pac-10,receiving,YPR,21.8
+183482,Ben Tate,RB,Auburn,SEC,receiving,LONG,2
+183482,Ben Tate,RB,Auburn,SEC,receiving,REC,2
+183482,Ben Tate,RB,Auburn,SEC,receiving,TD,0
+183482,Ben Tate,RB,Auburn,SEC,receiving,YDS,-3
+183482,Ben Tate,RB,Auburn,SEC,receiving,YPR,-1.5
+183482,Ben Tate,RB,Auburn,SEC,rushing,CAR,54
+183482,Ben Tate,RB,Auburn,SEC,rushing,LONG,42
+183482,Ben Tate,RB,Auburn,SEC,rushing,TD,3
+183482,Ben Tate,RB,Auburn,SEC,rushing,YDS,392
+183482,Ben Tate,RB,Auburn,SEC,rushing,YPC,7.3
+183484,Tim Tebow,QB,Florida,SEC,passing,ATT,33
+183484,Tim Tebow,QB,Florida,SEC,passing,COMPLETIONS,22
+183484,Tim Tebow,QB,Florida,SEC,passing,INT,1
+183484,Tim Tebow,QB,Florida,SEC,passing,PCT,0.667
+183484,Tim Tebow,QB,Florida,SEC,passing,TD,5
+183484,Tim Tebow,QB,Florida,SEC,passing,YDS,358
+183484,Tim Tebow,QB,Florida,SEC,passing,YPA,10.8
+183484,Tim Tebow,QB,Florida,SEC,rushing,CAR,89
+183484,Tim Tebow,QB,Florida,SEC,rushing,LONG,29
+183484,Tim Tebow,QB,Florida,SEC,rushing,TD,8
+183484,Tim Tebow,QB,Florida,SEC,rushing,YDS,469
+183484,Tim Tebow,QB,Florida,SEC,rushing,YPC,5.3
+183514,Kris Durham,?,Georgia,SEC,receiving,LONG,16
+183514,Kris Durham,?,Georgia,SEC,receiving,REC,8
+183514,Kris Durham,?,Georgia,SEC,receiving,TD,0
+183514,Kris Durham,?,Georgia,SEC,receiving,YDS,81
+183514,Kris Durham,?,Georgia,SEC,receiving,YPR,10.1
+183539,Danny McCray,S,LSU,SEC,interceptions,AVG,0.0
+183539,Danny McCray,S,LSU,SEC,interceptions,INT,1
+183539,Danny McCray,S,LSU,SEC,interceptions,TD,0
+183539,Danny McCray,S,LSU,SEC,interceptions,YDS,0
+183554,Keiland Williams,RB,LSU,SEC,receiving,LONG,12
+183554,Keiland Williams,RB,LSU,SEC,receiving,REC,4
+183554,Keiland Williams,RB,LSU,SEC,receiving,TD,0
+183554,Keiland Williams,RB,LSU,SEC,receiving,YDS,14
+183554,Keiland Williams,RB,LSU,SEC,receiving,YPR,3.5
+183554,Keiland Williams,RB,LSU,SEC,rushing,CAR,76
+183554,Keiland Williams,RB,LSU,SEC,rushing,LONG,38
+183554,Keiland Williams,RB,LSU,SEC,rushing,TD,5
+183554,Keiland Williams,RB,LSU,SEC,rushing,YDS,436
+183554,Keiland Williams,RB,LSU,SEC,rushing,YPC,5.7
+183687,Javarris James,RB,Miami,ACC,receiving,LONG,25
+183687,Javarris James,RB,Miami,ACC,receiving,REC,17
+183687,Javarris James,RB,Miami,ACC,receiving,TD,1
+183687,Javarris James,RB,Miami,ACC,receiving,YDS,200
+183687,Javarris James,RB,Miami,ACC,receiving,YPR,11.8
+183687,Javarris James,RB,Miami,ACC,rushing,CAR,175
+183687,Javarris James,RB,Miami,ACC,rushing,LONG,62
+183687,Javarris James,RB,Miami,ACC,rushing,TD,4
+183687,Javarris James,RB,Miami,ACC,rushing,YDS,802
+183687,Javarris James,RB,Miami,ACC,rushing,YPC,4.6
+183694,Sam Shields,DB,Miami,ACC,receiving,LONG,78
+183694,Sam Shields,DB,Miami,ACC,receiving,REC,37
+183694,Sam Shields,DB,Miami,ACC,receiving,TD,4
+183694,Sam Shields,DB,Miami,ACC,receiving,YDS,501
+183694,Sam Shields,DB,Miami,ACC,receiving,YPR,13.5
+183694,Sam Shields,DB,Miami,ACC,rushing,CAR,3
+183694,Sam Shields,DB,Miami,ACC,rushing,LONG,0
+183694,Sam Shields,DB,Miami,ACC,rushing,TD,0
+183694,Sam Shields,DB,Miami,ACC,rushing,YDS,-11
+183694,Sam Shields,DB,Miami,ACC,rushing,YPC,-3.7
+183771,Patrick Robinson,CB,Florida State,ACC,puntReturns,AVG,2.7
+183771,Patrick Robinson,CB,Florida State,ACC,puntReturns,LONG,16
+183771,Patrick Robinson,CB,Florida State,ACC,puntReturns,NO,6
+183771,Patrick Robinson,CB,Florida State,ACC,puntReturns,TD,0
+183771,Patrick Robinson,CB,Florida State,ACC,puntReturns,YDS,16
+183776,Dekoda Watson,LB,Florida State,ACC,puntReturns,AVG,16.0
+183776,Dekoda Watson,LB,Florida State,ACC,puntReturns,LONG,16
+183776,Dekoda Watson,LB,Florida State,ACC,puntReturns,NO,1
+183776,Dekoda Watson,LB,Florida State,ACC,puntReturns,TD,0
+183776,Dekoda Watson,LB,Florida State,ACC,puntReturns,YDS,16
+183924,Aaron Pettrey,PK,Ohio State,Big Ten,kicking,FGA,11
+183924,Aaron Pettrey,PK,Ohio State,Big Ten,kicking,FGM,8
+183924,Aaron Pettrey,PK,Ohio State,Big Ten,kicking,LONG,51
+183924,Aaron Pettrey,PK,Ohio State,Big Ten,kicking,PCT,0.727
+183924,Aaron Pettrey,PK,Ohio State,Big Ten,kicking,PTS,79
+183924,Aaron Pettrey,PK,Ohio State,Big Ten,kicking,XPA,58
+183924,Aaron Pettrey,PK,Ohio State,Big Ten,kicking,XPM,55
+184027,Jake Scott,PK,Wyoming,Mountain West,kicking,FGA,4
+184027,Jake Scott,PK,Wyoming,Mountain West,kicking,FGM,2
+184027,Jake Scott,PK,Wyoming,Mountain West,kicking,LONG,47
+184027,Jake Scott,PK,Wyoming,Mountain West,kicking,PCT,0.500
+184027,Jake Scott,PK,Wyoming,Mountain West,kicking,PTS,18
+184027,Jake Scott,PK,Wyoming,Mountain West,kicking,XPA,12
+184027,Jake Scott,PK,Wyoming,Mountain West,kicking,XPM,12
+184215,Duke Calhoun,WR,Memphis,Conference USA,receiving,LONG,60
+184215,Duke Calhoun,WR,Memphis,Conference USA,receiving,REC,42
+184215,Duke Calhoun,WR,Memphis,Conference USA,receiving,TD,6
+184215,Duke Calhoun,WR,Memphis,Conference USA,receiving,YDS,681
+184215,Duke Calhoun,WR,Memphis,Conference USA,receiving,YPR,16.2
+184215,Duke Calhoun,WR,Memphis,Conference USA,rushing,CAR,10
+184215,Duke Calhoun,WR,Memphis,Conference USA,rushing,LONG,10
+184215,Duke Calhoun,WR,Memphis,Conference USA,rushing,TD,1
+184215,Duke Calhoun,WR,Memphis,Conference USA,rushing,YDS,51
+184215,Duke Calhoun,WR,Memphis,Conference USA,rushing,YPC,5.1
+184298,Jacoby Ford,WR,Clemson,ACC,puntReturns,AVG,7.7
+184298,Jacoby Ford,WR,Clemson,ACC,puntReturns,LONG,92
+184298,Jacoby Ford,WR,Clemson,ACC,puntReturns,NO,21
+184298,Jacoby Ford,WR,Clemson,ACC,puntReturns,TD,1
+184298,Jacoby Ford,WR,Clemson,ACC,puntReturns,YDS,162
+184298,Jacoby Ford,WR,Clemson,ACC,receiving,LONG,76
+184298,Jacoby Ford,WR,Clemson,ACC,receiving,REC,12
+184298,Jacoby Ford,WR,Clemson,ACC,receiving,TD,1
+184298,Jacoby Ford,WR,Clemson,ACC,receiving,YDS,120
+184298,Jacoby Ford,WR,Clemson,ACC,receiving,YPR,10.0
+184298,Jacoby Ford,WR,Clemson,ACC,rushing,CAR,8
+184298,Jacoby Ford,WR,Clemson,ACC,rushing,LONG,38
+184298,Jacoby Ford,WR,Clemson,ACC,rushing,TD,0
+184298,Jacoby Ford,WR,Clemson,ACC,rushing,YDS,104
+184298,Jacoby Ford,WR,Clemson,ACC,rushing,YPC,13.0
+184353,Bryan McCann,DB,SMU,Conference USA,interceptions,AVG,29.0
+184353,Bryan McCann,DB,SMU,Conference USA,interceptions,INT,1
+184353,Bryan McCann,DB,SMU,Conference USA,interceptions,TD,0
+184353,Bryan McCann,DB,SMU,Conference USA,interceptions,YDS,29
+184408,T.J. Ward,?,Oregon,Pac-10,interceptions,AVG,0.0
+184408,T.J. Ward,?,Oregon,Pac-10,interceptions,INT,1
+184408,T.J. Ward,?,Oregon,Pac-10,interceptions,TD,0
+184408,T.J. Ward,?,Oregon,Pac-10,interceptions,YDS,0
+184579,Barry Church,S,Toledo,Mid-American,interceptions,AVG,31.8
+184579,Barry Church,S,Toledo,Mid-American,interceptions,INT,4
+184579,Barry Church,S,Toledo,Mid-American,interceptions,TD,2
+184579,Barry Church,S,Toledo,Mid-American,interceptions,YDS,127
+184676,Cameron Sheffield,DE,Troy,Sun Belt,interceptions,AVG,1.0
+184676,Cameron Sheffield,DE,Troy,Sun Belt,interceptions,INT,1
+184676,Cameron Sheffield,DE,Troy,Sun Belt,interceptions,TD,0
+184676,Cameron Sheffield,DE,Troy,Sun Belt,interceptions,YDS,1
+184839,Baron Batch,RB,Texas Tech,Big 12,receiving,LONG,12
+184839,Baron Batch,RB,Texas Tech,Big 12,receiving,REC,6
+184839,Baron Batch,RB,Texas Tech,Big 12,receiving,TD,0
+184839,Baron Batch,RB,Texas Tech,Big 12,receiving,YDS,41
+184839,Baron Batch,RB,Texas Tech,Big 12,receiving,YPR,6.8
+184839,Baron Batch,RB,Texas Tech,Big 12,rushing,CAR,9
+184839,Baron Batch,RB,Texas Tech,Big 12,rushing,LONG,13
+184839,Baron Batch,RB,Texas Tech,Big 12,rushing,TD,1
+184839,Baron Batch,RB,Texas Tech,Big 12,rushing,YDS,43
+184839,Baron Batch,RB,Texas Tech,Big 12,rushing,YPC,4.8
+184925,Rob Housler,TE,Florida Atlantic,Sun Belt,receiving,LONG,14
+184925,Rob Housler,TE,Florida Atlantic,Sun Belt,receiving,REC,2
+184925,Rob Housler,TE,Florida Atlantic,Sun Belt,receiving,TD,0
+184925,Rob Housler,TE,Florida Atlantic,Sun Belt,receiving,YDS,16
+184925,Rob Housler,TE,Florida Atlantic,Sun Belt,receiving,YPR,8.0
+186575,Riley Cooper,WR,Florida,SEC,receiving,LONG,55
+186575,Riley Cooper,WR,Florida,SEC,receiving,REC,4
+186575,Riley Cooper,WR,Florida,SEC,receiving,TD,3
+186575,Riley Cooper,WR,Florida,SEC,receiving,YDS,92
+186575,Riley Cooper,WR,Florida,SEC,receiving,YPR,23.0
+186583,Brandon James,?,Florida,SEC,kickReturns,AVG,19.3
+186583,Brandon James,?,Florida,SEC,kickReturns,LONG,38
+186583,Brandon James,?,Florida,SEC,kickReturns,NO,3
+186583,Brandon James,?,Florida,SEC,kickReturns,TD,0
+186583,Brandon James,?,Florida,SEC,kickReturns,YDS,58
+186583,Brandon James,?,Florida,SEC,puntReturns,AVG,9.1
+186583,Brandon James,?,Florida,SEC,puntReturns,LONG,77
+186583,Brandon James,?,Florida,SEC,puntReturns,NO,40
+186583,Brandon James,?,Florida,SEC,puntReturns,TD,1
+186583,Brandon James,?,Florida,SEC,puntReturns,YDS,362
+186583,Brandon James,?,Florida,SEC,rushing,CAR,3
+186583,Brandon James,?,Florida,SEC,rushing,LONG,4
+186583,Brandon James,?,Florida,SEC,rushing,TD,0
+186583,Brandon James,?,Florida,SEC,rushing,YDS,1
+186583,Brandon James,?,Florida,SEC,rushing,YPC,0.3
+187950,Terrence Austin,WR,UCLA,Pac-10,puntReturns,AVG,10.0
+187950,Terrence Austin,WR,UCLA,Pac-10,puntReturns,LONG,79
+187950,Terrence Austin,WR,UCLA,Pac-10,puntReturns,NO,11
+187950,Terrence Austin,WR,UCLA,Pac-10,puntReturns,TD,0
+187950,Terrence Austin,WR,UCLA,Pac-10,puntReturns,YDS,110
+187950,Terrence Austin,WR,UCLA,Pac-10,receiving,LONG,16
+187950,Terrence Austin,WR,UCLA,Pac-10,receiving,REC,2
+187950,Terrence Austin,WR,UCLA,Pac-10,receiving,TD,0
+187950,Terrence Austin,WR,UCLA,Pac-10,receiving,YDS,29
+187950,Terrence Austin,WR,UCLA,Pac-10,receiving,YPR,14.5
+187950,Terrence Austin,WR,UCLA,Pac-10,rushing,CAR,1
+187950,Terrence Austin,WR,UCLA,Pac-10,rushing,LONG,7
+187950,Terrence Austin,WR,UCLA,Pac-10,rushing,TD,0
+187950,Terrence Austin,WR,UCLA,Pac-10,rushing,YDS,7
+187950,Terrence Austin,WR,UCLA,Pac-10,rushing,YPC,7.0
+187976,Alterraun Verner,CB,UCLA,Pac-10,interceptions,AVG,61.5
+187976,Alterraun Verner,CB,UCLA,Pac-10,interceptions,INT,2
+187976,Alterraun Verner,CB,UCLA,Pac-10,interceptions,TD,2
+187976,Alterraun Verner,CB,UCLA,Pac-10,interceptions,YDS,123
+188189,Sherrick McManis,CB,Northwestern,Big Ten,interceptions,AVG,0.0
+188189,Sherrick McManis,CB,Northwestern,Big Ten,interceptions,INT,1
+188189,Sherrick McManis,CB,Northwestern,Big Ten,interceptions,TD,0
+188189,Sherrick McManis,CB,Northwestern,Big Ten,interceptions,YDS,0
+188301,Jake Ballard,TE,Ohio State,Big Ten,receiving,LONG,4
+188301,Jake Ballard,TE,Ohio State,Big Ten,receiving,REC,2
+188301,Jake Ballard,TE,Ohio State,Big Ten,receiving,TD,1
+188301,Jake Ballard,TE,Ohio State,Big Ten,receiving,YDS,5
+188301,Jake Ballard,TE,Ohio State,Big Ten,receiving,YPR,2.5
+188436,Jonathon Amaya,DB,Nevada,Western Athletic,interceptions,AVG,15.0
+188436,Jonathon Amaya,DB,Nevada,Western Athletic,interceptions,INT,1
+188436,Jonathon Amaya,DB,Nevada,Western Athletic,interceptions,TD,0
+188436,Jonathon Amaya,DB,Nevada,Western Athletic,interceptions,YDS,15
+188524,Toby Gerhart,RB,Stanford,Pac-10,receiving,LONG,16
+188524,Toby Gerhart,RB,Stanford,Pac-10,receiving,REC,15
+188524,Toby Gerhart,RB,Stanford,Pac-10,receiving,TD,0
+188524,Toby Gerhart,RB,Stanford,Pac-10,receiving,YDS,124
+188524,Toby Gerhart,RB,Stanford,Pac-10,receiving,YPR,8.3
+188524,Toby Gerhart,RB,Stanford,Pac-10,rushing,CAR,106
+188524,Toby Gerhart,RB,Stanford,Pac-10,rushing,LONG,38
+188524,Toby Gerhart,RB,Stanford,Pac-10,rushing,TD,0
+188524,Toby Gerhart,RB,Stanford,Pac-10,rushing,YDS,375
+188524,Toby Gerhart,RB,Stanford,Pac-10,rushing,YPC,3.5
+188543,Kyle Adams,QB,Purdue,Big Ten,receiving,LONG,25
+188543,Kyle Adams,QB,Purdue,Big Ten,receiving,REC,6
+188543,Kyle Adams,QB,Purdue,Big Ten,receiving,TD,1
+188543,Kyle Adams,QB,Purdue,Big Ten,receiving,YDS,58
+188543,Kyle Adams,QB,Purdue,Big Ten,receiving,YPR,9.7
+188615,Micah Johnson,LB,Kentucky,SEC,rushing,CAR,2
+188615,Micah Johnson,LB,Kentucky,SEC,rushing,LONG,1
+188615,Micah Johnson,LB,Kentucky,SEC,rushing,TD,1
+188615,Micah Johnson,LB,Kentucky,SEC,rushing,YDS,1
+188615,Micah Johnson,LB,Kentucky,SEC,rushing,YPC,0.5
+188693,Andrew Quarless,TE,Penn State,Big Ten,receiving,LONG,29
+188693,Andrew Quarless,TE,Penn State,Big Ten,receiving,REC,21
+188693,Andrew Quarless,TE,Penn State,Big Ten,receiving,TD,2
+188693,Andrew Quarless,TE,Penn State,Big Ten,receiving,YDS,288
+188693,Andrew Quarless,TE,Penn State,Big Ten,receiving,YPR,13.7
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,puntReturns,AVG,9.6
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,puntReturns,LONG,55
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,puntReturns,NO,15
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,puntReturns,TD,0
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,puntReturns,YDS,144
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,receiving,LONG,53
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,receiving,REC,31
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,receiving,TD,2
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,receiving,YDS,429
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,receiving,YPR,13.8
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,rushing,CAR,5
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,rushing,LONG,11
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,rushing,TD,0
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,rushing,YDS,9
+188873,Naaman Roosevelt,WR,Buffalo,Mid-American,rushing,YPC,1.8
+188925,Taylor Price,WR,Ohio,Mid-American,passing,ATT,1
+188925,Taylor Price,WR,Ohio,Mid-American,passing,COMPLETIONS,0
+188925,Taylor Price,WR,Ohio,Mid-American,passing,INT,0
+188925,Taylor Price,WR,Ohio,Mid-American,passing,PCT,0.000
+188925,Taylor Price,WR,Ohio,Mid-American,passing,TD,0
+188925,Taylor Price,WR,Ohio,Mid-American,passing,YDS,0
+188925,Taylor Price,WR,Ohio,Mid-American,passing,YPA,0.0
+188925,Taylor Price,WR,Ohio,Mid-American,puntReturns,AVG,5.2
+188925,Taylor Price,WR,Ohio,Mid-American,puntReturns,LONG,18
+188925,Taylor Price,WR,Ohio,Mid-American,puntReturns,NO,5
+188925,Taylor Price,WR,Ohio,Mid-American,puntReturns,TD,0
+188925,Taylor Price,WR,Ohio,Mid-American,puntReturns,YDS,26
+188925,Taylor Price,WR,Ohio,Mid-American,receiving,LONG,27
+188925,Taylor Price,WR,Ohio,Mid-American,receiving,REC,9
+188925,Taylor Price,WR,Ohio,Mid-American,receiving,TD,0
+188925,Taylor Price,WR,Ohio,Mid-American,receiving,YDS,77
+188925,Taylor Price,WR,Ohio,Mid-American,receiving,YPR,8.6
+188925,Taylor Price,WR,Ohio,Mid-American,rushing,CAR,2
+188925,Taylor Price,WR,Ohio,Mid-American,rushing,LONG,0
+188925,Taylor Price,WR,Ohio,Mid-American,rushing,TD,0
+188925,Taylor Price,WR,Ohio,Mid-American,rushing,YDS,-20
+188925,Taylor Price,WR,Ohio,Mid-American,rushing,YPC,-10.0
+188936,Chris Brown,RB,Oklahoma,Big 12,rushing,CAR,70
+188936,Chris Brown,RB,Oklahoma,Big 12,rushing,LONG,40
+188936,Chris Brown,RB,Oklahoma,Big 12,rushing,TD,6
+188936,Chris Brown,RB,Oklahoma,Big 12,rushing,YDS,343
+188936,Chris Brown,RB,Oklahoma,Big 12,rushing,YPC,4.9
+188942,Jermaine Gresham,TE,Oklahoma,Big 12,receiving,LONG,41
+188942,Jermaine Gresham,TE,Oklahoma,Big 12,receiving,REC,8
+188942,Jermaine Gresham,TE,Oklahoma,Big 12,receiving,TD,1
+188942,Jermaine Gresham,TE,Oklahoma,Big 12,receiving,YDS,161
+188942,Jermaine Gresham,TE,Oklahoma,Big 12,receiving,YPR,20.1
+188961,Perrish Cox,DB,Oklahoma State,Big 12,interceptions,AVG,10.5
+188961,Perrish Cox,DB,Oklahoma State,Big 12,interceptions,INT,2
+188961,Perrish Cox,DB,Oklahoma State,Big 12,interceptions,TD,0
+188961,Perrish Cox,DB,Oklahoma State,Big 12,interceptions,YDS,21
+188961,Perrish Cox,DB,Oklahoma State,Big 12,puntReturns,AVG,11.8
+188961,Perrish Cox,DB,Oklahoma State,Big 12,puntReturns,LONG,63
+188961,Perrish Cox,DB,Oklahoma State,Big 12,puntReturns,NO,26
+188961,Perrish Cox,DB,Oklahoma State,Big 12,puntReturns,TD,0
+188961,Perrish Cox,DB,Oklahoma State,Big 12,puntReturns,YDS,308
+188967,Orie Lemon,LB,Oklahoma State,Big 12,interceptions,AVG,73.0
+188967,Orie Lemon,LB,Oklahoma State,Big 12,interceptions,INT,1
+188967,Orie Lemon,LB,Oklahoma State,Big 12,interceptions,TD,0
+188967,Orie Lemon,LB,Oklahoma State,Big 12,interceptions,YDS,73
+189229,Jeff Cumberland,WR,Illinois,Big Ten,receiving,LONG,45
+189229,Jeff Cumberland,WR,Illinois,Big Ten,receiving,REC,16
+189229,Jeff Cumberland,WR,Illinois,Big Ten,receiving,TD,1
+189229,Jeff Cumberland,WR,Illinois,Big Ten,receiving,YDS,232
+189229,Jeff Cumberland,WR,Illinois,Big Ten,receiving,YPR,14.5
+189386,Kam Chancellor,?,Virginia Tech,ACC,interceptions,AVG,4.0
+189386,Kam Chancellor,?,Virginia Tech,ACC,interceptions,INT,1
+189386,Kam Chancellor,?,Virginia Tech,ACC,interceptions,TD,0
+189386,Kam Chancellor,?,Virginia Tech,ACC,interceptions,YDS,4
+189613,Prince Miller,CB,Georgia,SEC,puntReturns,AVG,16.0
+189613,Prince Miller,CB,Georgia,SEC,puntReturns,LONG,16
+189613,Prince Miller,CB,Georgia,SEC,puntReturns,NO,1
+189613,Prince Miller,CB,Georgia,SEC,puntReturns,TD,0
+189613,Prince Miller,CB,Georgia,SEC,puntReturns,YDS,16
+189711,Jason Williams,RB,UTEP,Conference USA,receiving,LONG,8
+189711,Jason Williams,RB,UTEP,Conference USA,receiving,REC,3
+189711,Jason Williams,RB,UTEP,Conference USA,receiving,TD,0
+189711,Jason Williams,RB,UTEP,Conference USA,receiving,YDS,16
+189711,Jason Williams,RB,UTEP,Conference USA,receiving,YPR,5.3
+189711,Jason Williams,RB,UTEP,Conference USA,rushing,CAR,29
+189711,Jason Williams,RB,UTEP,Conference USA,rushing,LONG,13
+189711,Jason Williams,RB,UTEP,Conference USA,rushing,TD,0
+189711,Jason Williams,RB,UTEP,Conference USA,rushing,YDS,85
+189711,Jason Williams,RB,UTEP,Conference USA,rushing,YPC,2.9
+189748,Ben Cleveland,TE,Arkansas,SEC,receiving,LONG,22
+189748,Ben Cleveland,TE,Arkansas,SEC,receiving,REC,12
+189748,Ben Cleveland,TE,Arkansas,SEC,receiving,TD,2
+189748,Ben Cleveland,TE,Arkansas,SEC,receiving,YDS,103
+189748,Ben Cleveland,TE,Arkansas,SEC,receiving,YPR,8.6
+189767,Damian Williams,WR,Arkansas,SEC,receiving,LONG,46
+189767,Damian Williams,WR,Arkansas,SEC,receiving,REC,19
+189767,Damian Williams,WR,Arkansas,SEC,receiving,TD,2
+189767,Damian Williams,WR,Arkansas,SEC,receiving,YDS,235
+189767,Damian Williams,WR,Arkansas,SEC,receiving,YPR,12.4
+189767,Damian Williams,WR,Arkansas,SEC,rushing,CAR,1
+189767,Damian Williams,WR,Arkansas,SEC,rushing,LONG,5
+189767,Damian Williams,WR,Arkansas,SEC,rushing,TD,0
+189767,Damian Williams,WR,Arkansas,SEC,rushing,YDS,5
+189767,Damian Williams,WR,Arkansas,SEC,rushing,YPC,5.0
+189886,Robert Malone,P,Fresno State,Western Athletic,punting,In 20,0
+189886,Robert Malone,P,Fresno State,Western Athletic,punting,LONG,53
+189886,Robert Malone,P,Fresno State,Western Athletic,punting,NO,20
+189886,Robert Malone,P,Fresno State,Western Athletic,punting,TB,0
+189886,Robert Malone,P,Fresno State,Western Athletic,punting,YDS,744
+189886,Robert Malone,P,Fresno State,Western Athletic,punting,YPP,37.2
+189887,Lonyae Miller,RB,Fresno State,Western Athletic,receiving,LONG,11
+189887,Lonyae Miller,RB,Fresno State,Western Athletic,receiving,REC,3
+189887,Lonyae Miller,RB,Fresno State,Western Athletic,receiving,TD,0
+189887,Lonyae Miller,RB,Fresno State,Western Athletic,receiving,YDS,30
+189887,Lonyae Miller,RB,Fresno State,Western Athletic,receiving,YPR,10.0
+189887,Lonyae Miller,RB,Fresno State,Western Athletic,rushing,CAR,54
+189887,Lonyae Miller,RB,Fresno State,Western Athletic,rushing,LONG,25
+189887,Lonyae Miller,RB,Fresno State,Western Athletic,rushing,TD,2
+189887,Lonyae Miller,RB,Fresno State,Western Athletic,rushing,YDS,287
+189887,Lonyae Miller,RB,Fresno State,Western Athletic,rushing,YPC,5.3
+189938,Daryl Washington,LB,TCU,Mountain West,puntReturns,AVG,2.0
+189938,Daryl Washington,LB,TCU,Mountain West,puntReturns,LONG,2
+189938,Daryl Washington,LB,TCU,Mountain West,puntReturns,NO,1
+189938,Daryl Washington,LB,TCU,Mountain West,puntReturns,TD,0
+189938,Daryl Washington,LB,TCU,Mountain West,puntReturns,YDS,2
+189945,Marcus Brown,OL,Temple,FBS Independents,receiving,LONG,10
+189945,Marcus Brown,OL,Temple,FBS Independents,receiving,REC,6
+189945,Marcus Brown,OL,Temple,FBS Independents,receiving,TD,2
+189945,Marcus Brown,OL,Temple,FBS Independents,receiving,YDS,28
+189945,Marcus Brown,OL,Temple,FBS Independents,receiving,YPR,4.7
+189964,Alex Joseph,LB,Temple,FBS Independents,interceptions,AVG,16.0
+189964,Alex Joseph,LB,Temple,FBS Independents,interceptions,INT,1
+189964,Alex Joseph,LB,Temple,FBS Independents,interceptions,TD,0
+189964,Alex Joseph,LB,Temple,FBS Independents,interceptions,YDS,16
+189965,Steve Maneri,TE,Temple,FBS Independents,receiving,LONG,13
+189965,Steve Maneri,TE,Temple,FBS Independents,receiving,REC,5
+189965,Steve Maneri,TE,Temple,FBS Independents,receiving,TD,1
+189965,Steve Maneri,TE,Temple,FBS Independents,receiving,YDS,31
+189965,Steve Maneri,TE,Temple,FBS Independents,receiving,YPR,6.2
+190047,Earl Mitchell,DT,Arizona,Pac-10,receiving,LONG,37
+190047,Earl Mitchell,DT,Arizona,Pac-10,receiving,REC,9
+190047,Earl Mitchell,DT,Arizona,Pac-10,receiving,TD,1
+190047,Earl Mitchell,DT,Arizona,Pac-10,receiving,YDS,136
+190047,Earl Mitchell,DT,Arizona,Pac-10,receiving,YPR,15.1
+190047,Earl Mitchell,DT,Arizona,Pac-10,rushing,CAR,4
+190047,Earl Mitchell,DT,Arizona,Pac-10,rushing,LONG,4
+190047,Earl Mitchell,DT,Arizona,Pac-10,rushing,TD,0
+190047,Earl Mitchell,DT,Arizona,Pac-10,rushing,YDS,7
+190047,Earl Mitchell,DT,Arizona,Pac-10,rushing,YPC,1.8
+190183,Delone Carter,RB,Syracuse,Big East,receiving,LONG,15
+190183,Delone Carter,RB,Syracuse,Big East,receiving,REC,9
+190183,Delone Carter,RB,Syracuse,Big East,receiving,TD,0
+190183,Delone Carter,RB,Syracuse,Big East,receiving,YDS,46
+190183,Delone Carter,RB,Syracuse,Big East,receiving,YPR,5.1
+190183,Delone Carter,RB,Syracuse,Big East,rushing,CAR,156
+190183,Delone Carter,RB,Syracuse,Big East,rushing,LONG,47
+190183,Delone Carter,RB,Syracuse,Big East,rushing,TD,4
+190183,Delone Carter,RB,Syracuse,Big East,rushing,YDS,713
+190183,Delone Carter,RB,Syracuse,Big East,rushing,YPC,4.6
+190199,Mike Williams,WR,Syracuse,Big East,receiving,LONG,47
+190199,Mike Williams,WR,Syracuse,Big East,receiving,REC,24
+190199,Mike Williams,WR,Syracuse,Big East,receiving,TD,4
+190199,Mike Williams,WR,Syracuse,Big East,receiving,YDS,461
+190199,Mike Williams,WR,Syracuse,Big East,receiving,YPR,19.2
+190232,Andre Jones,WR,Akron,Mid-American,interceptions,AVG,0.0
+190232,Andre Jones,WR,Akron,Mid-American,interceptions,INT,1
+190232,Andre Jones,WR,Akron,Mid-American,interceptions,TD,0
+190232,Andre Jones,WR,Akron,Mid-American,interceptions,YDS,0
+190232,Andre Jones,WR,Akron,Mid-American,puntReturns,AVG,2.5
+190232,Andre Jones,WR,Akron,Mid-American,puntReturns,LONG,15
+190232,Andre Jones,WR,Akron,Mid-American,puntReturns,NO,21
+190232,Andre Jones,WR,Akron,Mid-American,puntReturns,TD,0
+190232,Andre Jones,WR,Akron,Mid-American,puntReturns,YDS,52
+190539,Richard Sherman,CB,Stanford,Pac-10,receiving,LONG,74
+190539,Richard Sherman,CB,Stanford,Pac-10,receiving,REC,34
+190539,Richard Sherman,CB,Stanford,Pac-10,receiving,TD,3
+190539,Richard Sherman,CB,Stanford,Pac-10,receiving,YDS,581
+190539,Richard Sherman,CB,Stanford,Pac-10,receiving,YPR,17.1
+190539,Richard Sherman,CB,Stanford,Pac-10,rushing,CAR,3
+190539,Richard Sherman,CB,Stanford,Pac-10,rushing,LONG,1
+190539,Richard Sherman,CB,Stanford,Pac-10,rushing,TD,0
+190539,Richard Sherman,CB,Stanford,Pac-10,rushing,YDS,-17
+190539,Richard Sherman,CB,Stanford,Pac-10,rushing,YPC,-5.7
+191010,Anthony Allen,RB,Louisville,Big East,puntReturns,AVG,0.0
+191010,Anthony Allen,RB,Louisville,Big East,puntReturns,LONG,0
+191010,Anthony Allen,RB,Louisville,Big East,puntReturns,NO,1
+191010,Anthony Allen,RB,Louisville,Big East,puntReturns,TD,0
+191010,Anthony Allen,RB,Louisville,Big East,puntReturns,YDS,0
+191010,Anthony Allen,RB,Louisville,Big East,receiving,LONG,24
+191010,Anthony Allen,RB,Louisville,Big East,receiving,REC,4
+191010,Anthony Allen,RB,Louisville,Big East,receiving,TD,1
+191010,Anthony Allen,RB,Louisville,Big East,receiving,YDS,48
+191010,Anthony Allen,RB,Louisville,Big East,receiving,YPR,12.0
+191010,Anthony Allen,RB,Louisville,Big East,rushing,CAR,96
+191010,Anthony Allen,RB,Louisville,Big East,rushing,LONG,20
+191010,Anthony Allen,RB,Louisville,Big East,rushing,TD,13
+191010,Anthony Allen,RB,Louisville,Big East,rushing,YDS,406
+191010,Anthony Allen,RB,Louisville,Big East,rushing,YPC,4.2
+191161,Tim Brown,WR,Rutgers,Big East,receiving,LONG,72
+191161,Tim Brown,WR,Rutgers,Big East,receiving,REC,8
+191161,Tim Brown,WR,Rutgers,Big East,receiving,TD,3
+191161,Tim Brown,WR,Rutgers,Big East,receiving,YDS,202
+191161,Tim Brown,WR,Rutgers,Big East,receiving,YPR,25.3
+191208,Greg Hardy,DE,Ole Miss,SEC,receiving,LONG,23
+191208,Greg Hardy,DE,Ole Miss,SEC,receiving,REC,1
+191208,Greg Hardy,DE,Ole Miss,SEC,receiving,TD,1
+191208,Greg Hardy,DE,Ole Miss,SEC,receiving,YDS,23
+191208,Greg Hardy,DE,Ole Miss,SEC,receiving,YPR,23.0
+191214,Kendrick Lewis,S,Ole Miss,SEC,receiving,LONG,14
+191214,Kendrick Lewis,S,Ole Miss,SEC,receiving,REC,5
+191214,Kendrick Lewis,S,Ole Miss,SEC,receiving,TD,0
+191214,Kendrick Lewis,S,Ole Miss,SEC,receiving,YDS,31
+191214,Kendrick Lewis,S,Ole Miss,SEC,receiving,YPR,6.2
+191216,Dexter McCluster,WR,Ole Miss,SEC,receiving,LONG,49
+191216,Dexter McCluster,WR,Ole Miss,SEC,receiving,REC,15
+191216,Dexter McCluster,WR,Ole Miss,SEC,receiving,TD,1
+191216,Dexter McCluster,WR,Ole Miss,SEC,receiving,YDS,232
+191216,Dexter McCluster,WR,Ole Miss,SEC,receiving,YPR,15.5
+191216,Dexter McCluster,WR,Ole Miss,SEC,rushing,CAR,8
+191216,Dexter McCluster,WR,Ole Miss,SEC,rushing,LONG,31
+191216,Dexter McCluster,WR,Ole Miss,SEC,rushing,TD,1
+191216,Dexter McCluster,WR,Ole Miss,SEC,rushing,YDS,68
+191216,Dexter McCluster,WR,Ole Miss,SEC,rushing,YPC,8.5
+191341,Brandon King,TE,Duke,ACC,receiving,LONG,12
+191341,Brandon King,TE,Duke,ACC,receiving,REC,7
+191341,Brandon King,TE,Duke,ACC,receiving,TD,0
+191341,Brandon King,TE,Duke,ACC,receiving,YDS,54
+191341,Brandon King,TE,Duke,ACC,receiving,YPR,7.7
+191344,Thaddeus Lewis,QB,Duke,ACC,passing,ATT,340
+191344,Thaddeus Lewis,QB,Duke,ACC,passing,COMPLETIONS,180
+191344,Thaddeus Lewis,QB,Duke,ACC,passing,INT,16
+191344,Thaddeus Lewis,QB,Duke,ACC,passing,PCT,0.529
+191344,Thaddeus Lewis,QB,Duke,ACC,passing,TD,11
+191344,Thaddeus Lewis,QB,Duke,ACC,passing,YDS,2134
+191344,Thaddeus Lewis,QB,Duke,ACC,passing,YPA,6.3
+191344,Thaddeus Lewis,QB,Duke,ACC,rushing,CAR,99
+191344,Thaddeus Lewis,QB,Duke,ACC,rushing,LONG,13
+191344,Thaddeus Lewis,QB,Duke,ACC,rushing,TD,1
+191344,Thaddeus Lewis,QB,Duke,ACC,rushing,YDS,-74
+191344,Thaddeus Lewis,QB,Duke,ACC,rushing,YPC,-0.7
+191437,Stevie Brown,LB,Michigan,Big Ten,puntReturns,AVG,0.0
+191437,Stevie Brown,LB,Michigan,Big Ten,puntReturns,LONG,0
+191437,Stevie Brown,LB,Michigan,Big Ten,puntReturns,NO,1
+191437,Stevie Brown,LB,Michigan,Big Ten,puntReturns,TD,0
+191437,Stevie Brown,LB,Michigan,Big Ten,puntReturns,YDS,0
+191481,Javier Arenas,DB,Alabama,SEC,puntReturns,AVG,8.7
+191481,Javier Arenas,DB,Alabama,SEC,puntReturns,LONG,86
+191481,Javier Arenas,DB,Alabama,SEC,puntReturns,NO,33
+191481,Javier Arenas,DB,Alabama,SEC,puntReturns,TD,2
+191481,Javier Arenas,DB,Alabama,SEC,puntReturns,YDS,286
+191583,Danario Alexander,WR,Missouri,Big 12,receiving,LONG,74
+191583,Danario Alexander,WR,Missouri,Big 12,receiving,REC,15
+191583,Danario Alexander,WR,Missouri,Big 12,receiving,TD,1
+191583,Danario Alexander,WR,Missouri,Big 12,receiving,YDS,251
+191583,Danario Alexander,WR,Missouri,Big 12,receiving,YPR,16.7
+191583,Danario Alexander,WR,Missouri,Big 12,rushing,CAR,2
+191583,Danario Alexander,WR,Missouri,Big 12,rushing,LONG,14
+191583,Danario Alexander,WR,Missouri,Big 12,rushing,TD,0
+191583,Danario Alexander,WR,Missouri,Big 12,rushing,YDS,12
+191583,Danario Alexander,WR,Missouri,Big 12,rushing,YPC,6.0
+191607,Sean Weatherspoon,LB,Missouri,Big 12,puntReturns,AVG,9.0
+191607,Sean Weatherspoon,LB,Missouri,Big 12,puntReturns,LONG,9
+191607,Sean Weatherspoon,LB,Missouri,Big 12,puntReturns,NO,1
+191607,Sean Weatherspoon,LB,Missouri,Big 12,puntReturns,TD,0
+191607,Sean Weatherspoon,LB,Missouri,Big 12,puntReturns,YDS,9
+192038,Jeron Mastrud,TE,Kansas State,Big 12,receiving,LONG,66
+192038,Jeron Mastrud,TE,Kansas State,Big 12,receiving,REC,17
+192038,Jeron Mastrud,TE,Kansas State,Big 12,receiving,TD,0
+192038,Jeron Mastrud,TE,Kansas State,Big 12,receiving,YDS,235
+192038,Jeron Mastrud,TE,Kansas State,Big 12,receiving,YPR,13.8
+192042,Joshua Moore,DB,Kansas State,Big 12,interceptions,AVG,0.0
+192042,Joshua Moore,DB,Kansas State,Big 12,interceptions,INT,1
+192042,Joshua Moore,DB,Kansas State,Big 12,interceptions,TD,0
+192042,Joshua Moore,DB,Kansas State,Big 12,interceptions,YDS,0
+192135,Crezdon Butler,CB,Clemson,ACC,interceptions,AVG,11.7
+192135,Crezdon Butler,CB,Clemson,ACC,interceptions,INT,3
+192135,Crezdon Butler,CB,Clemson,ACC,interceptions,TD,0
+192135,Crezdon Butler,CB,Clemson,ACC,interceptions,YDS,35
+192151,C.J. Spiller,RB,Clemson,ACC,puntReturns,AVG,1.2
+192151,C.J. Spiller,RB,Clemson,ACC,puntReturns,LONG,16
+192151,C.J. Spiller,RB,Clemson,ACC,puntReturns,NO,16
+192151,C.J. Spiller,RB,Clemson,ACC,puntReturns,TD,0
+192151,C.J. Spiller,RB,Clemson,ACC,puntReturns,YDS,19
+192151,C.J. Spiller,RB,Clemson,ACC,receiving,LONG,82
+192151,C.J. Spiller,RB,Clemson,ACC,receiving,REC,18
+192151,C.J. Spiller,RB,Clemson,ACC,receiving,TD,2
+192151,C.J. Spiller,RB,Clemson,ACC,receiving,YDS,206
+192151,C.J. Spiller,RB,Clemson,ACC,receiving,YPR,11.4
+192151,C.J. Spiller,RB,Clemson,ACC,rushing,CAR,117
+192151,C.J. Spiller,RB,Clemson,ACC,rushing,LONG,80
+192151,C.J. Spiller,RB,Clemson,ACC,rushing,TD,8
+192151,C.J. Spiller,RB,Clemson,ACC,rushing,YDS,865
+192151,C.J. Spiller,RB,Clemson,ACC,rushing,YPC,7.4
+192171,Michael Palmer,TE,Clemson,ACC,receiving,LONG,7
+192171,Michael Palmer,TE,Clemson,ACC,receiving,REC,4
+192171,Michael Palmer,TE,Clemson,ACC,receiving,TD,0
+192171,Michael Palmer,TE,Clemson,ACC,receiving,YDS,19
+192171,Michael Palmer,TE,Clemson,ACC,receiving,YPR,4.8
+192243,D'Anthony Smith,DT,Louisiana Tech,Western Athletic,interceptions,AVG,7.0
+192243,D'Anthony Smith,DT,Louisiana Tech,Western Athletic,interceptions,INT,1
+192243,D'Anthony Smith,DT,Louisiana Tech,Western Athletic,interceptions,TD,0
+192243,D'Anthony Smith,DT,Louisiana Tech,Western Athletic,interceptions,YDS,7
+192244,Keith Toston,RB,Oklahoma State,Big 12,receiving,LONG,33
+192244,Keith Toston,RB,Oklahoma State,Big 12,receiving,REC,10
+192244,Keith Toston,RB,Oklahoma State,Big 12,receiving,TD,2
+192244,Keith Toston,RB,Oklahoma State,Big 12,receiving,YDS,92
+192244,Keith Toston,RB,Oklahoma State,Big 12,receiving,YPR,9.2
+192244,Keith Toston,RB,Oklahoma State,Big 12,rushing,CAR,106
+192244,Keith Toston,RB,Oklahoma State,Big 12,rushing,LONG,40
+192244,Keith Toston,RB,Oklahoma State,Big 12,rushing,TD,6
+192244,Keith Toston,RB,Oklahoma State,Big 12,rushing,YDS,631
+192244,Keith Toston,RB,Oklahoma State,Big 12,rushing,YPC,6.0
+192891,Robert McClain,CB,UConn,Big East,puntReturns,AVG,3.0
+192891,Robert McClain,CB,UConn,Big East,puntReturns,LONG,8
+192891,Robert McClain,CB,UConn,Big East,puntReturns,NO,3
+192891,Robert McClain,CB,UConn,Big East,puntReturns,TD,0
+192891,Robert McClain,CB,UConn,Big East,puntReturns,YDS,9
+195620,Chris Thomas,DB,Air Force,Mountain West,interceptions,AVG,0.0
+195620,Chris Thomas,DB,Air Force,Mountain West,interceptions,INT,1
+195620,Chris Thomas,DB,Air Force,Mountain West,interceptions,TD,0
+195620,Chris Thomas,DB,Air Force,Mountain West,interceptions,YDS,0
+379019,Brandon Smith,QB,Western Kentucky,MVFC,rushing,CAR,1
+379019,Brandon Smith,QB,Western Kentucky,MVFC,rushing,LONG,7
+379019,Brandon Smith,QB,Western Kentucky,MVFC,rushing,TD,0
+379019,Brandon Smith,QB,Western Kentucky,MVFC,rushing,YDS,7
+379019,Brandon Smith,QB,Western Kentucky,MVFC,rushing,YPC,7.0
