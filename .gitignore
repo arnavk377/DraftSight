@@ -1,7 +1,22 @@
 .env
 __pycache__/
 *.pyc
-data/raw/
+
+# Keep the submitted repository small. The runnable demo only needs the
+# allowlisted CSVs below; raw/intermediate data can stay local.
+data/**
+!data/
+!data/supabase_exports/
+!data/supabase_exports/README.md
+!data/supabase_exports/manifest.json
+!data/supabase_exports/drafts.csv
+!data/supabase_exports/av.csv
+!data/supabase_exports/college_stats.csv
+!data/supabase_exports/draft_pick_context_features.csv
+!data/roster/
+!data/roster/pick_trade_flags.csv
+!data/roster/draft_positional_context_features.csv
+!data/roster/veteran_performance_features.csv
 
 # macOS
 .DS_Store

@@ -1,59 +1,92 @@
 # DraftSight
 
-Pre-draft player value prediction model for the NFL. Combines college performance, combine measurables, recruiting rankings, and draft capital to predict career NFL success.
+DraftSight predicts early NFL career value from draft-night information, college production, team roster context, and trade context. The target is each player's first two seasons of Pro Football Reference Approximate Value (2-year AV).
 
-## Data Pipeline
+The repository includes a fast demonstration notebook for grading and presentation, plus the fuller walk-forward modeling code used during development.
 
-Collects and aggregates data from:
-- **NFL Data** (nfl_data_py): Draft picks, combine results, rosters (2000-2025)
-- **College Data** (CFBD API): Player stats, recruiting rankings (2000-2025)
+## Quick Start
 
-Produces `data/joined/master_player_table.csv` with:
-- 9,300+ drafted players
-- 47 features (college stats, combine measurements, recruiting, draft info)
-- Target variable: career value metric (NFL production)
-
-## Setup
+Install the Python dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Add `CFBD_API_KEY` to `.env` (get free key at https://api.collegefootballdata.com)
+View the pre-rendered notebook output without running code:
 
-## Usage
-
-View the demo (no code required):
-```
-open project.html in any browser
+```bash
+open project.html
 ```
 
 Run the demo notebook interactively:
+
 ```bash
 jupyter notebook notebooks/demo.ipynb
 ```
 
-Run the full walk-forward model evaluation (trains all 5 models across 18 folds):
+Regenerate the required HTML submission artifact:
+
+```bash
+jupyter nbconvert --to html --execute notebooks/demo.ipynb --output project.html --output-dir .
+```
+
+The demo notebook is designed to run in under one minute. It trains lightweight Spline Ridge and XGBoost models, evaluates a 2024 holdout, shows examples of good and bad predictions, and visualizes the learned pick-value curve.
+
+## Files
+
+| File | Purpose |
+|---|---|
+| `README.md` | Project overview, file guide, and run instructions. |
+| `requirements.txt` | Python packages needed to run the demo notebook and modeling scripts. |
+| `notebooks/demo.ipynb` | Main runnable project notebook. It loads the included data, engineers features, uses college stats through `CollegePerformanceScorer`, trains demo models, evaluates predictions, and creates plots. |
+| `project.html` | Pre-executed HTML version of `notebooks/demo.ipynb` with cell outputs already shown. |
+| `pick_values.json` | Precomputed pick-value curve used by the notebook so the demo stays fast. |
+| `export_pick_values.py` | Optional utility for rebuilding `pick_values.json` from trained model outputs. |
+| `src/model/data_loader.py` | Shared data loading and joining utilities for drafts, AV labels, college stats, roster context, trade context, and veteran team context. |
+| `src/model/train_n_evaluate.py` | Full walk-forward modeling script. It runs Spline Ridge, XGBoost, Random Forest, FT-Transformer, and a pick-bin baseline. |
+| `results/` | Saved model results and poster-ready plots from the larger modeling run. |
+| `data/supabase_exports/drafts.csv` | Draft-pick backbone table. Models start from one row per NFL draft pick. |
+| `data/supabase_exports/av.csv` | Pro Football Reference Approximate Value data used to build the 2-year AV target. |
+| `data/supabase_exports/college_stats.csv` | Career college production features joined by draft season and overall pick. |
+| `data/supabase_exports/draft_pick_context_features.csv` | Draft-time team roster context features. |
+| `data/roster/pick_trade_flags.csv` | Pick-level trade flags used as simple trade context features. |
+| `data/roster/draft_positional_context_features.csv` | Same-draft positional context for each team and pick. |
+| `data/roster/veteran_performance_features.csv` | Prior-season veteran context by team and position group. |
+
+## Data Used by the Demo
+
+The notebook only requires the seven CSVs listed above plus `pick_values.json`. Those files are small enough for the course repository requirement when raw/intermediate data dumps are not included.
+
+The feature join is:
+
+```text
+drafts.csv
+  + 2-year AV labels from av.csv
+  + college production from college_stats.csv
+  + roster context from draft_pick_context_features.csv
+  + trade flags from pick_trade_flags.csv
+  + positional context from draft_positional_context_features.csv
+  + veteran context from veteran_performance_features.csv
+```
+
+College stats are used in the demo through two paths: raw college stat columns and a standardized `college_perf_score` feature computed inside the notebook.
+
+## Full Modeling
+
+Run the larger walk-forward experiment:
+
 ```bash
 python -m src.model.train_n_evaluate
 ```
 
-Regenerate the pick value curve (overwrites `pick_values.json`):
+By default, the full script includes college production features. To reproduce the older sensitivity run that excluded college features, use:
+
 ```bash
-python export_pick_values.py
+DRAFTSIGHT_EXCLUDE_COLLEGE_STATS=1 python -m src.model.train_n_evaluate
 ```
 
-## Key Files
+The full modeling run can take longer than the submission notebook. For grading, use `notebooks/demo.ipynb` or the already-rendered `project.html`.
 
-| File | Description |
-|---|---|
-| `src/model/train_n_evaluate.py` | Core modeling script. Contains the CollegePerformanceScorer, full feature engineering, all five models (Spline Ridge, XGBoost, CatBoost, Random Forest, FT-Transformer), and the walk-forward backtesting harness across 18 folds from 2006–2024. The stacked ensemble is also built here. |
-| `src/model/data_loader.py` | Data access layer used by every model run. Defines all feature column lists and the load/join functions that assemble the seven-source dataset into a single labeled DataFrame. |
-| `notebooks/demo.ipynb` | End-to-end demo notebook. Loads data, engineers features, trains Spline Ridge and XGBoost on 2010–2023, evaluates on the 2024 hold-out, and shows the pick value curve — all in under one minute. |
-| `project.html` | Pre-executed render of `demo.ipynb` with all outputs embedded. Open this file to evaluate the project without running any code. |
-| `data/supabase_exports/drafts.csv` | Backbone dataset of 12,670 NFL draft picks (2000–2026). Every model row starts here; all other tables are joined onto it by season and pick number. |
-| `data/supabase_exports/av.csv` | Source of the target variable. Contains player-season Approximate Value (AV) from Pro Football Reference, which is summed over a player's first two NFL seasons to produce `av_2yr`. |
-| `data/supabase_exports/college_stats.csv` | Career college football statistics matched to draft picks. The main source of prospect-specific signal and the input to CollegePerformanceScorer. |
-| `pick_values.json` | Pre-computed pick value curve mapping each of picks 1–262 to its expected 2-year AV. Generated by XGBoost trained on 2000–2023 data with isotonic regression applied for monotonicity. |
-| `export_pick_values.py` | Script that produces `pick_values.json`. Trains XGBoost on the full dataset, sweeps picks 1–262 holding all other features at their training medians, then smooths with isotonic regression. |
-| `results/model_v6_walkforward_results.csv` | Fold-level performance record for all six models across 18 walk-forward test folds. Every chart in the `results/` directory is derived from this file and it is the primary evidence of model accuracy. |
+## Notes
+
+No API keys are needed to run the demo notebook from the included CSVs. A CollegeFootballData API key is only needed if rebuilding raw college-football data from scratch.

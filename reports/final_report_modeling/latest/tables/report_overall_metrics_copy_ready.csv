@@ -1,0 +1,6 @@
+Model,N,MAE,RMSE,Spearman,R2
+Pick-Bin Baseline,4599,3.57,5.56,0.58,0.02
+XGBoost,4599,3.17,4.66,0.56,0.31
+Random Forest,4599,3.1,4.71,0.6,0.3
+FT-Transformer,4599,3.35,5.03,0.53,0.2
+Spline Ridge,4599,3.81,5.88,0.34,-0.09

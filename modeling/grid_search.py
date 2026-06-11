@@ -1,12 +1,12 @@
 """
 NFL Draft Value Grid Search
 ===========================
-Models: XGBoost, CatBoost, Spline Regression, MLP Neural Network
+Models: XGBoost, Spline Regression, MLP Neural Network
 Target: 2-year Approximate Value (AV) from av.csv
 Frame:  drafts.csv + college_stats.csv + draft_pick_context_features.csv
 
 Run:
-    pip install xgboost catboost scikit-learn pandas numpy scipy joblib
+    pip install xgboost scikit-learn pandas numpy scipy joblib
     python modeling/grid_search.py
 """
 
@@ -17,7 +17,6 @@ from pathlib import Path
 import joblib
 import numpy as np
 import pandas as pd
-from catboost import CatBoostRegressor
 from scipy.stats import loguniform, randint, uniform
 from sklearn.compose import ColumnTransformer
 from sklearn.linear_model import Ridge
@@ -70,7 +69,7 @@ DROP_IDS = {
 # low-cardinality categoricals safe to one-hot encode
 OHE_COLS = ["position", "position_group", "category", "side"]
 
-# high-cardinality: college name — used by CatBoost natively, dropped for others
+# high-cardinality: college name — dropped for all models
 HIGH_CARD_CATS = {"college"}
 
 
@@ -201,86 +200,6 @@ def xgboost_search(X, y, cv):
     )
 
 
-def catboost_search(X, y, cv, cat_cols):
-    """CatBoost handles categoricals natively — no OHE needed."""
-    print("\n[CatBoost] Running RandomizedSearchCV ...")
-    cat_indices = [list(X.columns).index(c) for c in cat_cols if c in X.columns]
-
-    param_dist = {
-        "iterations":        randint(200, 1200),
-        "depth":             randint(3, 10),
-        "learning_rate":     loguniform(1e-3, 0.3),
-        "l2_leaf_reg":       loguniform(1e-2, 20),
-        "bagging_temperature": uniform(0, 2),
-        "random_strength":   uniform(0, 3),
-        "border_count":      randint(32, 256),
-    }
-
-    best_score = np.inf
-    best_params = {}
-    best_model = None
-
-    rng = np.random.default_rng(RANDOM_STATE)
-    samples = [
-        {k: (int(v.rvs(random_state=rng.integers(1e6)))
-             if hasattr(v, "rvs") else v)
-         for k, v in param_dist.items()}
-        for _ in range(N_ITER)
-    ]
-
-    # Manual CV because CatBoostRegressor isn't a sklearn estimator with set_params
-    kf = KFold(n_splits=CV_FOLDS, shuffle=True, random_state=RANDOM_STATE)
-    fold_scores = []
-
-    for i, params in enumerate(samples):
-        scores = []
-        for train_idx, val_idx in kf.split(X):
-            X_tr, X_val = X.iloc[train_idx], X.iloc[val_idx]
-            y_tr, y_val = y[train_idx], y[val_idx]
-
-            X_tr = X_tr.copy()
-            X_val = X_val.copy()
-            for c in cat_cols:
-                if c in X_tr.columns:
-                    X_tr[c] = X_tr[c].fillna("_missing_").astype(str)
-                    X_val[c] = X_val[c].fillna("_missing_").astype(str)
-
-            model = CatBoostRegressor(
-                **params,
-                loss_function="RMSE",
-                eval_metric="RMSE",
-                random_seed=RANDOM_STATE,
-                verbose=False,
-                cat_features=cat_indices,
-            )
-            model.fit(X_tr, y_tr)
-            preds = model.predict(X_val)
-            scores.append(mean_squared_error(y_val, preds))
-
-        mean_mse = np.mean(scores)
-        if mean_mse < best_score:
-            best_score = mean_mse
-            best_params = params
-        if (i + 1) % 10 == 0:
-            print(f"  iter {i+1}/{N_ITER}  best_rmse={np.sqrt(best_score):.4f}")
-
-    # Refit on full data with best params
-    X_full = X.copy()
-    for c in cat_cols:
-        if c in X_full.columns:
-            X_full[c] = X_full[c].fillna("_missing_").astype(str)
-
-    best_model = CatBoostRegressor(
-        **best_params,
-        loss_function="RMSE",
-        random_seed=RANDOM_STATE,
-        verbose=False,
-        cat_features=cat_indices,
-    )
-    best_model.fit(X_full, y)
-    return best_model, best_params, best_score
-
-
 def spline_search(X, y, cv, num_cols, cat_cols):
     print("\n[Spline Regression] Running RandomizedSearchCV ...")
     preprocessor = ColumnTransformer(
@@ -354,20 +273,6 @@ def eval_best(search, X, y, name):
             "best_params": str(search.best_params_)}
 
 
-def eval_catboost(model, best_params, best_mse, X, y, name="CatBoost"):
-    preds = model.predict(X)
-    rmse  = np.sqrt(mean_squared_error(y, preds))
-    r2    = r2_score(y, preds)
-    cv_rmse = np.sqrt(best_mse)
-    print(f"\n{name} results:")
-    print(f"  CV RMSE (best):  {cv_rmse:.4f}")
-    print(f"  Train RMSE:      {rmse:.4f}")
-    print(f"  Train R²:        {r2:.4f}")
-    print(f"  Best params:     {best_params}")
-    return {"cv_rmse": cv_rmse, "train_rmse": rmse, "train_r2": r2,
-            "best_params": str(best_params)}
-
-
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
@@ -400,12 +305,6 @@ def main():
     xgb_search.fit(X_sk, y)
     results["XGBoost"] = eval_best(xgb_search, X_sk, y, "XGBoost")
     joblib.dump(xgb_search.best_estimator_, OUT_DIR / "xgboost_best.pkl")
-
-    # ── CatBoost (uses college name as cat feature) ───────────────────────────
-    X_cb, y_cb, _, cat_cols_cb = prepare_features(frame, use_college_name=True)
-    cb_model, cb_params, cb_mse = catboost_search(X_cb, y_cb, cv, cat_cols_cb)
-    results["CatBoost"] = eval_catboost(cb_model, cb_params, cb_mse, X_cb, y_cb)
-    cb_model.save_model(str(OUT_DIR / "catboost_best.cbm"))
 
     # ── Spline Regression ─────────────────────────────────────────────────────
     spl_search = spline_search(X_sk, y, cv, num_cols, cat_cols)

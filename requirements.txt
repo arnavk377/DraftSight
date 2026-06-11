@@ -8,7 +8,6 @@ scikit-learn
 scipy
 joblib
 xgboost
-catboost
 nfl_data_py
 cfbd
 thefuzz

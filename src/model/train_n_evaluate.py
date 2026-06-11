@@ -1,11 +1,9 @@
 """
-Model v6: Spline, XGBoost, CatBoost, Random Forest, FT-Transformer, Stacked Ensemble.
+Model v6: Spline, XGBoost, Random Forest, FT-Transformer.
 
-Walk-forward backtesting with OOF stacking.  MLPE, TabNet, and naive baselines
-removed vs v5.1a.  Base models stacked: CatBoost, RF, FTT.
-Meta-learner: NNLS (scipy) with recency weighting.
+Walk-forward backtesting. MLPE, TabNet, and naive baselines removed vs v5.1a.
 
-Outputs: poc_outputs_v6/
+Outputs: results/
 """
 
 import math
@@ -22,11 +20,11 @@ import numpy as np
 import pandas as pd
 import torch
 import torch.nn.functional as F
-from catboost import CatBoostRegressor
 from scipy.stats import spearmanr
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.impute import SimpleImputer
+from sklearn.isotonic import IsotonicRegression
 from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.pipeline import Pipeline
@@ -34,8 +32,6 @@ from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, SplineTransform
 from torch.optim.lr_scheduler import CosineAnnealingLR
 from torch.utils.data import DataLoader, TensorDataset
 from xgboost import XGBRegressor
-
-from scipy.optimize import nnls
 
 from src.model.ft_transformer import FTTransformer
 from src.model.data_loader import (
@@ -73,7 +69,7 @@ ROSTER_DIR = os.path.join(REPO_ROOT, "data", "roster")
 VET_PERF_CSV = os.path.join(ROSTER_DIR, "veteran_performance_features.csv")
 DRAFT_POS_CONTEXT_CSV = os.path.join(ROSTER_DIR, "draft_positional_context_features.csv")
 PICK_TRADE_FLAGS_CSV = os.path.join(ROSTER_DIR, "pick_trade_flags.csv")
-OUT_DIR = os.path.join(REPO_ROOT, "poc_outputs_v6")
+OUT_DIR = os.path.join(REPO_ROOT, "results")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 if torch.cuda.is_available():
@@ -104,30 +100,30 @@ PERF_BIN_COUNT = 4
 SELECTED_SUMMARY_YEARS = [2010, 2015, 2020, 2024]
 
 USE_POSITION_MEDIAN_IMPUTE: bool = False
-EXCLUDE_COLLEGE_STATS: bool = True
+EXCLUDE_COLLEGE_STATS: bool = os.getenv("DRAFTSIGHT_EXCLUDE_COLLEGE_STATS", "0").lower() in {
+    "1",
+    "true",
+    "yes",
+}
 
 
 # ── Model registry ────────────────────────────────────────────────────────────
 
-MODEL_ORDER = ["spline", "xgb", "catboost", "rf", "ftt", "stack", "pick_bin"]
+MODEL_ORDER = ["spline", "xgb", "rf", "ftt", "pick_bin"]
 
 MODEL_LABELS = {
     "spline":   "Spline Ridge",
     "xgb":      "XGBoost",
-    "catboost": "CatBoost",
     "rf":       "Random Forest",
     "ftt":      "FT-Transformer",
-    "stack":    "Stacked Ensemble",
     "pick_bin": "Pick Bin Mean",
 }
 
 MODEL_COLORS = {
     "spline":   "#3B6FB6",
     "xgb":      "#2A9D8F",
-    "catboost": "#E9C46A",
     "rf":       "#F4A261",
     "ftt":      "#264653",
-    "stack":    "#E63946",
     "pick_bin": "#888888",
 }
 
@@ -136,28 +132,27 @@ MODEL_COLORS = {
 
 SPLINE_CFG = dict(alpha=25.0, n_knots_pick=8)
 
-CATBOOST_CFG = dict(
-    iterations=500, learning_rate=0.03, depth=5,
-    l2_leaf_reg=3.0, random_seed=RANDOM_STATE, verbose=0,
-    loss_function="Tweedie:variance_power=1.5",
-)
-
 RF_CFG = dict(
     n_estimators=500, max_depth=10, min_samples_leaf=20,
     max_features=0.5, n_jobs=1, random_state=RANDOM_STATE,
 )
 
-FTT_CFG = dict(d_token=64, n_heads=4, n_layers=2, dropout=0.2)
+FTT_CFG = dict(
+    d_token=int(os.getenv("DRAFTSIGHT_FTT_D_TOKEN", "32")),
+    n_heads=int(os.getenv("DRAFTSIGHT_FTT_N_HEADS", "4")),
+    n_layers=int(os.getenv("DRAFTSIGHT_FTT_N_LAYERS", "1")),
+    dropout=float(os.getenv("DRAFTSIGHT_FTT_DROPOUT", "0.2")),
+)
 EMBED_TRAIN_CFG = dict(
-    lr=3e-4, batch_size=128, max_epochs=200, patience=35, val_fraction=0.15,
+    lr=float(os.getenv("DRAFTSIGHT_FTT_LR", "3e-4")),
+    batch_size=int(os.getenv("DRAFTSIGHT_FTT_BATCH_SIZE", "256")),
+    max_epochs=int(os.getenv("DRAFTSIGHT_FTT_MAX_EPOCHS", "10")),
+    patience=int(os.getenv("DRAFTSIGHT_FTT_PATIENCE", "3")),
+    val_fraction=0.15,
 )
 HUBER_DELTA = 1.0
 
-ORIG_SCALE_MODELS = {"xgb", "catboost", "pick_bin"}
-
-STACK_BASE_MODELS = ["catboost", "rf", "ftt"]
-META_MIN_TRAIN_YEARS = 3
-STACK_DECAY = 0.75
+ORIG_SCALE_MODELS = {"xgb", "pick_bin"}
 
 
 # ── Metrics ───────────────────────────────────────────────────────────────────
@@ -389,19 +384,6 @@ def build_tree_preprocessor(df: pd.DataFrame):
     if cat_cols:
         transformers.append(("cat", _ohe(), cat_cols))
     return ColumnTransformer(transformers, remainder="drop"), num_cols, cat_cols
-
-
-def build_catboost_data(df_tr: pd.DataFrame, df_te: pd.DataFrame):
-    num_cols = [c for c in MODEL_NUM_COLS if c in df_tr.columns and df_tr[c].notna().any()]
-    cat_cols = [c for c in MODEL_CAT_COLS if c in df_tr.columns]
-    all_cols = num_cols + cat_cols
-    cat_indices = list(range(len(num_cols), len(num_cols) + len(cat_cols)))
-    X_tr = df_tr[all_cols].copy()
-    X_te = df_te[all_cols].copy()
-    for c in cat_cols:
-        X_tr[c] = X_tr[c].fillna("nan").astype(str)
-        X_te[c] = X_te[c].fillna("nan").astype(str)
-    return X_tr, X_te, cat_indices, all_cols
 
 
 def build_embed_data(df_tr: pd.DataFrame, df_te: pd.DataFrame):
@@ -644,39 +626,48 @@ def save_residual_diagnostics(y_true, y_pred, picks, out_path, draft_year, model
 
 
 def save_pick_value_curve(spline_model, train_df, scorer, out_path, draft_year):
-    """Spline model pick value curve for low / median / high college perf score tiers."""
-    max_pick = 256
-    picks = np.arange(1, max_pick + 1)
-    labels = ["Lower college score", "Median college score", "Higher college score"]
-    colors = ["#457B9D", "#E9C46A", "#E76F51"]
+    """Empirical pick-value curve with a monotonic smooth.
 
-    matched = train_df.loc[train_df["cfb_matched"] > 0.5] if "cfb_matched" in train_df.columns else train_df
-    if matched.empty:
-        matched = train_df
-    scores = matched["college_perf_score"].dropna()
-    if scores.empty or scores.nunique() < 3:
+    The earlier spline-only synthetic curve could show unrealistic late-round
+    upturns at the boundary. For reports, the safer story is the observed
+    training-set value by pick bin plus a monotonic fit.
+    """
+    del spline_model, scorer
+    curve_df = train_df[["pick", "av_2yr"]].dropna().copy()
+    if curve_df.empty:
         return
-    ref_scores = np.quantile(scores, [0.2, 0.5, 0.8])
 
-    fig, ax = plt.subplots(figsize=(9, 5.5), dpi=200)
-    for perf_score, label, color in zip(ref_scores, labels, colors):
-        grid = pd.DataFrame({"pick": picks})
-        for col in train_df.columns:
-            if col == "pick":
-                continue
-            if col in MODEL_CAT_COLS:
-                mode = train_df[col].mode(dropna=True)
-                grid[col] = mode.iloc[0] if not mode.empty else "UNK"
-            else:
-                vals = pd.to_numeric(train_df[col], errors="coerce")
-                grid[col] = float(vals.median()) if vals.notna().any() else 0.0
-        grid["college_perf_score"] = perf_score
-        grid["cfb_matched"] = 1.0
-        ax.plot(picks, np.expm1(spline_model.predict(grid)), label=label, linewidth=2.0, color=color)
+    bin_size = PICK_BIN_SIZE
+    curve_df["pick_bin"] = ((curve_df["pick"].astype(int) - 1) // bin_size) * bin_size + 1
+    binned = (
+        curve_df.groupby("pick_bin", as_index=False)
+        .agg(pick=("pick", "mean"), actual_av=("av_2yr", "mean"), n=("av_2yr", "size"))
+        .sort_values("pick")
+    )
+    if len(binned) < 3:
+        return
+
+    iso = IsotonicRegression(increasing=False, out_of_bounds="clip")
+    smooth = iso.fit_transform(binned["pick"].to_numpy(dtype=float), binned["actual_av"].to_numpy(dtype=float))
+
+    fig, ax = plt.subplots(figsize=(9.5, 5.5), dpi=200)
+    ax.scatter(
+        binned["pick"], binned["actual_av"],
+        s=np.clip(binned["n"] / 1.8, 18, 80),
+        color="#9AA9B5", alpha=0.65, edgecolor="white", linewidth=0.6,
+        label=f"Actual AV, {bin_size}-pick bins",
+    )
+    ax.plot(
+        binned["pick"], smooth,
+        color="#1F6F8B", linewidth=2.8,
+        label="Monotonic empirical smooth",
+    )
+    for boundary in [32, 64, 100, 135, 176, 215]:
+        ax.axvline(boundary + 0.5, color="#DFE5EA", linewidth=0.8, zorder=0)
 
     ax.set_xlabel("Pick number", fontsize=11)
-    ax.set_ylabel("Predicted 2-Year AV", fontsize=11)
-    ax.set_title(f"Spline Pick Value Curve — Trained Through {draft_year - 1}", fontsize=13, pad=10)
+    ax.set_ylabel("2-Year AV", fontsize=11)
+    ax.set_title(f"Draft Pick Value Curve — Training Data Through {draft_year - 1}", fontsize=13, pad=10)
     ax.legend(frameon=False, fontsize=9)
     _nice_axes(ax)
     fig.tight_layout()
@@ -793,7 +784,6 @@ def main():
     overall_rows = []
     latest_year = max(test_years)
     latest_artifacts: dict = {}
-    oof_stack: list = []
 
     for test_year in tqdm(test_years, desc="Walk-forward folds", unit="yr"):
         train_mask = years < test_year
@@ -852,17 +842,6 @@ def main():
         prediction_map["xgb"] = xgb_model.predict(X_test)
         print("  [xgb] done", flush=True)
 
-        # CatBoost — Tweedie on original scale + 15% held-out eval for early stopping
-        X_tr_cb, X_te_cb, cat_idx_cb, cb_feat_names = build_catboost_data(X_train, X_test)
-        n_cb_val = max(1, int(len(X_tr_cb) * 0.15))
-        X_cb_t, X_cb_v = X_tr_cb.iloc[:-n_cb_val], X_tr_cb.iloc[-n_cb_val:]
-        y_cb_t, y_cb_v = y_train_orig[:-n_cb_val], y_train_orig[-n_cb_val:]
-        cb_model = CatBoostRegressor(**CATBOOST_CFG, cat_features=cat_idx_cb, thread_count=1)
-        print("  [catboost] fitting...", flush=True)
-        cb_model.fit(X_cb_t, y_cb_t, eval_set=(X_cb_v, y_cb_v), early_stopping_rounds=50)
-        prediction_map["catboost"] = cb_model.predict(X_te_cb)
-        print("  [catboost] done", flush=True)
-
         # Random Forest
         pre_rf, rf_num, rf_cat = build_tree_preprocessor(X_train)
         rf_model = Pipeline([("pre", pre_rf), ("rf", RandomForestRegressor(**RF_CFG))])
@@ -876,7 +855,12 @@ def main():
             build_embed_data(X_train, X_test)
         print("  [ftt] fitting...", flush=True)
         ftt = FTTransformer(X_num_tr.shape[1], cardinalities, **FTT_CFG).to(DEVICE)
-        ftt = train_embed_model(ftt, X_num_tr, X_cat_tr, y_train, desc="FTT", use_huber=False, lr=1e-4, patience=50)
+        ftt = train_embed_model(
+            ftt, X_num_tr, X_cat_tr, y_train,
+            desc="FTT", use_huber=False,
+            lr=EMBED_TRAIN_CFG["lr"],
+            patience=EMBED_TRAIN_CFG["patience"],
+        )
         ftt.eval()
         with torch.no_grad():
             prediction_map["ftt"] = ftt(
@@ -899,43 +883,10 @@ def main():
 
         # Back-transform to original AV scale
         for _name in MODEL_ORDER:
-            if _name == "stack":
-                continue
             if _name in ORIG_SCALE_MODELS:
                 prediction_map[_name] = np.clip(prediction_map[_name], 0.0, AV_MAX)
             else:
                 prediction_map[_name] = np.expm1(np.clip(prediction_map[_name], *LOG_PRED_CLIP))
-
-        # Stacking meta-learner (recency-weighted NNLS)
-        oof_entry = {m: prediction_map[m].copy() for m in STACK_BASE_MODELS}
-        oof_entry["y"] = y_test.copy()
-
-        if len(oof_stack) >= META_MIN_TRAIN_YEARS:
-            n_folds = len(oof_stack)
-            fold_weights = np.array([STACK_DECAY ** (n_folds - 1 - i) for i in range(n_folds)])
-
-            X_parts, y_parts, w_parts = [], [], []
-            for i, entry in enumerate(oof_stack):
-                X_f = np.column_stack([entry[m] for m in STACK_BASE_MODELS])
-                X_parts.append(X_f)
-                y_parts.append(entry["y"])
-                w_parts.append(np.full(len(entry["y"]), fold_weights[i]))
-
-            meta_X_tr = np.vstack(X_parts)
-            meta_y_tr = np.concatenate(y_parts)
-            sqrt_w = np.sqrt(np.concatenate(w_parts))
-
-            coef, _ = nnls(meta_X_tr * sqrt_w[:, None], meta_y_tr * sqrt_w)
-            coef = coef / (coef.sum() + 1e-10)
-            meta_X_te = np.column_stack([prediction_map[m] for m in STACK_BASE_MODELS])
-            prediction_map["stack"] = np.clip(meta_X_te @ coef, 0.0, AV_MAX)
-            print(f"  [stack] weights: { {m: round(w, 3) for m, w in zip(STACK_BASE_MODELS, coef)} }")
-        else:
-            prediction_map["stack"] = prediction_map["catboost"].copy()
-            remaining = META_MIN_TRAIN_YEARS - len(oof_stack)
-            print(f"  [stack] fallback to catboost ({remaining} more OOF fold(s) needed)")
-
-        oof_stack.append(oof_entry)
 
         year_result = {
             "test_year": int(test_year),
@@ -976,8 +927,6 @@ def main():
                 "spline_model": spline_model,
                 "xgb_importance": xgb_model.named_steps["xgb"].feature_importances_,
                 "xgb_feat_names": xgb_feat_names,
-                "cb_importance": cb_model.get_feature_importance(),
-                "cb_feat_names": cb_feat_names,
                 "rf_importance": rf_model.named_steps["rf"].feature_importances_,
                 "rf_feat_names": rf_feat_names,
             }
@@ -1022,10 +971,16 @@ def main():
             summary_df, os.path.join(OUT_DIR, "plot_overall_summary_grid_v6.png"))
 
         for model_name, imp, feat_names in [
-            ("xgb",      latest_artifacts["xgb_importance"], latest_artifacts["xgb_feat_names"]),
-            ("catboost", latest_artifacts["cb_importance"],  latest_artifacts["cb_feat_names"]),
-            ("rf",       latest_artifacts["rf_importance"],  latest_artifacts["rf_feat_names"]),
+            ("xgb", latest_artifacts["xgb_importance"], latest_artifacts["xgb_feat_names"]),
+            ("rf",  latest_artifacts["rf_importance"],  latest_artifacts["rf_feat_names"]),
         ]:
+            pd.DataFrame({
+                "feature": feat_names,
+                "importance": imp,
+            }).sort_values("importance", ascending=False).to_csv(
+                os.path.join(OUT_DIR, f"{model_name}_feature_importance_v6.csv"),
+                index=False,
+            )
             save_feature_importance(
                 imp, feat_names,
                 os.path.join(OUT_DIR, f"plot_{model_name}_feature_importance_v6.png"),
