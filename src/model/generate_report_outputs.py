@@ -34,24 +34,20 @@ FIGURE_DIR = REPORT_DIR / "figures"
 VECTOR_FIGURE_DIR = REPORT_DIR / "figures_vector"
 GOOGLE_DOC_FIGURE_DIR = REPORT_DIR / "figures_google_doc"
 
-MODEL_ORDER = ["spline", "xgb", "catboost", "rf", "ftt", "stack", "pick_bin"]
+MODEL_ORDER = ["spline", "xgb", "rf", "ftt", "pick_bin"]
 REQUESTED_MODELS = ["pick_bin", "xgb", "rf", "ftt", "spline"]
 MODEL_LABELS = {
     "spline": "Spline Ridge",
     "xgb": "XGBoost",
-    "catboost": "CatBoost",
     "rf": "Random Forest",
     "ftt": "FT-Transformer",
-    "stack": "Stacked Ensemble",
     "pick_bin": "Pick-Bin Baseline",
 }
 MODEL_COLORS = {
     "spline": "#3B6FB6",
     "xgb": "#1F7A5A",
-    "catboost": "#C88A15",
     "rf": "#D5672A",
     "ftt": "#264653",
-    "stack": "#C4313B",
     "pick_bin": "#6C757D",
 }
 METRIC_ORDER = ["mae", "rmse", "spearman", "r2"]
@@ -391,7 +387,6 @@ def write_copy_ready_metric_tables(walk_long: pd.DataFrame, overall: pd.DataFram
 
 def plot_overall_performance(overall: pd.DataFrame) -> None:
     overall = overall.copy()
-    overall = overall[overall["model_type"] != "catboost"].copy()
     overall["model"] = overall["model_type"].map(MODEL_LABELS).fillna(overall["model_type"])
     metrics = [
         ("mae", "MAE"),

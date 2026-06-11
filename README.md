@@ -43,7 +43,7 @@ The demo notebook is designed to run in under one minute. It trains lightweight 
 | `pick_values.json` | Precomputed pick-value curve used by the notebook so the demo stays fast. |
 | `export_pick_values.py` | Optional utility for rebuilding `pick_values.json` from trained model outputs. |
 | `src/model/data_loader.py` | Shared data loading and joining utilities for drafts, AV labels, college stats, roster context, trade context, and veteran team context. |
-| `src/model/train_n_evaluate.py` | Full walk-forward modeling script. It runs Spline Ridge, XGBoost, CatBoost, Random Forest, FT-Transformer, a stacked ensemble, and a pick-bin baseline. |
+| `src/model/train_n_evaluate.py` | Full walk-forward modeling script. It runs Spline Ridge, XGBoost, Random Forest, FT-Transformer, and a pick-bin baseline. |
 | `results/` | Saved model results and poster-ready plots from the larger modeling run. |
 | `data/supabase_exports/drafts.csv` | Draft-pick backbone table. Models start from one row per NFL draft pick. |
 | `data/supabase_exports/av.csv` | Pro Football Reference Approximate Value data used to build the 2-year AV target. |
